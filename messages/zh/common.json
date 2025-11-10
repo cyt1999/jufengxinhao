@@ -1,0 +1,38 @@
+{
+  "site": {
+    "name": "飓风信号",
+    "tagline": "智能交易平台"
+  },
+  "navigation": {
+    "home": "首页",
+    "about": "关于我们",
+    "training": "实战训练营",
+    "freeTraining": "免费培训",
+    "blog": "博客",
+    "assessment": "测评",
+    "faq": "FAQ",
+    "donate": "捐赠"
+  },
+  "buttons": {
+    "login": "登录",
+    "signup": "注册",
+    "learnMore": "了解更多",
+    "apply": "申请",
+    "viewDetails": "查看详情",
+    "addToWatchlist": "加入观察",
+    "submit": "提交",
+    "cancel": "取消",
+    "confirm": "确认",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步"
+  },
+  "footer": {
+    "product": "产品",
+    "resources": "资源",
+    "company": "公司",
+    "followUs": "关注我们",
+    "rights": "保留所有权利"
+  }
+}
+

@@ -1,0 +1,94 @@
+{
+  "hero": {
+    "badge": "AI-Powered Trading Signals",
+    "title": "Make Trading",
+    "titleHighlight": "Simple",
+    "title2": ", Make Returns",
+    "title2Highlight": "Stable",
+    "description": "Hurricane Signal combines artificial intelligence with professional trading strategies to provide you with precise entry and exit signals, helping you ride the waves in financial markets",
+    "cta": {
+      "primary": "Free 7-Day Trial",
+      "secondary": "Learn More"
+    }
+  },
+  "story": {
+    "title": "From Lone Wolf to Fleet",
+    "subtitle": "Hurricane Signal - The Reserve Team for Future Private Funds",
+    "summary": "I once believed trading was a lonely game for top players, until I personally experienced the limitations and risks of being a 'lone wolf' in the market. I realized that a single strategy and style are extremely fragile in the ever-changing global market. The real future belongs to 'fleet' teams that can work together.",
+    "cta": "Read Full Story"
+  },
+  "careerPath": {
+    "title": "Career Development Path",
+    "description": "At Hurricane Signal, we provide traders with a clear career development path",
+    "stages": [
+      {
+        "name": "Trader",
+        "description": "Basic trading skills, participate in practical training",
+        "duration": "2-6 months",
+        "requirements": ["Basic trading knowledge", "Pass psychological assessment", "Complete training camp"]
+      },
+      {
+        "name": "Supervisor",
+        "description": "Manage small teams, responsible for risk control",
+        "duration": "6-12 months",
+        "requirements": ["Stable profit record", "Team collaboration skills", "Risk management experience"]
+      },
+      {
+        "name": "Team Leader",
+        "description": "Lead trading teams, develop strategies",
+        "duration": "12-24 months",
+        "requirements": ["Excellent performance", "Leadership skills", "Strategy development ability"]
+      },
+      {
+        "name": "Partner",
+        "description": "Participate in private fund establishment, share profits",
+        "duration": "24 months+",
+        "requirements": ["Outstanding performance", "Team management ability", "Strategic vision"]
+      }
+    ]
+  },
+  "stats": {
+    "title": "Data Proves Strength",
+    "description": "Our signal accuracy and user satisfaction rank among the top in the industry",
+    "items": [
+      {
+        "value": "76.8%",
+        "label": "Signal Accuracy"
+      },
+      {
+        "value": "15,328",
+        "label": "Active Users"
+      },
+      {
+        "value": "42.5%",
+        "label": "Average Monthly Return"
+      },
+      {
+        "value": "98.7%",
+        "label": "User Satisfaction"
+      }
+    ]
+  },
+  "features": {
+    "title": "Why Choose Hurricane Signal",
+    "description": "We provide the most advanced trading tools and signals to help you gain an advantage in the market",
+    "items": [
+      {
+        "icon": "brain",
+        "title": "AI Intelligent Analysis",
+        "description": "Based on deep learning algorithms, continuously analyze market data 24/7 to identify high-probability trading opportunities"
+      },
+      {
+        "icon": "bolt",
+        "title": "Real-time Signal Alerts",
+        "description": "Push trading signals in real-time, support multiple notification methods to ensure you never miss an opportunity"
+      },
+      {
+        "icon": "chart-pie",
+        "title": "Multi-dimensional Analysis",
+        "description": "Technical, fundamental, and sentiment analysis to provide comprehensive market insights"
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,38 @@
+{
+  "site": {
+    "name": "Hurricane Signal",
+    "tagline": "Intelligent Trading Platform"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "training": "Training Camp",
+    "freeTraining": "Free Training",
+    "blog": "Blog",
+    "assessment": "Assessment",
+    "faq": "FAQ",
+    "donate": "Donate"
+  },
+  "buttons": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "learnMore": "Learn More",
+    "apply": "Apply",
+    "viewDetails": "View Details",
+    "addToWatchlist": "Add to Watchlist",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "footer": {
+    "product": "Product",
+    "resources": "Resources",
+    "company": "Company",
+    "followUs": "Follow Us",
+    "rights": "All Rights Reserved"
+  }
+}
+
