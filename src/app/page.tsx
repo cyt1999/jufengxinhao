@@ -1,65 +1,315 @@
-import Image from "next/image";
+import homeContent from '@/content/zh/home.json';
+import Button from '@/components/ui/Button';
+import Card from '@/components/ui/Card';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div style={{ paddingTop: '80px' }}>
+      {/* Hero Section */}
+      <section style={{
+        padding: '180px 0 100px',
+        background: 'var(--gradient-hero)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div className="container">
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '50px',
+          }}>
+            <div style={{ flex: 1, maxWidth: '600px' }}>
+              <div style={{
+                display: 'inline-block',
+                background: 'var(--primary-light)',
+                color: 'var(--primary)',
+                padding: '6px 15px',
+                borderRadius: '20px',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                marginBottom: '20px',
+              }}>
+                {homeContent.hero.badge}
+              </div>
+              <h1 style={{
+                fontSize: '3.2rem',
+                marginBottom: '20px',
+                lineHeight: 1.2,
+              }}>
+                {homeContent.hero.title}
+                <span style={{
+                  background: 'var(--gradient-accent)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}>
+                  {homeContent.hero.titleHighlight}
+                </span>
+                {homeContent.hero.title2}
+                <span style={{
+                  background: 'var(--gradient-accent)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}>
+                  {homeContent.hero.title2Highlight}
+                </span>
+              </h1>
+              <p style={{
+                fontSize: '1.2rem',
+                marginBottom: '40px',
+                color: 'var(--text-light)',
+              }}>
+                {homeContent.hero.description}
+              </p>
+              <div style={{ display: 'flex', gap: '20px' }}>
+                <Button variant="primary" size="lg">
+                  {homeContent.hero.cta.primary}
+                </Button>
+                <Button variant="secondary" size="lg">
+                  {homeContent.hero.cta.secondary}
+                </Button>
+              </div>
+            </div>
+            <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+              <div style={{
+                width: '300px',
+                background: 'white',
+                borderRadius: '15px',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
+                padding: '25px',
+                transform: 'rotate(5deg)',
+              }}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '20px',
+                }}>
+                  <div style={{ fontWeight: 700, fontSize: '1.2rem' }}>BTC/USDT</div>
+                  <div style={{ color: 'var(--success)', fontWeight: 600 }}>+2.34%</div>
+                </div>
+                <div style={{
+                  fontSize: '1.8rem',
+                  fontWeight: 700,
+                  marginBottom: '15px',
+                }}>
+                  $41,250.75
+                </div>
+                <div style={{
+                  height: '100px',
+                  background: 'var(--gradient-primary)',
+                  borderRadius: '8px',
+                  marginBottom: '15px',
+                  opacity: 0.3,
+                }} />
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  background: 'var(--primary-light)',
+                  padding: '8px 15px',
+                  borderRadius: '8px',
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  color: 'var(--primary)',
+                }}>
+                  ⚡ 强烈买入信号
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Features Section */}
+      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '15px' }}>
+              {homeContent.features.title}
+            </h2>
+            <p style={{
+              color: 'var(--text-light)',
+              maxWidth: '600px',
+              margin: '0 auto',
+              fontSize: '1.1rem',
+            }}>
+              {homeContent.features.description}
+            </p>
+          </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '30px',
+          }}>
+            {homeContent.features.items.map((feature, index) => (
+              <Card key={index} hover>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{
+                    width: '70px',
+                    height: '70px',
+                    background: 'var(--gradient-primary)',
+                    borderRadius: '15px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 20px',
+                    color: 'white',
+                    fontSize: '28px',
+                  }}>
+                    {feature.icon === 'brain' && '🧠'}
+                    {feature.icon === 'bolt' && '⚡'}
+                    {feature.icon === 'chart-pie' && '📊'}
+                  </div>
+                  <h3 style={{ fontSize: '1.4rem', marginBottom: '15px' }}>
+                    {feature.title}
+                  </h3>
+                  <p style={{ color: 'var(--text-light)' }}>
+                    {feature.description}
+                  </p>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Story Section */}
+      <section style={{ padding: '100px 0', background: 'var(--bg-light)' }}>
+        <div className="container">
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '50px',
+          }}>
+            <div style={{ flex: 1 }}>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>
+                {homeContent.story.title}
+              </h2>
+              <h3 style={{
+                fontSize: '1.5rem',
+                color: 'var(--primary)',
+                marginBottom: '20px',
+              }}>
+                {homeContent.story.subtitle}
+              </h3>
+              <p style={{
+                fontSize: '1.1rem',
+                color: 'var(--text-light)',
+                lineHeight: 1.8,
+                marginBottom: '30px',
+              }}>
+                {homeContent.story.summary}
+              </p>
+              <Link href="/about">
+                <Button variant="primary">
+                  {homeContent.story.cta}
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Career Path Section */}
+      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '15px' }}>
+              {homeContent.careerPath.title}
+            </h2>
+            <p style={{
+              color: 'var(--text-light)',
+              maxWidth: '600px',
+              margin: '0 auto',
+              fontSize: '1.1rem',
+            }}>
+              {homeContent.careerPath.description}
+            </p>
+          </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '30px',
+          }}>
+            {homeContent.careerPath.stages.map((stage, index) => (
+              <Card key={index} hover>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{
+                    fontSize: '2rem',
+                    marginBottom: '15px',
+                  }}>
+                    {index + 1}
+                  </div>
+                  <h3 style={{ fontSize: '1.3rem', marginBottom: '10px' }}>
+                    {stage.name}
+                  </h3>
+                  <p style={{
+                    color: 'var(--text-light)',
+                    marginBottom: '15px',
+                  }}>
+                    {stage.description}
+                  </p>
+                  <div style={{
+                    fontSize: '0.9rem',
+                    color: 'var(--primary)',
+                    fontWeight: 600,
+                  }}>
+                    周期: {stage.duration}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section style={{ padding: '80px 0', background: 'var(--bg-light)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '15px' }}>
+              {homeContent.stats.title}
+            </h2>
+            <p style={{
+              color: 'var(--text-light)',
+              maxWidth: '600px',
+              margin: '0 auto',
+              fontSize: '1.1rem',
+            }}>
+              {homeContent.stats.description}
+            </p>
+          </div>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '30px',
+          }}>
+            {homeContent.stats.items.map((stat, index) => (
+              <Card key={index}>
+                <div style={{ textAlign: 'center' }}>
+                  <div style={{
+                    fontSize: '2.5rem',
+                    fontWeight: 700,
+                    marginBottom: '10px',
+                    background: 'var(--gradient-accent)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}>
+                    {stat.value}
+                  </div>
+                  <div style={{
+                    color: 'var(--text-light)',
+                    fontSize: '1.1rem',
+                  }}>
+                    {stat.label}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
