@@ -100,32 +100,22 @@ export default function Header() {
             ))}
           </ul>
 
-          <div style={{ display: 'flex', gap: '15px' }}>
-            <button style={{
-              padding: '8px 20px',
-              borderRadius: '8px',
-              fontWeight: 500,
-              background: 'transparent',
-              border: '1px solid var(--border)',
-              color: 'var(--text-dark)',
-              cursor: 'pointer',
-              transition: 'all 0.3s',
-            }}>
-              登录
-            </button>
-            <button style={{
-              padding: '8px 20px',
-              borderRadius: '8px',
-              fontWeight: 500,
-              background: 'var(--gradient-primary)',
-              border: 'none',
-              color: 'white',
-              cursor: 'pointer',
-              boxShadow: '0 4px 10px rgba(0, 201, 255, 0.3)',
-              transition: 'all 0.3s',
-            }}>
-              注册
-            </button>
+          <div>
+            <Link href="/training">
+              <button style={{
+                padding: '8px 20px',
+                borderRadius: '8px',
+                fontWeight: 500,
+                background: 'var(--gradient-primary)',
+                border: 'none',
+                color: 'white',
+                cursor: 'pointer',
+                boxShadow: '0 4px 10px rgba(0, 201, 255, 0.3)',
+                transition: 'all 0.3s',
+              }}>
+                申请训练营
+              </button>
+            </Link>
           </div>
         </nav>
       </div>
