@@ -8,11 +8,11 @@ export default function Header() {
 
   const navLinks = [
     { href: '/', label: '首页' },
-    { href: '/about', label: '关于我们' },
     { href: '/training', label: '实战训练营' },
     { href: '/blog', label: '博客' },
     { href: '/assessment', label: '测评' },
     { href: '/faq', label: 'FAQ' },
+    { href: '/about', label: '关于我们' },
   ];
 
   return (
