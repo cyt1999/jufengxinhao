@@ -122,9 +122,9 @@ export default async function BlogPostPage({
                     style={{
                       fontSize: '0.85rem',
                       padding: '6px 12px',
-                      background: 'var(--primary-light)',
+                      background: 'var(--primary-50)',
                       borderRadius: '15px',
-                      color: 'var(--primary)',
+                      color: 'var(--primary-500)',
                     }}
                   >
                     #{tag}
@@ -141,7 +141,7 @@ export default async function BlogPostPage({
               background: 'var(--bg-light)',
               borderRadius: '10px',
               marginBottom: '30px',
-              borderLeft: '4px solid var(--primary)',
+              borderLeft: '4px solid var(--primary-500)',
             }}>
               <p style={{
                 fontSize: '1.1rem',

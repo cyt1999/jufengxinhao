@@ -61,7 +61,7 @@ export default function Header() {
               <div style={{
                 fontSize: 'clamp(18px, 2.5vw, 24px)',
                 fontWeight: 800,
-                background: 'var(--gradient-accent)',
+                background: 'var(--gradient-primary)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}>
@@ -86,7 +86,7 @@ export default function Header() {
                     href={link.href}
                     aria-current={pathname === link.href ? 'page' : undefined}
                     style={{
-                      color: pathname === link.href ? 'var(--primary)' : 'var(--text-dark)',
+                      color: pathname === link.href ? 'var(--primary-500)' : 'var(--text-medium)',
                       textDecoration: 'none',
                       fontWeight: 500,
                       position: 'relative',
@@ -95,12 +95,12 @@ export default function Header() {
                     }}
                     onMouseEnter={(e) => {
                       if (pathname !== link.href) {
-                        e.currentTarget.style.color = 'var(--primary)';
+                        e.currentTarget.style.color = 'var(--primary-500)';
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (pathname !== link.href) {
-                        e.currentTarget.style.color = 'var(--text-dark)';
+                        e.currentTarget.style.color = 'var(--text-medium)';
                       }
                     }}
                   >

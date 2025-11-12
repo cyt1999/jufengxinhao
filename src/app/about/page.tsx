@@ -229,7 +229,7 @@ export default function AboutPage() {
                   fontSize: '3rem',
                   fontWeight: 700,
                   marginBottom: '15px',
-                  background: 'var(--gradient-accent)',
+                  background: 'var(--gradient-primary)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}>
@@ -249,7 +249,7 @@ export default function AboutPage() {
                   fontSize: '3rem',
                   fontWeight: 700,
                   marginBottom: '15px',
-                  background: 'var(--gradient-accent)',
+                  background: 'var(--gradient-primary)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}>

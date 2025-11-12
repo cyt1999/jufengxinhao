@@ -74,7 +74,7 @@ body {
 /* ========== 可访问性优化 ========== */
 /* 焦点样式 */
 *:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--primary-500);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -91,7 +91,7 @@ body {
   transform: translateX(-50%);
   top: 20px;
   padding: 10px 20px;
-  background: var(--primary);
+  background: var(--primary-500);
   color: white;
   text-decoration: none;
   border-radius: 8px;

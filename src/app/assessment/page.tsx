@@ -174,8 +174,8 @@ export default function AssessmentPage() {
                   fontSize: '1rem',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'var(--primary-light)';
-                  e.currentTarget.style.borderColor = 'var(--primary)';
+                  e.currentTarget.style.background = 'var(--primary-50)';
+                  e.currentTarget.style.borderColor = 'var(--primary-500)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = 'var(--bg-light)';

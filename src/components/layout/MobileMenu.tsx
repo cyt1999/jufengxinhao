@@ -97,7 +97,7 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
           <div style={{
             fontSize: '20px',
             fontWeight: 700,
-            background: 'var(--gradient-accent)',
+            background: 'var(--gradient-primary)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
           }}>
@@ -137,11 +137,11 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
                 style={{
                   display: 'block',
                   padding: '15px 20px',
-                  color: isActive ? 'var(--primary)' : 'var(--text-dark)',
+                  color: isActive ? 'var(--primary-500)' : 'var(--text-medium)',
                   textDecoration: 'none',
                   fontWeight: isActive ? 600 : 400,
-                  borderLeft: isActive ? '3px solid var(--primary)' : '3px solid transparent',
-                  background: isActive ? 'var(--primary-light)' : 'transparent',
+                  borderLeft: isActive ? '3px solid var(--primary-500)' : '3px solid transparent',
+                  background: isActive ? 'var(--primary-50)' : 'transparent',
                   transition: 'all 0.3s',
                 }}
               >

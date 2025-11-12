@@ -72,7 +72,7 @@
 }
 
 .blog-content blockquote {
-  border-left: 4px solid var(--primary);
+  border-left: 4px solid var(--primary-500);
   padding-left: 1.5em;
   margin: 1.5em 0;
   font-style: italic;
@@ -80,15 +80,15 @@
 }
 
 .blog-content a {
-  color: var(--primary);
+  color: var(--primary-500);
   text-decoration: none;
-  border-bottom: 1px solid var(--primary);
+  border-bottom: 1px solid var(--primary-500);
   transition: all 0.3s;
 }
 
 .blog-content a:hover {
-  color: var(--primary-dark);
-  border-bottom-color: var(--primary-dark);
+  color: var(--primary-700);
+  border-bottom-color: var(--primary-700);
 }
 
 .blog-content img {

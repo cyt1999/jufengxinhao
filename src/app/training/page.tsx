@@ -15,7 +15,7 @@ export default function TrainingPage() {
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <div style={{
               display: 'inline-block',
-              background: 'var(--primary-light)',
+              background: 'var(--primary-50)',
               color: 'var(--primary)',
               padding: '6px 15px',
               borderRadius: '20px',
@@ -32,7 +32,7 @@ export default function TrainingPage() {
             }}>
               {trainingContent.hero.title1}
               <span style={{
-                background: 'var(--gradient-accent)',
+                background: 'var(--gradient-primary)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}>
@@ -58,7 +58,7 @@ export default function TrainingPage() {
                     fontSize: '2.5rem',
                     fontWeight: 700,
                     marginBottom: '10px',
-                    background: 'var(--gradient-accent)',
+                    background: 'var(--gradient-primary)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}>
@@ -662,7 +662,7 @@ export default function TrainingPage() {
             ))}
             <div style={{
               padding: '25px',
-              background: 'var(--primary-light)',
+              background: 'var(--primary-50)',
               borderRadius: '12px',
               marginTop: '30px',
               border: '2px solid var(--primary)',
@@ -670,7 +670,7 @@ export default function TrainingPage() {
               <p style={{
                 fontSize: '1.3rem',
                 fontWeight: 700,
-                color: 'var(--primary-dark)',
+                color: 'var(--primary-700)',
                 lineHeight: 1.8,
                 textAlign: 'center',
               }}>

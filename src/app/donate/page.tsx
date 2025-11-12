@@ -15,7 +15,7 @@ export default function DonatePage() {
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <div style={{
               display: 'inline-block',
-              background: 'var(--primary-light)',
+              background: 'var(--primary-50)',
               color: 'var(--primary)',
               padding: '6px 15px',
               borderRadius: '20px',
@@ -32,7 +32,7 @@ export default function DonatePage() {
             }}>
               {donateContent.hero.title1}
               <span style={{
-                background: 'var(--gradient-accent)',
+                background: 'var(--gradient-primary)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               }}>
@@ -58,7 +58,7 @@ export default function DonatePage() {
                     fontSize: '2.5rem',
                     fontWeight: 700,
                     marginBottom: '10px',
-                    background: 'var(--gradient-accent)',
+                    background: 'var(--gradient-primary)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}>

@@ -1,80 +1,127 @@
 /* 
- * 飓风信号 - 配色方案集中管理文件
+ * 飓风信号 - 配色方案集中管理文件（科技感风格）
  * 所有颜色定义在此文件中，修改此处即可全局生效
+ * 
+ * 设计理念：
+ * - 以青蓝色系为主，营造科技感
+ * - 统一的状态颜色系统
+ * - 清晰的层次结构
  */
 
 :root {
-  /* ========== 主色调 ========== */
-  --primary: #00C9FF;
-  --primary-light: #E6F9FF;
-  --primary-dark: #0099CC;
+  /* ========== 主色调 - 青蓝色系 ========== */
+  --primary: #00C9FF;              /* 主色：青蓝色，科技感 */
+  --primary-50: #E6F9FF;          /* 最浅：用于背景 */
+  --primary-100: #B3EFFF;         /* 浅色：用于悬停状态 */
+  --primary-200: #80E5FF;         /* 中浅：用于次要元素 */
+  --primary-500: #00C9FF;         /* 标准：主色 */
+  --primary-700: #0099CC;         /* 深色：用于文字、按钮深色状态 */
+  --primary-900: #006699;         /* 最深：用于强调文字 */
   
-  /* ========== 辅助色 ========== */
-  --secondary: #00FFAA;
-  --secondary-light: #E6FFF5;
-  --secondary-dark: #00CC88;
+  /* 兼容性别名 */
+  --primary-light: var(--primary-50);
+  --primary-dark: var(--primary-700);
   
-  /* ========== 强调色 ========== */
-  --accent: #6C63FF;
-  --accent-light: #E6E5FF;
-  --accent-dark: #4A42CC;
+  /* ========== 辅助色 - 青色系（协调统一） ========== */
+  --secondary: #00D4AA;            /* 辅助色：青绿色，与主色协调 */
+  --secondary-50: #E6FFF5;         /* 最浅 */
+  --secondary-100: #B3FFE5;        /* 浅色 */
+  --secondary-500: #00D4AA;        /* 标准 */
+  --secondary-700: #00AA88;        /* 深色 */
+  --secondary-900: #008866;        /* 最深 */
+  
+  /* 兼容性别名 */
+  --secondary-light: var(--secondary-50);
+  --secondary-dark: var(--secondary-700);
+  
+  /* ========== 强调色 - 紫色（减少使用） ========== */
+  --accent: #6C63FF;               /* 强调色：紫色，仅用于特殊强调 */
+  --accent-50: #E6E5FF;            /* 最浅 */
+  --accent-100: #CCC9FF;           /* 浅色 */
+  --accent-500: #6C63FF;           /* 标准 */
+  --accent-700: #4A42CC;           /* 深色 */
+  --accent-900: #2E1F99;           /* 最深 */
+  
+  /* 兼容性别名 */
+  --accent-light: var(--accent-50);
+  --accent-dark: var(--accent-700);
   
   /* ========== 文字颜色 ========== */
-  --text-dark: #2D3748;
-  --text-light: #718096;
-  --text-muted: #A0AEC0;
-  --text-white: #FFFFFF;
+  --text-dark: #1A202C;            /* 主要文字：深灰黑，提高对比度 */
+  --text-medium: #2D3748;          /* 次要文字：中灰 */
+  --text-light: #4A5568;           /* 辅助文字：浅灰（提高对比度） */
+  --text-muted: #718096;           /* 弱化文字：更浅灰 */
+  --text-white: #FFFFFF;           /* 白色文字 */
   
   /* ========== 背景颜色 ========== */
-  --bg-white: #FFFFFF;
-  --bg-light: #F7FAFC;
-  --bg-gray: #EDF2F7;
-  --bg-dark: #2D3748;
+  --bg-white: #FFFFFF;             /* 纯白背景 */
+  --bg-light: #F7FAFC;             /* 浅灰背景 */
+  --bg-gray: #EDF2F7;              /* 中灰背景 */
+  --bg-dark: #1A202C;              /* 深色背景 */
+  --bg-primary: var(--primary-50); /* 主色背景（浅色） */
   
   /* ========== 边框颜色 ========== */
-  --border: #E2E8F0;
-  --border-light: #F1F5F9;
-  --border-dark: #CBD5E0;
+  --border: #E2E8F0;               /* 标准边框 */
+  --border-light: #F1F5F9;         /* 浅边框 */
+  --border-medium: #CBD5E0;        /* 中边框 */
+  --border-dark: #A0AEC0;          /* 深边框 */
   
-  /* ========== 状态颜色 ========== */
-  --success: #48BB78;
-  --success-light: #C6F6D5;
-  --success-dark: #2F855A;
+  /* ========== 状态颜色 - 基于主色调统一 ========== */
+  /* 成功：使用青绿色系（与 secondary 统一） */
+  --success: var(--secondary-500);  /* #00D4AA */
+  --success-light: var(--secondary-50);
+  --success-dark: var(--secondary-700);
   
-  --warning: #ED8936;
-  --warning-light: #FEEBC8;
-  --warning-dark: #C05621;
+  /* 警告：使用橙色（保持警示性，但更协调） */
+  --warning: #FFB84D;               /* 柔和的橙色 */
+  --warning-light: #FFF4E6;         /* 浅橙色背景 */
+  --warning-dark: #CC8A3A;         /* 深橙色文字 */
   
-  --danger: #F56565;
-  --danger-light: #FED7D7;
-  --danger-dark: #C53030;
+  /* 错误：使用红色（保持警示性） */
+  --danger: #FF6B6B;                /* 柔和的红色 */
+  --danger-light: #FFE6E6;          /* 浅红色背景 */
+  --danger-dark: #CC5555;           /* 深红色文字 */
   
-  --info: #4299E1;
-  --info-light: #BEE3F8;
-  --info-dark: #2B6CB0;
+  /* 信息：使用主色（与品牌统一） */
+  --info: var(--primary-500);       /* #00C9FF */
+  --info-light: var(--primary-50);
+  --info-dark: var(--primary-700);
   
   /* ========== 阴影 ========== */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.12);
   --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
   
+  /* 主色阴影（用于按钮等） */
+  --shadow-primary: 0 4px 12px rgba(0, 201, 255, 0.25);
+  --shadow-primary-hover: 0 6px 20px rgba(0, 201, 255, 0.35);
+  
   /* ========== 渐变 ========== */
-  --gradient-primary: linear-gradient(to right, var(--primary), var(--secondary));
-  --gradient-accent: linear-gradient(to right, var(--primary), var(--accent));
+  /* 主渐变：青蓝到青绿（更协调） */
+  --gradient-primary: linear-gradient(135deg, var(--primary-500) 0%, var(--secondary-500) 100%);
+  
+  /* 强调渐变：青蓝到紫色（减少使用） */
+  --gradient-accent: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
+  
+  /* Hero 背景渐变：柔和 */
   --gradient-hero: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+  
+  /* 卡片渐变：微妙 */
+  --gradient-card: linear-gradient(135deg, var(--bg-white) 0%, var(--primary-50) 100%);
   
   /* ========== 过渡动画 ========== */
   --transition-fast: 0.15s ease;
-  --transition-base: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
   
   /* ========== 圆角 ========== */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-xl: 16px;
+  --radius-2xl: 20px;
   --radius-full: 9999px;
   
   /* ========== 间距 ========== */
@@ -96,4 +143,3 @@
   --bg-gray: #4A5568;
   /* ... 其他暗色主题变量 */
 }
-

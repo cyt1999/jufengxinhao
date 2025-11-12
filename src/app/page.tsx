@@ -41,7 +41,7 @@ export default function Home() {
               <h2 style={{
                 fontSize: '1.5rem',
                 marginBottom: '30px',
-                color: 'var(--primary)',
+                color: 'var(--primary-500)',
                 fontWeight: 600,
               }}>
                 {homeContent.hero.subtitle}
@@ -81,7 +81,7 @@ export default function Home() {
                   marginBottom: '20px',
                 }}>
                   <div style={{ fontWeight: 700, fontSize: '1.3rem' }}>EUR/USD</div>
-                  <div style={{ color: 'var(--success)', fontWeight: 600, fontSize: '1.1rem' }}>+1.85%</div>
+                  <div style={{ color: 'var(--secondary-500)', fontWeight: 600, fontSize: '1.1rem' }}>+1.85%</div>
                 </div>
                 <div style={{
                   fontSize: '2rem',
@@ -100,12 +100,12 @@ export default function Home() {
                 <div style={{
                   display: 'flex',
                   alignItems: 'center',
-                  background: 'var(--primary-light)',
+                  background: 'var(--primary-50)',
                   padding: '12px 20px',
                   borderRadius: '10px',
                   fontSize: '1rem',
                   fontWeight: 600,
-                  color: 'var(--primary)',
+                  color: 'var(--primary-500)',
                   justifyContent: 'center',
                 }}>
                   ⚡ 强烈买入信号
@@ -201,12 +201,12 @@ export default function Home() {
                 textAlign: 'center',
                 marginBottom: '30px',
                 paddingBottom: '20px',
-                borderBottom: '2px solid var(--primary)',
+                borderBottom: '2px solid var(--primary-500)',
               }}>
                 <h3 style={{
                   fontSize: '1.8rem',
                   fontWeight: 700,
-                  color: 'var(--primary)',
+                  color: 'var(--primary-500)',
                 }}>
                   {homeContent.comparison.us.title}
                 </h3>
@@ -220,7 +220,7 @@ export default function Home() {
                     alignItems: 'flex-start',
                   }}>
                     <span style={{
-                      color: 'var(--success)',
+                      color: 'var(--secondary-500)',
                       marginRight: '10px',
                       fontSize: '1.2rem',
                     }}>✓</span>
@@ -298,7 +298,7 @@ export default function Home() {
                 <Card hover>
                 <div style={{
                   fontSize: '0.9rem',
-                  color: 'var(--primary)',
+                  color: 'var(--primary-500)',
                   fontWeight: 600,
                   marginBottom: '15px',
                 }}>
@@ -350,10 +350,10 @@ export default function Home() {
                 {stage.goal && (
                   <div style={{
                     padding: '10px',
-                    background: 'var(--primary-light)',
+                    background: 'var(--primary-50)',
                     borderRadius: '8px',
                     fontSize: '0.9rem',
-                    color: 'var(--primary-dark)',
+                    color: 'var(--primary-700)',
                   }}>
                     🎯 {stage.goal}
                   </div>
@@ -400,7 +400,7 @@ export default function Home() {
                   <div style={{
                     fontWeight: 600,
                     marginBottom: '8px',
-                    color: 'var(--primary)',
+                    color: 'var(--primary-500)',
                   }}>
                     {item.label}
                   </div>
@@ -421,7 +421,7 @@ export default function Home() {
                   <div style={{
                     fontWeight: 600,
                     marginBottom: '8px',
-                    color: 'var(--primary)',
+                    color: 'var(--primary-500)',
                   }}>
                     {item.label}
                   </div>
@@ -442,7 +442,7 @@ export default function Home() {
                   <div style={{
                     fontWeight: 600,
                     marginBottom: '8px',
-                    color: 'var(--primary)',
+                    color: 'var(--primary-500)',
                   }}>
                     {item.label}
                   </div>
@@ -597,7 +597,7 @@ export default function Home() {
                   </h3>
                   <span style={{
                     fontSize: '0.9rem',
-                    color: 'var(--primary)',
+                    color: 'var(--primary-500)',
                     fontWeight: 600,
                   }}>
                     {video.rating}
@@ -644,7 +644,7 @@ export default function Home() {
                     fontSize: '1.4rem',
                     marginBottom: '20px',
                     fontWeight: 600,
-                    color: 'var(--primary)',
+                    color: 'var(--primary-500)',
                   }}>
                     {level.name}
                   </h3>
@@ -652,7 +652,7 @@ export default function Home() {
                     fontSize: '1.8rem',
                     fontWeight: 700,
                     marginBottom: '8px',
-                    background: 'var(--gradient-accent)',
+                    background: 'var(--gradient-primary)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}>
@@ -804,7 +804,7 @@ export default function Home() {
                           bottom: `${height}%`,
                           width: '14px',
                           height: '14px',
-                          background: 'var(--primary)',
+                          background: 'var(--primary-500)',
                           borderRadius: '50%',
                           border: '3px solid white',
                           boxShadow: '0 2px 8px rgba(0, 201, 255, 0.5)',
@@ -817,7 +817,7 @@ export default function Home() {
                           bottom: `calc(${height}% + 25px)`,
                           fontSize: '0.95rem',
                           fontWeight: 600,
-                          color: 'var(--primary)',
+                          color: 'var(--primary-500)',
                           whiteSpace: 'nowrap',
                           background: 'rgba(255, 255, 255, 0.9)',
                           padding: '4px 8px',
@@ -879,7 +879,7 @@ export default function Home() {
                     fontSize: '2.5rem',
                     fontWeight: 700,
                     marginBottom: '15px',
-                    background: 'var(--gradient-accent)',
+                    background: 'var(--gradient-primary)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                   }}>
@@ -998,7 +998,7 @@ export default function Home() {
                   borderRadius: '8px',
                   fontWeight: 600,
                   background: 'white',
-                  color: 'var(--primary)',
+                  color: 'var(--primary-500)',
                   border: 'none',
                   cursor: 'pointer',
                   fontSize: '1.2rem',

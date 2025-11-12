@@ -38,32 +38,35 @@ export default function Button({
     primary: {
       background: 'var(--gradient-primary)',
       color: 'white',
-      boxShadow: '0 4px 10px rgba(0, 201, 255, 0.3)',
+      boxShadow: 'var(--shadow-primary)',
     },
     secondary: {
       background: 'transparent',
-      color: 'var(--primary)',
-      border: '1px solid var(--primary)',
+      color: 'var(--primary-500)',
+      border: '1px solid var(--primary-500)',
     },
     outline: {
       background: 'transparent',
-      color: 'var(--text-dark)',
-      border: '1px solid var(--border)',
+      color: 'var(--text-medium)',
+      border: '1px solid var(--border-medium)',
     },
   };
 
   const hoverStyles = {
     primary: {
       transform: 'translateY(-2px)',
-      boxShadow: '0 6px 15px rgba(0, 201, 255, 0.4)',
+      boxShadow: 'var(--shadow-primary-hover)',
     },
     secondary: {
-      background: 'var(--primary-light)',
+      background: 'var(--primary-50)',
+      borderColor: 'var(--primary-700)',
+      color: 'var(--primary-700)',
       transform: 'translateY(-1px)',
     },
     outline: {
-      borderColor: 'var(--primary)',
-      color: 'var(--primary)',
+      borderColor: 'var(--primary-500)',
+      color: 'var(--primary-500)',
+      background: 'var(--primary-50)',
     },
   };
 

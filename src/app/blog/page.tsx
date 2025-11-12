@@ -124,9 +124,9 @@ export default function BlogPage() {
                   padding: '10px 20px',
                   borderRadius: '20px',
                   border: '2px solid',
-                  borderColor: selectedCategory === category ? 'var(--primary)' : 'var(--border)',
-                  background: selectedCategory === category ? 'var(--primary-light)' : 'transparent',
-                  color: selectedCategory === category ? 'var(--primary)' : 'var(--text-dark)',
+                  borderColor: selectedCategory === category ? 'var(--primary-500)' : 'var(--border)',
+                  background: selectedCategory === category ? 'var(--primary-50)' : 'transparent',
+                  color: selectedCategory === category ? 'var(--primary-500)' : 'var(--text-medium)',
                   fontWeight: selectedCategory === category ? 600 : 400,
                   cursor: 'pointer',
                   transition: 'all 0.3s',
@@ -159,7 +159,7 @@ export default function BlogPage() {
                 <Card hover>
                   <div style={{
                     fontSize: '0.9rem',
-                    color: 'var(--primary)',
+                    color: 'var(--primary-500)',
                     fontWeight: 600,
                     marginBottom: '10px',
                   }}>
