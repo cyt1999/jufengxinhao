@@ -1,7 +1,11 @@
+'use client';
+
 import homeContent from '@/content/zh/home.json';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Link from 'next/link';
+import SectionWithAnimation from '@/components/ui/SectionWithAnimation';
+import CardWithAnimation from '@/components/ui/CardWithAnimation';
 
 export default function Home() {
   return (
@@ -113,9 +117,10 @@ export default function Home() {
       </section>
 
       {/* Why Choose Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+      <SectionWithAnimation>
+        <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
+          <div className="container">
+            <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
               {homeContent.why.title}
             </h2>
@@ -135,32 +140,34 @@ export default function Home() {
             gap: '30px',
           }}>
             {homeContent.why.advantages.map((advantage, index) => (
-              <Card key={index} hover>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{
-                    width: '80px',
-                    height: '80px',
-                    background: 'var(--gradient-primary)',
-                    borderRadius: '20px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0 auto 25px',
-                    color: 'white',
-                    fontSize: '32px',
-                  }}>
-                    {advantage.icon === 'target' && '🎯'}
-                    {advantage.icon === 'rocket' && '🚀'}
-                    {advantage.icon === 'money' && '💰'}
+              <CardWithAnimation key={index} delay={index * 100}>
+                <Card hover>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{
+                      width: '80px',
+                      height: '80px',
+                      background: 'var(--gradient-primary)',
+                      borderRadius: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      margin: '0 auto 25px',
+                      color: 'white',
+                      fontSize: '32px',
+                    }}>
+                      {advantage.icon === 'target' && '🎯'}
+                      {advantage.icon === 'rocket' && '🚀'}
+                      {advantage.icon === 'money' && '💰'}
+                    </div>
+                    <h3 style={{ fontSize: '1.5rem', marginBottom: '15px', fontWeight: 600 }}>
+                      {advantage.title}
+                    </h3>
+                    <p style={{ color: 'var(--text-light)', lineHeight: 1.8 }}>
+                      {advantage.description}
+                    </p>
                   </div>
-                  <h3 style={{ fontSize: '1.5rem', marginBottom: '15px', fontWeight: 600 }}>
-                    {advantage.title}
-                  </h3>
-                  <p style={{ color: 'var(--text-light)', lineHeight: 1.8 }}>
-                    {advantage.description}
-                  </p>
-                </div>
-              </Card>
+                </Card>
+              </CardWithAnimation>
             ))}
           </div>
         </div>
@@ -287,7 +294,8 @@ export default function Home() {
             gap: '30px',
           }}>
             {homeContent.careerPath.stages.map((stage, index) => (
-              <Card key={index} hover>
+              <CardWithAnimation key={index} delay={index * 100}>
+                <Card hover>
                 <div style={{
                   fontSize: '0.9rem',
                   color: 'var(--primary)',
@@ -351,13 +359,16 @@ export default function Home() {
                   </div>
                 )}
               </Card>
+              </CardWithAnimation>
             ))}
           </div>
         </div>
       </section>
+      </SectionWithAnimation>
 
       {/* Requirements Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
+      <SectionWithAnimation delay={100}>
+        <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
@@ -535,9 +546,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </SectionWithAnimation>
 
       {/* Video Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
+      <SectionWithAnimation delay={200}>
+        <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
@@ -558,7 +571,8 @@ export default function Home() {
             gap: '30px',
           }}>
             {homeContent.video.videos.map((video, index) => (
-              <Card key={index} hover>
+              <CardWithAnimation key={index} delay={index * 100}>
+                <Card hover>
                 <div style={{
                   height: '200px',
                   background: 'var(--gradient-primary)',
@@ -600,10 +614,12 @@ export default function Home() {
                   {video.cta}
                 </Button>
               </Card>
+              </CardWithAnimation>
             ))}
           </div>
         </div>
       </section>
+      </SectionWithAnimation>
 
       {/* Showcase Section */}
       <section className="section-padding" style={{ background: 'var(--bg-light)' }}>

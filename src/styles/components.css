@@ -175,6 +175,8 @@
 
 .fade-in-up {
   animation: fadeInUp 0.6s ease-out;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .fade-in {
@@ -183,6 +185,12 @@
 
 .slide-in-right {
   animation: slideInRight 0.3s ease-out;
+}
+
+/* 初始隐藏状态（用于滚动动画） */
+.opacity-0 {
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 /* ========== 焦点样式 ========== */

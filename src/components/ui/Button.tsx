@@ -1,9 +1,9 @@
 'use client';
 
-import { ReactNode } from 'react';
+import { useState } from 'react';
 
 interface ButtonProps {
-  children: ReactNode;
+  children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   onClick?: () => void;
@@ -19,12 +19,14 @@ export default function Button({
   href,
   className = '',
 }: ButtonProps) {
+  const [isHovered, setIsHovered] = useState(false);
+
   const baseStyles = {
     padding: size === 'sm' ? '8px 20px' : size === 'lg' ? '12px 30px' : '10px 24px',
     borderRadius: '8px',
     fontWeight: 500,
     cursor: 'pointer',
-    transition: 'all 0.3s',
+    transition: 'all 0.25s ease',
     border: 'none',
     fontSize: size === 'sm' ? '0.9rem' : size === 'lg' ? '1.1rem' : '1rem',
     textDecoration: 'none',
@@ -50,20 +52,50 @@ export default function Button({
     },
   };
 
-  const styles = { ...baseStyles, ...variantStyles[variant] };
+  const hoverStyles = {
+    primary: {
+      transform: 'translateY(-2px)',
+      boxShadow: '0 6px 15px rgba(0, 201, 255, 0.4)',
+    },
+    secondary: {
+      background: 'var(--primary-light)',
+      transform: 'translateY(-1px)',
+    },
+    outline: {
+      borderColor: 'var(--primary)',
+      color: 'var(--primary)',
+    },
+  };
+
+  const styles = { 
+    ...baseStyles, 
+    ...variantStyles[variant],
+    ...(isHovered ? hoverStyles[variant] : {}),
+  };
 
   if (href) {
     return (
-      <a href={href} style={styles} className={className}>
+      <a 
+        href={href} 
+        style={styles} 
+        className={className}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {children}
       </a>
     );
   }
 
   return (
-    <button style={styles} onClick={onClick} className={className}>
+    <button 
+      style={styles} 
+      onClick={onClick} 
+      className={className}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {children}
     </button>
   );
 }
-

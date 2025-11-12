@@ -71,6 +71,32 @@ body {
   }
 }
 
+/* ========== 可访问性优化 ========== */
+/* 焦点样式 */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 跳过链接（供屏幕阅读器使用） */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  z-index: 9999;
+}
+
+.skip-to-content:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
 /* ========== 平板优化 ========== */
 @media (min-width: 769px) and (max-width: 1024px) {
   .container {

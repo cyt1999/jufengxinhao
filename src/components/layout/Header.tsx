@@ -36,19 +36,26 @@ export default function Header() {
             alignItems: 'center',
             padding: '15px 0',
           }}>
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <div style={{
-                width: '40px',
-                height: '40px',
-                background: 'var(--gradient-primary)',
-                borderRadius: '10px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginRight: '12px',
-                color: 'white',
-                fontSize: '18px',
-              }}>
+            <Link 
+              href="/" 
+              aria-label="返回首页"
+              style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+            >
+              <div 
+                aria-hidden="true"
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  background: 'var(--gradient-primary)',
+                  borderRadius: '10px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginRight: '12px',
+                  color: 'white',
+                  fontSize: '18px',
+                }}
+              >
                 📈
               </div>
               <div style={{
@@ -63,22 +70,27 @@ export default function Header() {
             </Link>
             
             {/* 桌面端导航 */}
-            <ul className="desktop-only flex" style={{
-              listStyle: 'none',
-              gap: 'clamp(20px, 3vw, 30px)',
-              margin: 0,
-              padding: 0,
-            }}>
+            <ul 
+              className="desktop-only flex" 
+              role="list"
+              style={{
+                listStyle: 'none',
+                gap: 'clamp(20px, 3vw, 30px)',
+                margin: 0,
+                padding: 0,
+              }}
+            >
               {navLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} role="none">
                   <Link
                     href={link.href}
+                    aria-current={pathname === link.href ? 'page' : undefined}
                     style={{
                       color: pathname === link.href ? 'var(--primary)' : 'var(--text-dark)',
                       textDecoration: 'none',
                       fontWeight: 500,
                       position: 'relative',
-                      transition: 'color 0.3s',
+                      transition: 'color 0.25s ease',
                       fontSize: 'clamp(0.9rem, 1.2vw, 1rem)',
                     }}
                     onMouseEnter={(e) => {
@@ -93,17 +105,19 @@ export default function Header() {
                     }}
                   >
                     {link.label}
-                    {pathname === link.href && (
-                      <span style={{
+                    <span 
+                      aria-hidden="true"
+                      style={{
                         position: 'absolute',
                         bottom: '-5px',
                         left: 0,
-                        width: '100%',
+                        width: pathname === link.href ? '100%' : '0%',
                         height: '3px',
                         background: 'var(--gradient-primary)',
                         borderRadius: '3px',
-                      }} />
-                    )}
+                        transition: 'width 0.25s ease',
+                      }} 
+                    />
                   </Link>
                 </li>
               ))}
