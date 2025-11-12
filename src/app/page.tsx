@@ -8,21 +8,26 @@ export default function Home() {
     <div style={{ paddingTop: '80px' }}>
       {/* Hero Section */}
       <section style={{
-        padding: '180px 0 100px',
+        padding: 'clamp(120px, 15vw, 180px) 0 clamp(60px, 10vw, 100px)',
         background: 'var(--gradient-hero)',
         position: 'relative',
         overflow: 'hidden',
       }}>
         <div className="container">
-          <div style={{
+          <div className="hero-content-wrapper" style={{
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '50px',
+            gap: 'clamp(30px, 5vw, 50px)',
           }}>
-            <div style={{ flex: 1, maxWidth: '700px' }}>
+            <div style={{ 
+              flex: 1, 
+              maxWidth: '700px',
+              width: '100%',
+            }}>
               <h1 style={{
-                fontSize: '3.5rem',
+                fontSize: 'clamp(2rem, 5vw, 3.5rem)',
                 marginBottom: '20px',
                 lineHeight: 1.2,
                 fontWeight: 800,
@@ -56,13 +61,13 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
+            <div className="desktop-only" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
               <div style={{
-                width: '350px',
+                width: 'clamp(280px, 30vw, 350px)',
                 background: 'white',
                 borderRadius: '20px',
                 boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1)',
-                padding: '30px',
+                padding: 'clamp(20px, 3vw, 30px)',
                 transform: 'rotate(2deg)',
               }}>
                 <div style={{
@@ -108,7 +113,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -162,7 +167,7 @@ export default function Home() {
       </section>
 
       {/* Comparison Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-light)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -261,7 +266,7 @@ export default function Home() {
       </section>
 
       {/* Career Path Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
@@ -352,7 +357,7 @@ export default function Home() {
       </section>
 
       {/* Requirements Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-light)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
@@ -532,7 +537,7 @@ export default function Home() {
       </section>
 
       {/* Video Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
@@ -601,7 +606,7 @@ export default function Home() {
       </section>
 
       {/* Showcase Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-light)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
@@ -835,7 +840,7 @@ export default function Home() {
       </section>
 
       {/* Platform Data Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -879,8 +884,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section style={{
-        padding: '100px 0',
+      <section className="section-padding" style={{
         background: 'var(--gradient-primary)',
         color: 'white',
       }}>

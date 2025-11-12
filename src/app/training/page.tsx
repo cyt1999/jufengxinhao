@@ -8,7 +8,7 @@ export default function TrainingPage() {
     <div style={{ paddingTop: '80px', minHeight: '80vh' }}>
       {/* Hero Section */}
       <section style={{
-        padding: '150px 0 100px',
+        padding: 'clamp(120px, 15vw, 150px) 0 clamp(60px, 10vw, 100px)',
         background: 'var(--gradient-hero)',
       }}>
         <div className="container">
@@ -78,7 +78,7 @@ export default function TrainingPage() {
       </section>
 
       {/* Welcome Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <Card style={{
             background: 'var(--success-light)',
@@ -128,7 +128,7 @@ export default function TrainingPage() {
       </section>
 
       {/* About Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-light)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -234,7 +234,7 @@ export default function TrainingPage() {
       </section>
 
       {/* Videos Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
@@ -303,7 +303,7 @@ export default function TrainingPage() {
       </section>
 
       {/* Profile Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-light)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -407,7 +407,7 @@ export default function TrainingPage() {
       </section>
 
       {/* Growth Plan Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -534,7 +534,7 @@ export default function TrainingPage() {
       </section>
 
       {/* Rules Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-light)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -634,7 +634,7 @@ export default function TrainingPage() {
       </section>
 
       {/* Final Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -683,7 +683,7 @@ export default function TrainingPage() {
 
       {/* CTA Section */}
       <section style={{
-        padding: '100px 0',
+        padding: 'clamp(60px, 10vw, 100px) 0',
         background: 'var(--gradient-primary)',
         color: 'white',
       }}>

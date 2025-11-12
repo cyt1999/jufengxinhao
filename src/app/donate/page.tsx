@@ -8,7 +8,7 @@ export default function DonatePage() {
     <div style={{ paddingTop: '80px', minHeight: '80vh' }}>
       {/* Hero Section */}
       <section style={{
-        padding: '150px 0 100px',
+        padding: 'clamp(120px, 15vw, 150px) 0 clamp(60px, 10vw, 100px)',
         background: 'var(--gradient-hero)',
       }}>
         <div className="container">
@@ -78,7 +78,7 @@ export default function DonatePage() {
       </section>
 
       {/* Donation Amount Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <Card style={{
             background: 'var(--warning-light)',
@@ -166,7 +166,7 @@ export default function DonatePage() {
       </section>
 
       {/* Benefits Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-light)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -219,7 +219,7 @@ export default function DonatePage() {
       </section>
 
       {/* Rewards Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -287,7 +287,7 @@ export default function DonatePage() {
       </section>
 
       {/* How to Donate Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-light)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -377,7 +377,7 @@ export default function DonatePage() {
       </section>
 
       {/* Notice Section */}
-      <section style={{ padding: '100px 0', background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
         <div className="container">
           <Card style={{
             background: 'var(--info-light)',

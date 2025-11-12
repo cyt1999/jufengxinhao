@@ -3,7 +3,7 @@ import Card from '@/components/ui/Card';
 
 export default function AboutPage() {
   return (
-    <div style={{ paddingTop: '100px', minHeight: '80vh' }}>
+    <div style={{ paddingTop: 'clamp(80px, 10vw, 100px)', minHeight: '80vh' }}>
       <div className="container">
         {/* Hero Section */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>

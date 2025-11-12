@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../../styles/theme.css";
+@import "../styles/components.css";
 
 * {
   margin: 0;
@@ -36,5 +37,54 @@ body {
 @media (max-width: 640px) {
   .platform-data-grid {
     grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* ========== 响应式优化 ========== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  /* 移动端字体优化 */
+  h1 {
+    font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+  }
+  
+  h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem) !important;
+  }
+  
+  h3 {
+    font-size: clamp(1.25rem, 4vw, 1.5rem) !important;
+  }
+  
+  /* 移动端间距优化 */
+  section {
+    padding: clamp(40px, 8vw, 60px) 0 !important;
+  }
+  
+  /* 移动端按钮优化 */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ========== 平板优化 ========== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+/* ========== Hero区域响应式 ========== */
+.hero-content-wrapper {
+  flex-direction: column;
+}
+
+@media (min-width: 769px) {
+  .hero-content-wrapper {
+    flex-direction: row;
   }
 }
