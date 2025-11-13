@@ -7,6 +7,8 @@ import Link from 'next/link';
 import SectionWithAnimation from '@/components/ui/SectionWithAnimation';
 import CardWithAnimation from '@/components/ui/CardWithAnimation';
 import { GeometricBackground, GlowEffect, GradientOverlay } from '@/components/ui/BackgroundDecorations';
+import { FloatingElements } from '@/components/ui/FloatingElements';
+import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 
 export default function Home() {
   return (
@@ -15,10 +17,15 @@ export default function Home() {
       <section style={{
         paddingTop: 'calc(80px + clamp(120px, 15vw, 180px))',
         paddingBottom: 'clamp(60px, 10vw, 100px)',
-        background: 'linear-gradient(135deg, #0A1929 0%, #1A2F4A 50%, #0F1B2E 100%)',
+        background: 'linear-gradient(-45deg, #0A1929, #1A2F4A, #1a365d, #0F1B2E)',
+        backgroundSize: '400% 400%',
+        animation: 'gradientShift 18s ease infinite',
         position: 'relative',
         overflow: 'hidden',
         marginTop: 0,
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
       }}>
         {/* 背景装饰 - 深色主题适配 */}
         <GeometricBackground variant="grid" intensity="subtle" color="rgba(0, 201, 255, 0.1)" />
@@ -26,48 +33,121 @@ export default function Home() {
         <GlowEffect position="bottom-left" size={400} color="var(--secondary-500)" intensity={0.3} />
         <GlowEffect position="center" size={600} color="var(--accent-500)" intensity={0.15} />
         
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        {/* 浮动元素 */}
+        <FloatingElements />
+        
+        {/* 渐变叠加层 */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: `
+            radial-gradient(circle at 20% 80%, rgba(0, 201, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(0, 212, 170, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(108, 99, 255, 0.05) 0%, transparent 50%)
+          `,
+          opacity: 0.7,
+          zIndex: 0,
+          pointerEvents: 'none',
+        }} />
+        
+        <div className="container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <div className="hero-content-wrapper" style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: 'clamp(30px, 5vw, 50px)',
+            justifyContent: 'center',
+            textAlign: 'center',
+            width: '100%',
           }}>
             <div style={{ 
-              flex: 1, 
-              maxWidth: '700px',
+              maxWidth: '900px',
               width: '100%',
+              marginBottom: '60px',
             }}>
+              {/* Hero徽章 */}
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                background: 'rgba(0, 201, 255, 0.15)',
+                color: 'var(--primary-500)',
+                padding: '10px 25px',
+                borderRadius: '30px',
+                fontSize: '0.95rem',
+                fontWeight: 600,
+                marginBottom: '35px',
+                animation: 'fadeInUp 1s ease-out',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(0, 201, 255, 0.3)',
+                boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
+              }}>
+                <span style={{
+                  marginRight: '8px',
+                  fontSize: '1.1rem',
+                }}>⚡</span>
+                专业交易员培训平台
+              </div>
+              
               <h1 style={{
-                fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                marginBottom: '20px',
-                lineHeight: 1.2,
+                fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
+                marginBottom: '30px',
+                lineHeight: 1.15,
                 fontWeight: 800,
                 color: '#FFFFFF',
-                textShadow: '0 0 30px rgba(0, 201, 255, 0.3)',
+                textShadow: '0 5px 15px rgba(0, 0, 0, 0.3)',
+                animation: 'fadeInUp 1s ease-out 0.2s both',
+                letterSpacing: '-0.5px',
               }}>
-                {homeContent.hero.title}
-          </h1>
-              <h2 style={{
-                fontSize: '1.5rem',
-                marginBottom: '30px',
-                color: 'var(--primary-200)',
-                fontWeight: 600,
-                textShadow: '0 2px 10px rgba(0, 201, 255, 0.2)',
-              }}>
-                {homeContent.hero.subtitle}
-              </h2>
+                让交易更
+                <span 
+                  className="gradient-text-underline"
+                  style={{
+                    background: 'linear-gradient(to right, var(--primary-500), var(--secondary-500))',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  简单
+                </span>
+                ，让收益更
+                <span 
+                  className="gradient-text-underline"
+                  style={{
+                    background: 'linear-gradient(to right, var(--primary-500), var(--secondary-500))',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  稳定
+                </span>
+              </h1>
+              
               <p style={{
-                fontSize: '1.2rem',
-                marginBottom: '40px',
+                fontSize: 'clamp(1.1rem, 2vw, 1.35rem)',
+                marginBottom: '50px',
                 color: 'rgba(255, 255, 255, 0.85)',
-                lineHeight: 1.8,
+                animation: 'fadeInUp 1s ease-out 0.5s both',
+                maxWidth: '750px',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                lineHeight: 1.7,
+                fontWeight: 400,
               }}>
                 {homeContent.hero.description}
               </p>
-              <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-                <Link href="/training">
+              
+              <div style={{ 
+                display: 'flex', 
+                gap: '20px', 
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                animation: 'fadeInUp 1s ease-out 0.8s both',
+              }}>
+                <Link href="/training" style={{ textDecoration: 'none' }}>
                   <Button variant="primary" size="lg">
                     {homeContent.hero.cta.primary}
                   </Button>
@@ -77,8 +157,142 @@ export default function Home() {
                 </Button>
               </div>
             </div>
+            
+            {/* 数据统计展示 */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '60px',
+              marginTop: '40px',
+              marginBottom: '60px',
+              animation: 'fadeInUp 1s ease-out 1.1s both',
+              flexWrap: 'wrap',
+            }}>
+              <div style={{
+                textAlign: 'center',
+                position: 'relative',
+                padding: '0 20px',
+              }}>
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '15px',
+                  backdropFilter: 'blur(5px)',
+                  border: '1px solid rgba(255, 255, 255, 0.05)',
+                  zIndex: -1,
+                  transition: 'all 0.3s',
+                }} />
+                <div style={{
+                  fontSize: 'clamp(2rem, 4vw, 2.8rem)',
+                  fontWeight: 800,
+                  color: 'white',
+                  marginBottom: '8px',
+                  textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+                  background: 'var(--gradient-primary)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>
+                  {homeContent.platformData.items[0].value}
+                </div>
+                <div style={{
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  fontSize: '1.05rem',
+                  fontWeight: 500,
+                }}>
+                  {homeContent.platformData.items[0].label}
+                </div>
+              </div>
+              
+              <div style={{
+                textAlign: 'center',
+                position: 'relative',
+                padding: '0 20px',
+              }}>
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '15px',
+                  backdropFilter: 'blur(5px)',
+                  border: '1px solid rgba(255, 255, 255, 0.05)',
+                  zIndex: -1,
+                  transition: 'all 0.3s',
+                }} />
+                <div style={{
+                  fontSize: 'clamp(2rem, 4vw, 2.8rem)',
+                  fontWeight: 800,
+                  color: 'white',
+                  marginBottom: '8px',
+                  textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+                  background: 'var(--gradient-primary)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>
+                  {homeContent.platformData.items[1].value}
+                </div>
+                <div style={{
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  fontSize: '1.05rem',
+                  fontWeight: 500,
+                }}>
+                  {homeContent.platformData.items[1].label}
+                </div>
+              </div>
+              
+              <div style={{
+                textAlign: 'center',
+                position: 'relative',
+                padding: '0 20px',
+              }}>
+                <div style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  borderRadius: '15px',
+                  backdropFilter: 'blur(5px)',
+                  border: '1px solid rgba(255, 255, 255, 0.05)',
+                  zIndex: -1,
+                  transition: 'all 0.3s',
+                }} />
+                <div style={{
+                  fontSize: 'clamp(2rem, 4vw, 2.8rem)',
+                  fontWeight: 800,
+                  color: 'white',
+                  marginBottom: '8px',
+                  textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+                  background: 'var(--gradient-primary)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>
+                  {homeContent.platformData.items[2].value}
+                </div>
+                <div style={{
+                  color: 'rgba(255, 255, 255, 0.7)',
+                  fontSize: '1.05rem',
+                  fontWeight: 500,
+                }}>
+                  {homeContent.platformData.items[2].label}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        
+        {/* 滚动指示器 */}
+        <ScrollIndicator />
       </section>
 
       {/* Why Choose Section */}

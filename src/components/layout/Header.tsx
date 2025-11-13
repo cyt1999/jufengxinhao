@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import MobileMenu from './MobileMenu';
+import Logo from '@/components/ui/Logo';
 
 export default function Header() {
   const pathname = usePathname();
@@ -22,8 +23,11 @@ export default function Header() {
   return (
     <>
       <header style={{ 
-        backgroundColor: 'var(--bg-white)', 
-        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+        backdropFilter: 'blur(15px)',
+        WebkitBackdropFilter: 'blur(15px)',
+        boxShadow: '0 5px 20px rgba(0, 0, 0, 0.2)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
         position: 'fixed',
         width: '100%',
         zIndex: 1000,
@@ -39,34 +43,9 @@ export default function Header() {
             <Link 
               href="/" 
               aria-label="返回首页"
-              style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+              style={{ textDecoration: 'none' }}
             >
-              <div 
-                aria-hidden="true"
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  background: 'var(--gradient-primary)',
-                  borderRadius: '10px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginRight: '12px',
-                  color: 'white',
-                  fontSize: '18px',
-                }}
-              >
-                📈
-              </div>
-              <div style={{
-                fontSize: 'clamp(18px, 2.5vw, 24px)',
-                fontWeight: 800,
-                background: 'var(--gradient-primary)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}>
-                飓风信号
-              </div>
+              <Logo size={45} showText={true} />
             </Link>
             
             {/* 桌面端导航 */}
@@ -86,7 +65,7 @@ export default function Header() {
                     href={link.href}
                     aria-current={pathname === link.href ? 'page' : undefined}
                     style={{
-                      color: pathname === link.href ? 'var(--primary-500)' : 'var(--text-medium)',
+                      color: pathname === link.href ? 'var(--primary-500)' : 'rgba(255, 255, 255, 0.85)',
                       textDecoration: 'none',
                       fontWeight: 500,
                       position: 'relative',
@@ -100,7 +79,7 @@ export default function Header() {
                     }}
                     onMouseLeave={(e) => {
                       if (pathname !== link.href) {
-                        e.currentTarget.style.color = 'var(--text-medium)';
+                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
                       }
                     }}
                   >
@@ -163,11 +142,18 @@ export default function Header() {
                   border: 'none',
                   fontSize: '24px',
                   cursor: 'pointer',
-                  color: 'var(--text-dark)',
+                  color: 'rgba(255, 255, 255, 0.85)',
                   padding: '5px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  transition: 'color 0.25s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = 'var(--primary-500)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'rgba(255, 255, 255, 0.85)';
                 }}
                 aria-label="打开菜单"
               >

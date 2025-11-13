@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Logo from '@/components/ui/Logo';
 
 interface MobileMenuProps {
   navLinks: Array<{ href: string; label: string }>;
@@ -94,15 +95,7 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
           padding: '20px',
           borderBottom: '1px solid var(--border)',
         }}>
-          <div style={{
-            fontSize: '20px',
-            fontWeight: 700,
-            background: 'var(--gradient-primary)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}>
-            飓风信号
-          </div>
+          <Logo size={40} showText={true} />
           <button
             onClick={onClose}
             style={{

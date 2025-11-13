@@ -22,16 +22,21 @@ export default function Button({
   const [isHovered, setIsHovered] = useState(false);
 
   const baseStyles = {
-    padding: size === 'sm' ? '8px 20px' : size === 'lg' ? '12px 30px' : '10px 24px',
-    borderRadius: '8px',
-    fontWeight: 500,
+    padding: size === 'sm' ? '8px 20px' : size === 'lg' ? '16px 40px' : '10px 24px',
+    borderRadius: size === 'lg' ? '12px' : '8px',
+    fontWeight: 600,
     cursor: 'pointer',
-    transition: 'all 0.25s ease',
+    transition: 'all 0.4s ease',
     border: 'none',
-    fontSize: size === 'sm' ? '0.9rem' : size === 'lg' ? '1.1rem' : '1rem',
+    fontSize: size === 'sm' ? '0.9rem' : size === 'lg' ? '1.15rem' : '1rem',
     textDecoration: 'none',
-    display: 'inline-block',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px',
     textAlign: 'center' as const,
+    position: 'relative' as const,
+    overflow: 'hidden' as const,
   };
 
   const variantStyles = {
@@ -41,9 +46,10 @@ export default function Button({
       boxShadow: 'var(--shadow-primary)',
     },
     secondary: {
-      background: 'transparent',
-      color: 'var(--primary-500)',
-      border: '1px solid var(--primary-500)',
+      background: 'rgba(255, 255, 255, 0.1)',
+      color: 'white',
+      border: '2px solid rgba(255, 255, 255, 0.3)',
+      backdropFilter: 'blur(10px)',
     },
     outline: {
       background: 'transparent',
@@ -54,19 +60,21 @@ export default function Button({
 
   const hoverStyles = {
     primary: {
-      transform: 'translateY(-2px)',
-      boxShadow: 'var(--shadow-primary-hover)',
+      transform: 'translateY(-5px)',
+      boxShadow: '0 12px 30px rgba(0, 201, 255, 0.6)',
     },
     secondary: {
-      background: 'var(--primary-50)',
-      borderColor: 'var(--primary-700)',
-      color: 'var(--primary-700)',
-      transform: 'translateY(-1px)',
+      background: 'rgba(255, 255, 255, 0.15)',
+      border: '2px solid rgba(255, 255, 255, 0.5)',
+      color: 'white',
+      transform: 'translateY(-5px)',
+      boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
     },
     outline: {
-      borderColor: 'var(--primary-500)',
+      border: '1px solid var(--primary-500)',
       color: 'var(--primary-500)',
       background: 'var(--primary-50)',
+      transform: 'translateY(-2px)',
     },
   };
 
@@ -75,6 +83,24 @@ export default function Button({
     ...variantStyles[variant],
     ...(isHovered ? hoverStyles[variant] : {}),
   };
+
+  // 光泽扫过效果（仅primary和secondary）
+  const shineEffect = (variant === 'primary' || variant === 'secondary') ? (
+    <span
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: '-100%',
+        width: '100%',
+        height: '100%',
+        background: variant === 'primary'
+          ? 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)'
+          : 'linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)',
+        transition: 'left 0.6s ease',
+        ...(isHovered ? { left: '100%' } : {}),
+      }}
+    />
+  ) : null;
 
   if (href) {
     return (
@@ -85,7 +111,8 @@ export default function Button({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {children}
+        {shineEffect}
+        <span style={{ position: 'relative', zIndex: 1 }}>{children}</span>
       </a>
     );
   }
@@ -98,7 +125,8 @@ export default function Button({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {children}
+      {shineEffect}
+      <span style={{ position: 'relative', zIndex: 1 }}>{children}</span>
     </button>
   );
 }
