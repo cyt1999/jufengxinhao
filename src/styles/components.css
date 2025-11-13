@@ -212,3 +212,106 @@
   text-align: right;
 }
 
+/* ========== 装饰性样式 ========== */
+/* 渐变文字 */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 装饰性边框 */
+.decorative-border {
+  position: relative;
+  border: 2px solid transparent;
+  background: linear-gradient(var(--bg-white), var(--bg-white)) padding-box,
+              var(--gradient-primary) border-box;
+}
+
+/* 光晕效果 */
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, var(--primary-500) 0%, transparent 70%);
+  opacity: 0.1;
+  filter: blur(40px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 背景装饰容器 */
+.decorative-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.decorative-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient-hero-decorative);
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 动画增强 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.pulse-animation {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.rotate-animation {
+  animation: rotate 20s linear infinite;
+}
+

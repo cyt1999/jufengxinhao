@@ -98,6 +98,14 @@
   --shadow-primary: 0 4px 12px rgba(0, 201, 255, 0.25);
   --shadow-primary-hover: 0 6px 20px rgba(0, 201, 255, 0.35);
   
+  /* 装饰性阴影 */
+  --shadow-glow-primary: 0 0 30px rgba(0, 201, 255, 0.3);
+  --shadow-glow-secondary: 0 0 30px rgba(0, 212, 170, 0.3);
+  --shadow-glow-accent: 0 0 30px rgba(108, 99, 255, 0.3);
+  
+  /* 卡片装饰阴影 */
+  --shadow-card-glow: 0 8px 32px rgba(0, 201, 255, 0.15), 0 0 0 1px rgba(0, 201, 255, 0.1);
+  
   /* ========== 渐变 ========== */
   /* 主渐变：青蓝到青绿（更协调） */
   --gradient-primary: linear-gradient(135deg, var(--primary-500) 0%, var(--secondary-500) 100%);
@@ -105,11 +113,25 @@
   /* 强调渐变：青蓝到紫色（减少使用） */
   --gradient-accent: linear-gradient(135deg, var(--primary-500) 0%, var(--accent-500) 100%);
   
-  /* Hero 背景渐变：柔和 */
+  /* Hero 背景渐变：柔和（浅色版本，备用） */
   --gradient-hero: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+  
+  /* Hero 背景渐变：深色科技感 */
+  --gradient-hero-dark: linear-gradient(135deg, #0A1929 0%, #1A2F4A 50%, #0F1B2E 100%);
   
   /* 卡片渐变：微妙 */
   --gradient-card: linear-gradient(135deg, var(--bg-white) 0%, var(--primary-50) 100%);
+  
+  /* 装饰性渐变 */
+  --gradient-hero-decorative: linear-gradient(135deg, 
+    rgba(0, 201, 255, 0.15) 0%, 
+    rgba(0, 212, 170, 0.1) 50%, 
+    rgba(108, 99, 255, 0.08) 100%);
+  
+  --gradient-section-decorative: linear-gradient(135deg, 
+    var(--primary-50) 0%, 
+    var(--secondary-50) 50%, 
+    var(--bg-white) 100%);
   
   /* ========== 过渡动画 ========== */
   --transition-fast: 0.15s ease;

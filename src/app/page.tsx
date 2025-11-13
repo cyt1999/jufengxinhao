@@ -6,18 +6,27 @@ import Card from '@/components/ui/Card';
 import Link from 'next/link';
 import SectionWithAnimation from '@/components/ui/SectionWithAnimation';
 import CardWithAnimation from '@/components/ui/CardWithAnimation';
+import { GeometricBackground, GlowEffect, GradientOverlay } from '@/components/ui/BackgroundDecorations';
 
 export default function Home() {
   return (
-    <div style={{ paddingTop: '80px' }}>
+    <div>
       {/* Hero Section */}
       <section style={{
-        padding: 'clamp(120px, 15vw, 180px) 0 clamp(60px, 10vw, 100px)',
-        background: 'var(--gradient-hero)',
+        paddingTop: 'calc(80px + clamp(120px, 15vw, 180px))',
+        paddingBottom: 'clamp(60px, 10vw, 100px)',
+        background: 'linear-gradient(135deg, #0A1929 0%, #1A2F4A 50%, #0F1B2E 100%)',
         position: 'relative',
         overflow: 'hidden',
+        marginTop: 0,
       }}>
-        <div className="container">
+        {/* 背景装饰 - 深色主题适配 */}
+        <GeometricBackground variant="grid" intensity="subtle" color="rgba(0, 201, 255, 0.1)" />
+        <GlowEffect position="top-right" size={500} color="var(--primary-500)" intensity={0.4} />
+        <GlowEffect position="bottom-left" size={400} color="var(--secondary-500)" intensity={0.3} />
+        <GlowEffect position="center" size={600} color="var(--accent-500)" intensity={0.15} />
+        
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="hero-content-wrapper" style={{
             display: 'flex',
             flexDirection: 'column',
@@ -35,21 +44,24 @@ export default function Home() {
                 marginBottom: '20px',
                 lineHeight: 1.2,
                 fontWeight: 800,
+                color: '#FFFFFF',
+                textShadow: '0 0 30px rgba(0, 201, 255, 0.3)',
               }}>
                 {homeContent.hero.title}
           </h1>
               <h2 style={{
                 fontSize: '1.5rem',
                 marginBottom: '30px',
-                color: 'var(--primary-500)',
+                color: 'var(--primary-200)',
                 fontWeight: 600,
+                textShadow: '0 2px 10px rgba(0, 201, 255, 0.2)',
               }}>
                 {homeContent.hero.subtitle}
               </h2>
               <p style={{
                 fontSize: '1.2rem',
                 marginBottom: '40px',
-                color: 'var(--text-light)',
+                color: 'rgba(255, 255, 255, 0.85)',
                 lineHeight: 1.8,
               }}>
                 {homeContent.hero.description}
@@ -65,61 +77,19 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="desktop-only" style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
-              <div style={{
-                width: 'clamp(280px, 30vw, 350px)',
-                background: 'white',
-                borderRadius: '20px',
-                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1)',
-                padding: 'clamp(20px, 3vw, 30px)',
-                transform: 'rotate(2deg)',
-              }}>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginBottom: '20px',
-                }}>
-                  <div style={{ fontWeight: 700, fontSize: '1.3rem' }}>EUR/USD</div>
-                  <div style={{ color: 'var(--secondary-500)', fontWeight: 600, fontSize: '1.1rem' }}>+1.85%</div>
-                </div>
-                <div style={{
-                  fontSize: '2rem',
-                  fontWeight: 700,
-                  marginBottom: '20px',
-                }}>
-                  $1.0845
-                </div>
-                <div style={{
-                  height: '120px',
-                  background: 'var(--gradient-primary)',
-                  borderRadius: '12px',
-                  marginBottom: '20px',
-                  opacity: 0.2,
-                }} />
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  background: 'var(--primary-50)',
-                  padding: '12px 20px',
-                  borderRadius: '10px',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  color: 'var(--primary-500)',
-                  justifyContent: 'center',
-                }}>
-                  ⚡ 强烈买入信号
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Why Choose Section */}
       <SectionWithAnimation>
-        <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
-          <div className="container">
+        <section className="section-padding decorative-bg" style={{ 
+          background: 'var(--bg-white)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <GeometricBackground variant="dots" intensity="subtle" />
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
               {homeContent.why.title}
@@ -141,7 +111,7 @@ export default function Home() {
           }}>
             {homeContent.why.advantages.map((advantage, index) => (
               <CardWithAnimation key={index} delay={index * 100}>
-                <Card hover>
+                <Card hover variant={index === 0 ? 'glow' : index === 1 ? 'gradient' : 'default'}>
                   <div style={{ textAlign: 'center' }}>
                     <div style={{
                       width: '80px',
@@ -174,8 +144,14 @@ export default function Home() {
       </section>
 
       {/* Comparison Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
-        <div className="container">
+      <section className="section-padding" style={{ 
+        background: 'var(--bg-light)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <GeometricBackground variant="grid" intensity="subtle" color="var(--primary-500)" />
+        <GlowEffect position="center" size={500} intensity={0.1} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
               {homeContent.comparison.title}
@@ -196,7 +172,7 @@ export default function Home() {
             gap: '40px',
           }}>
             {/* 飓风信号 */}
-            <Card>
+            <Card variant="bordered" hover>
               <div style={{
                 textAlign: 'center',
                 marginBottom: '30px',
@@ -273,8 +249,13 @@ export default function Home() {
       </section>
 
       {/* Career Path Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
-        <div className="container">
+      <section className="section-padding" style={{ 
+        background: 'var(--bg-white)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <GeometricBackground variant="circles" intensity="subtle" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
               {homeContent.careerPath.title}
@@ -295,7 +276,7 @@ export default function Home() {
           }}>
             {homeContent.careerPath.stages.map((stage, index) => (
               <CardWithAnimation key={index} delay={index * 100}>
-                <Card hover>
+                <Card hover variant={index % 2 === 0 ? 'gradient' : 'glow'} gradient={index % 3 === 0 ? 'primary' : index % 3 === 1 ? 'secondary' : 'accent'}>
                 <div style={{
                   fontSize: '0.9rem',
                   color: 'var(--primary-500)',
@@ -368,8 +349,13 @@ export default function Home() {
 
       {/* Requirements Section */}
       <SectionWithAnimation delay={100}>
-        <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
-        <div className="container">
+        <section className="section-padding" style={{ 
+          background: 'var(--bg-light)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+        <GeometricBackground variant="waves" intensity="subtle" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
               {homeContent.requirements.title}
@@ -391,7 +377,7 @@ export default function Home() {
             marginBottom: '40px',
           }}>
             {/* 人群画像 */}
-            <Card>
+            <Card variant="gradient" gradient="primary">
               <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', fontWeight: 600 }}>
                 {homeContent.requirements.profile.title}
               </h3>
@@ -412,7 +398,7 @@ export default function Home() {
             </Card>
 
             {/* 时间与环境 */}
-            <Card>
+            <Card variant="gradient" gradient="secondary">
               <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', fontWeight: 600 }}>
                 {homeContent.requirements.time.title}
               </h3>
@@ -433,7 +419,7 @@ export default function Home() {
             </Card>
 
             {/* 在线时间 */}
-            <Card>
+            <Card variant="glow" hover>
               <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', fontWeight: 600 }}>
                 {homeContent.requirements.online.title}
               </h3>
@@ -454,7 +440,7 @@ export default function Home() {
             </Card>
 
             {/* 明确不适合的人群 */}
-            <Card>
+            <Card variant="bordered">
               <h3 style={{
                 fontSize: '1.3rem',
                 marginBottom: '20px',
@@ -550,8 +536,13 @@ export default function Home() {
 
       {/* Video Section */}
       <SectionWithAnimation delay={200}>
-        <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
-        <div className="container">
+        <section className="section-padding" style={{ 
+          background: 'var(--bg-white)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+        <GeometricBackground variant="dots" intensity="subtle" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
               {homeContent.video.title}
@@ -572,7 +563,7 @@ export default function Home() {
           }}>
             {homeContent.video.videos.map((video, index) => (
               <CardWithAnimation key={index} delay={index * 100}>
-                <Card hover>
+                <Card hover variant="glow">
                 <div style={{
                   height: '200px',
                   background: 'var(--gradient-primary)',
@@ -622,8 +613,15 @@ export default function Home() {
       </SectionWithAnimation>
 
       {/* Showcase Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
-        <div className="container">
+      <section className="section-padding decorative-bg" style={{ 
+        background: 'var(--bg-light)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <GeometricBackground variant="grid" intensity="subtle" />
+        <GlowEffect position="top-left" size={400} intensity={0.15} />
+        <GlowEffect position="bottom-right" size={300} color="var(--secondary-500)" intensity={0.1} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
               {homeContent.showcase.title}
@@ -638,7 +636,7 @@ export default function Home() {
             marginBottom: '60px',
           }}>
             {homeContent.showcase.levels.map((level, index) => (
-              <Card key={index} hover>
+              <Card key={index} hover variant={index === 0 ? 'glow' : index === 1 ? 'gradient' : 'bordered'} gradient={index === 1 ? 'secondary' : 'primary'}>
                 <div style={{ textAlign: 'center' }}>
                   <h3 style={{
                     fontSize: '1.4rem',
@@ -670,7 +668,7 @@ export default function Home() {
           </div>
 
           {/* 收益曲线 */}
-          <Card>
+          <Card variant="glow" hover>
             <h3 style={{
               fontSize: '1.5rem',
               marginBottom: '30px',
@@ -856,10 +854,19 @@ export default function Home() {
       </section>
 
       {/* Platform Data Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
-        <div className="container">
+      <section className="section-padding" style={{ 
+        background: 'var(--bg-white)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <GeometricBackground variant="circles" intensity="subtle" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
+            <h2 style={{ 
+              fontSize: '2.5rem', 
+              marginBottom: '20px', 
+              fontWeight: 700,
+            }}>
               {homeContent.platformData.title}
             </h2>
             <p style={{
@@ -873,7 +880,7 @@ export default function Home() {
           </div>
           <div className="platform-data-grid">
             {homeContent.platformData.items.map((item, index) => (
-              <Card key={index}>
+              <Card key={index} hover variant={index % 4 === 0 ? 'glow' : index % 4 === 1 ? 'gradient' : index % 4 === 2 ? 'bordered' : 'default'} gradient={index % 3 === 0 ? 'primary' : index % 3 === 1 ? 'secondary' : 'accent'}>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{
                     fontSize: '2.5rem',
@@ -901,10 +908,16 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="section-padding" style={{
-        background: 'var(--gradient-primary)',
+        background: 'linear-gradient(135deg, #0A1929 0%, #1A2F4A 50%, #0F1B2E 100%)',
         color: 'white',
+        position: 'relative',
+        overflow: 'hidden',
       }}>
-        <div className="container">
+        <GeometricBackground variant="grid" intensity="subtle" color="rgba(0, 201, 255, 0.15)" />
+        <GlowEffect position="top-right" size={500} color="var(--primary-500)" intensity={0.4} />
+        <GlowEffect position="bottom-left" size={400} color="var(--secondary-500)" intensity={0.3} />
+        <GlowEffect position="center" size={600} color="var(--accent-500)" intensity={0.2} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', maxWidth: '900px', margin: '0 auto' }}>
             <h2 style={{
               fontSize: '2.5rem',
