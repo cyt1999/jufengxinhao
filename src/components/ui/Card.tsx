@@ -8,6 +8,7 @@ interface CardProps {
   hover?: boolean;
   variant?: 'default' | 'gradient' | 'glow' | 'bordered';
   gradient?: 'primary' | 'secondary' | 'accent';
+  style?: React.CSSProperties;
 }
 
 export default function Card({ 
@@ -16,6 +17,7 @@ export default function Card({
   hover = false,
   variant = 'default',
   gradient = 'primary',
+  style,
 }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -35,12 +37,9 @@ export default function Card({
     return 'var(--bg-white)';
   };
 
-  const cardStyles: React.CSSProperties = {
+  // 视觉样式（由variant控制，不应被style覆盖）
+  const visualStyles: React.CSSProperties = {
     background: getBackground(),
-    borderRadius: '20px',
-    padding: '30px',
-    position: 'relative',
-    overflow: 'hidden',
     border: variant === 'bordered' 
       ? `2px solid var(--primary-500)` 
       : 'none',
@@ -53,13 +52,50 @@ export default function Card({
           ? 'var(--shadow-primary), 0 0 20px rgba(0, 201, 255, 0.15)'
           : 'var(--shadow-md)'
         : 'var(--shadow-sm)',
+  };
+
+  // 布局和结构样式（可以被style覆盖）
+  const layoutStyles: React.CSSProperties = {
+    borderRadius: '20px',
+    padding: '30px',
+    position: 'relative',
+    overflow: 'hidden',
     transition: hover ? 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
     transform: isHovered && hover ? 'translateY(-6px) scale(1.02)' : 'translateY(0) scale(1)',
   };
 
+  // 从传入的style中分离布局属性和视觉属性
+  // 只允许布局属性（margin, padding, width, height, display, flex等）被覆盖
+  // 视觉属性（background, border, boxShadow等）由variant控制，不应被覆盖
+  const layoutOnlyStyle: Record<string, any> = {};
+  if (style) {
+    const layoutProps = [
+      'margin', 'marginTop', 'marginRight', 'marginBottom', 'marginLeft',
+      'padding', 'paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft',
+      'width', 'height', 'minWidth', 'minHeight', 'maxWidth', 'maxHeight',
+      'display', 'flex', 'flexDirection', 'flexWrap', 'flexGrow', 'flexShrink', 'flexBasis',
+      'alignItems', 'justifyContent', 'alignSelf', 'order',
+      'gridArea', 'gridColumn', 'gridRow',
+      'position', 'top', 'right', 'bottom', 'left', 'zIndex',
+      'overflow', 'overflowX', 'overflowY',
+    ];
+    
+    (Object.keys(style) as Array<keyof React.CSSProperties>).forEach(key => {
+      if (layoutProps.includes(key as string)) {
+        layoutOnlyStyle[key as string] = style[key];
+      }
+    });
+  }
+
+  const mergedStyles: React.CSSProperties = {
+    ...visualStyles,
+    ...layoutStyles,
+    ...layoutOnlyStyle,
+  } as React.CSSProperties;
+
   return (
     <div
-      style={cardStyles}
+      style={mergedStyles}
       className={className}
       onMouseEnter={() => hover && setIsHovered(true)}
       onMouseLeave={() => hover && setIsHovered(false)}
