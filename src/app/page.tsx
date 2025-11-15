@@ -319,12 +319,14 @@ export default function Home() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridAutoRows: '1fr',
             gap: '30px',
+            alignItems: 'stretch',
           }}>
             {homeContent.why.advantages.map((advantage, index) => (
-              <CardWithAnimation key={index} delay={index * 100}>
-                <Card hover variant={index === 0 ? 'glow' : index === 1 ? 'gradient' : 'default'}>
-                  <div style={{ textAlign: 'center' }}>
+              <CardWithAnimation key={index} delay={index * 100} style={{ display: 'flex', height: '100%' }}>
+                <Card hover variant="gradient" gradient="primary" style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column' }}>
                     <div style={{
                       width: '80px',
                       height: '80px',
@@ -384,7 +386,7 @@ export default function Home() {
             gap: '40px',
           }}>
             {/* 飓风信号 */}
-            <Card variant="bordered" hover>
+            <Card variant="default" hover>
               <div style={{
                 textAlign: 'center',
                 marginBottom: '30px',
@@ -421,7 +423,7 @@ export default function Home() {
             </Card>
 
             {/* 传统培训机构 */}
-            <Card>
+            <Card hover>
               <div style={{
                 textAlign: 'center',
                 marginBottom: '30px',
@@ -484,11 +486,13 @@ export default function Home() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridAutoRows: '1fr',
             gap: '30px',
+            alignItems: 'stretch',
           }}>
             {homeContent.careerPath.stages.map((stage, index) => (
-              <CardWithAnimation key={index} delay={index * 100}>
-                <Card hover variant={index % 2 === 0 ? 'gradient' : 'glow'} gradient={index % 3 === 0 ? 'primary' : index % 3 === 1 ? 'secondary' : 'accent'}>
+              <CardWithAnimation key={index} delay={index * 100} style={{ display: 'flex', height: '100%' }}>
+                <Card hover variant={index % 2 === 0 ? 'gradient' : 'glow'} gradient={index % 3 === 0 ? 'primary' : index % 3 === 1 ? 'secondary' : 'accent'} style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{
                   fontSize: '0.9rem',
                   color: 'var(--primary-500)',
@@ -589,7 +593,7 @@ export default function Home() {
             marginBottom: '40px',
           }}>
             {/* 人群画像 */}
-            <Card variant="gradient" gradient="primary">
+            <Card variant="gradient" gradient="primary" hover>
               <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', fontWeight: 600 }}>
                 {homeContent.requirements.profile.title}
               </h3>
@@ -610,7 +614,7 @@ export default function Home() {
             </Card>
 
             {/* 时间与环境 */}
-            <Card variant="gradient" gradient="secondary">
+            <Card variant="gradient" gradient="secondary" hover>
               <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', fontWeight: 600 }}>
                 {homeContent.requirements.time.title}
               </h3>
@@ -631,7 +635,7 @@ export default function Home() {
             </Card>
 
             {/* 在线时间 */}
-            <Card variant="glow" hover>
+            <Card variant="gradient" gradient="secondary" hover>
               <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', fontWeight: 600 }}>
                 {homeContent.requirements.online.title}
               </h3>
@@ -652,7 +656,7 @@ export default function Home() {
             </Card>
 
             {/* 明确不适合的人群 */}
-            <Card variant="bordered">
+            <Card variant="gradient" gradient="primary" hover>
               <h3 style={{
                 fontSize: '1.3rem',
                 marginBottom: '20px',
@@ -771,11 +775,13 @@ export default function Home() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+            gridAutoRows: '1fr',
             gap: '30px',
+            alignItems: 'stretch',
           }}>
             {homeContent.video.videos.map((video, index) => (
-              <CardWithAnimation key={index} delay={index * 100}>
-                <Card hover variant="glow">
+              <CardWithAnimation key={index} delay={index * 100} style={{ display: 'flex', height: '100%' }}>
+                <Card hover variant="glow" style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{
                   height: '200px',
                   background: 'var(--gradient-primary)',
@@ -810,12 +816,15 @@ export default function Home() {
                   color: 'var(--text-light)',
                   lineHeight: 1.8,
                   marginBottom: '20px',
+                  flex: 1,
                 }}>
                   {video.description}
                 </p>
-                <Button variant="secondary">
-                  {video.cta}
-                </Button>
+                <div style={{ marginTop: 'auto' }}>
+                  <Button variant="secondary">
+                    {video.cta}
+                  </Button>
+                </div>
               </Card>
               </CardWithAnimation>
             ))}
@@ -844,11 +853,13 @@ export default function Home() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridAutoRows: '1fr',
             gap: '30px',
             marginBottom: '60px',
+            alignItems: 'stretch',
           }}>
             {homeContent.showcase.levels.map((level, index) => (
-              <Card key={index} hover variant={index === 0 ? 'glow' : index === 1 ? 'gradient' : 'bordered'} gradient={index === 1 ? 'secondary' : 'primary'}>
+              <Card key={index} hover variant={index === 0 ? 'glow' : index === 1 ? 'gradient' : 'bordered'} gradient={index === 1 ? 'secondary' : 'primary'} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ textAlign: 'center' }}>
                   <h3 style={{
                     fontSize: '1.4rem',
@@ -1092,7 +1103,7 @@ export default function Home() {
           </div>
           <div className="platform-data-grid">
             {homeContent.platformData.items.map((item, index) => (
-              <Card key={index} hover variant={index % 4 === 0 ? 'glow' : index % 4 === 1 ? 'gradient' : index % 4 === 2 ? 'bordered' : 'default'} gradient={index % 3 === 0 ? 'primary' : index % 3 === 1 ? 'secondary' : 'accent'}>
+              <Card key={index} hover variant={index % 4 === 0 ? 'glow' : index % 4 === 1 ? 'gradient' : index % 4 === 2 ? 'bordered' : 'default'} gradient={index % 3 === 0 ? 'primary' : index % 3 === 1 ? 'secondary' : 'accent'} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{
                     fontSize: '2.5rem',

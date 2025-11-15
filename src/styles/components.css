@@ -51,7 +51,7 @@
 
 /* ========== 间距工具类 ========== */
 .section-padding {
-  padding: clamp(60px, 10vw, 100px) 0;
+  padding: clamp(40px, 6vw, 60px) 0;
 }
 
 .section-padding-lg {

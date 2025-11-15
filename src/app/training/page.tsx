@@ -870,15 +870,24 @@ export default function TrainingPage() {
 
       {/* Final Section */}
       <SectionWithAnimation>
-        <section className="section-padding" style={{ 
-          background: 'var(--bg-light)',
+        <section className="section-padding" style={{
+          background: 'linear-gradient(135deg, #0A1929 0%, #1A2F4A 50%, #0F1B2E 100%)',
+          color: 'white',
           position: 'relative',
           overflow: 'hidden',
         }}>
-          <GeometricBackground variant="circles" intensity="subtle" />
+          <GeometricBackground variant="grid" intensity="subtle" color="rgba(0, 201, 255, 0.15)" />
+          <GlowEffect position="top-right" size={500} color="var(--primary-500)" intensity={0.4} />
+          <GlowEffect position="bottom-left" size={400} color="var(--secondary-500)" intensity={0.3} />
+          <GlowEffect position="center" size={600} color="var(--accent-500)" intensity={0.2} />
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
+              <h2 style={{ 
+                fontSize: '2.5rem', 
+                marginBottom: '20px', 
+                fontWeight: 700,
+                color: 'white',
+              }}>
                 {trainingContent.final.title}
               </h2>
               <p style={{
@@ -890,104 +899,128 @@ export default function TrainingPage() {
                 {trainingContent.final.motto}
               </p>
             </div>
-            <Card variant="gradient" gradient="primary">
-            {trainingContent.final.paragraphs.map((paragraph, index) => (
-              <p key={index} style={{
-                fontSize: '1.1rem',
-                lineHeight: 2,
-                color: 'var(--text-dark)',
-                marginBottom: '25px',
-              }}>
-                {paragraph}
-              </p>
-            ))}
             <div style={{
-              padding: '25px',
-              background: 'var(--primary-50)',
-              borderRadius: '12px',
-              marginTop: '30px',
-              border: '2px solid var(--primary)',
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(10px)',
+              borderRadius: '20px',
+              padding: '40px',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
             }}>
-              <p style={{
-                fontSize: '1.3rem',
-                fontWeight: 700,
-                color: 'var(--primary-700)',
-                lineHeight: 1.8,
-                textAlign: 'center',
+              {trainingContent.final.paragraphs.map((paragraph, index) => (
+                <p key={index} style={{
+                  fontSize: '1.1rem',
+                  lineHeight: 2,
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  marginBottom: '25px',
+                }}>
+                  {paragraph}
+                </p>
+              ))}
+              <div style={{
+                padding: '25px',
+                background: 'rgba(255, 255, 255, 0.2)',
+                borderRadius: '12px',
+                marginTop: '30px',
+                border: '2px solid rgba(255, 255, 255, 0.3)',
               }}>
-                {trainingContent.final.highlight}
-              </p>
+                <p style={{
+                  fontSize: '1.3rem',
+                  fontWeight: 700,
+                  color: 'white',
+                  lineHeight: 1.8,
+                  textAlign: 'center',
+                }}>
+                  {trainingContent.final.highlight}
+                </p>
+              </div>
             </div>
-            </Card>
           </div>
         </section>
       </SectionWithAnimation>
 
       {/* CTA Section */}
-      <section style={{
-        padding: 'clamp(60px, 10vw, 100px) 0',
-        background: 'linear-gradient(135deg, #0A1929 0%, #1A2F4A 50%, #0F1B2E 100%)',
-        color: 'white',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <GeometricBackground variant="grid" intensity="subtle" color="rgba(0, 201, 255, 0.15)" />
-        <GlowEffect position="top-right" size={500} color="var(--primary-500)" intensity={0.4} />
-        <GlowEffect position="bottom-left" size={400} color="var(--secondary-500)" intensity={0.3} />
-        <GlowEffect position="center" size={600} color="var(--accent-500)" intensity={0.2} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
-            <h2 style={{
-              fontSize: '2.5rem',
-              marginBottom: '20px',
-              fontWeight: 700,
-            }}>
-              {trainingContent.cta.title}
-            </h2>
-            <p style={{
-              fontSize: '1.2rem',
-              marginBottom: '40px',
-              opacity: 0.9,
-            }}>
-              {trainingContent.cta.description}
-            </p>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '20px',
-              flexWrap: 'wrap',
-            }}>
-              {trainingContent.cta.actions.map((action, index) => (
-                <Link key={index} href={action.href} style={{ textDecoration: 'none' }}>
-                  <button style={{
-                    padding: '15px 40px',
-                    borderRadius: '8px',
-                    fontWeight: 600,
-                    background: 'white',
-                    color: 'var(--primary-500)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: '1.1rem',
-                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-                    transition: 'all 0.3s',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-3px)';
-                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.3)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
-                  }}
-                  >
-                    {action.label}
-                  </button>
-                </Link>
-              ))}
-            </div>
+      <SectionWithAnimation>
+        <section className="section-padding" style={{ 
+          background: 'var(--bg-light)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <GeometricBackground variant="dots" intensity="subtle" />
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            <CardWithAnimation delay={0}>
+              <div style={{
+                background: 'linear-gradient(135deg, var(--primary-50) 0%, var(--secondary-50) 100%)',
+                border: 'none',
+                borderRadius: '20px',
+                padding: '50px 40px',
+                boxShadow: 'var(--shadow-xl)',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-2xl), 0 0 40px rgba(0, 201, 255, 0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-xl)';
+              }}
+              >
+                {/* 装饰性光晕 */}
+                <div style={{
+                  position: 'absolute',
+                  top: '-50%',
+                  right: '-50%',
+                  width: '200%',
+                  height: '200%',
+                  background: `radial-gradient(circle, var(--primary-500) 0%, transparent 70%)`,
+                  opacity: 0.05,
+                  filter: 'blur(40px)',
+                  pointerEvents: 'none',
+                  transition: 'opacity 0.3s ease',
+                }} />
+                
+                <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+                  <h2 style={{
+                    fontSize: '2.5rem',
+                    marginBottom: '20px',
+                    fontWeight: 700,
+                    color: 'var(--text-dark)',
+                  }}>
+                    {trainingContent.cta.title}
+                  </h2>
+                  <p style={{
+                    fontSize: '1.2rem',
+                    marginBottom: '40px',
+                    color: 'var(--text-light)',
+                    lineHeight: 1.8,
+                  }}>
+                    {trainingContent.cta.description}
+                  </p>
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '20px',
+                    flexWrap: 'wrap',
+                  }}>
+                    {trainingContent.cta.actions.map((action, index) => (
+                      <Link key={index} href={action.href} style={{ textDecoration: 'none' }}>
+                        <Button 
+                          variant={index === 0 ? 'primary' : 'outline'} 
+                          size="lg"
+                        >
+                          {action.label}
+                        </Button>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </CardWithAnimation>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionWithAnimation>
     </div>
   );
 }
