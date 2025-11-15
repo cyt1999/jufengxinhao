@@ -296,7 +296,7 @@ export default function Home() {
       {/* Why Choose Section */}
       <SectionWithAnimation>
         <section className="section-padding decorative-bg" style={{ 
-          background: 'var(--bg-white)',
+          background: 'var(--bg-light)',
           position: 'relative',
           overflow: 'hidden',
         }}>
@@ -462,7 +462,7 @@ export default function Home() {
 
       {/* Career Path Section */}
       <section className="section-padding" style={{ 
-        background: 'var(--bg-white)',
+        background: 'var(--bg-light)',
         position: 'relative',
         overflow: 'hidden',
       }}>
@@ -749,7 +749,7 @@ export default function Home() {
       {/* Video Section */}
       <SectionWithAnimation delay={200}>
         <section className="section-padding" style={{ 
-          background: 'var(--bg-white)',
+          background: 'var(--bg-light)',
           position: 'relative',
           overflow: 'hidden',
         }}>
@@ -1067,7 +1067,7 @@ export default function Home() {
 
       {/* Platform Data Section */}
       <section className="section-padding" style={{ 
-        background: 'var(--bg-white)',
+        background: 'var(--bg-light)',
         position: 'relative',
         overflow: 'hidden',
       }}>

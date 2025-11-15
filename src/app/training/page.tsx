@@ -66,7 +66,7 @@ export default function TrainingPage() {
       {/* Welcome Section */}
       <SectionWithAnimation>
         <section className="section-padding decorative-bg" style={{ 
-          background: 'var(--bg-white)',
+          background: 'var(--bg-light)',
           position: 'relative',
           overflow: 'hidden',
         }}>
@@ -301,7 +301,7 @@ export default function TrainingPage() {
       {/* Videos Section */}
       <SectionWithAnimation>
         <section className="section-padding" style={{ 
-          background: 'var(--bg-white)',
+          background: 'var(--bg-light)',
           position: 'relative',
           overflow: 'hidden',
         }}>
@@ -569,7 +569,7 @@ export default function TrainingPage() {
       {/* Growth Plan Section */}
       <SectionWithAnimation>
         <section className="section-padding" style={{ 
-          background: 'var(--bg-white)',
+          background: 'var(--bg-light)',
           position: 'relative',
           overflow: 'hidden',
         }}>
@@ -871,7 +871,7 @@ export default function TrainingPage() {
       {/* Final Section */}
       <SectionWithAnimation>
         <section className="section-padding" style={{ 
-          background: 'var(--bg-white)',
+          background: 'var(--bg-light)',
           position: 'relative',
           overflow: 'hidden',
         }}>

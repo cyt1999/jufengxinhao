@@ -56,7 +56,7 @@ export default function DonatePage() {
       </Hero>
 
       {/* Donation Amount Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <Card style={{
             background: 'var(--warning-light)',
@@ -197,7 +197,7 @@ export default function DonatePage() {
       </section>
 
       {/* Rewards Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
@@ -355,7 +355,7 @@ export default function DonatePage() {
       </section>
 
       {/* Notice Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
+      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
         <div className="container">
           <Card style={{
             background: 'var(--info-light)',

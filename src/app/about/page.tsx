@@ -14,7 +14,7 @@ export default function AboutPage() {
 
       {/* Main Content */}
       <section className="section-padding" style={{ 
-        background: 'var(--bg-white)',
+        background: 'var(--bg-light)',
         position: 'relative',
         overflow: 'hidden',
       }}>

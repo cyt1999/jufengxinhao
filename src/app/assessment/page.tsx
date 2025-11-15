@@ -146,7 +146,7 @@ export default function AssessmentPage() {
         <SectionWithAnimation>
           <section style={{ 
             padding: '40px 0',
-            background: 'var(--bg-white)',
+            background: 'var(--bg-light)',
             position: 'relative',
             overflow: 'hidden',
           }}>
@@ -464,7 +464,7 @@ export default function AssessmentPage() {
         <SectionWithAnimation>
           <section style={{ 
             padding: '40px 0',
-            background: 'var(--bg-white)',
+            background: 'var(--bg-light)',
             position: 'relative',
             overflow: 'hidden',
           }}>
@@ -576,7 +576,7 @@ export default function AssessmentPage() {
       <SectionWithAnimation>
         <section style={{ 
           padding: '40px 0',
-          background: 'var(--bg-white)',
+          background: 'var(--bg-light)',
           position: 'relative',
           overflow: 'hidden',
         }}>

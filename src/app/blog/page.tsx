@@ -76,7 +76,7 @@ export default function BlogPage() {
       {/* Main Content */}
       <SectionWithAnimation>
         <section className="section-padding" style={{ 
-          background: 'var(--bg-white)',
+          background: 'var(--bg-light)',
           position: 'relative',
           overflow: 'hidden',
         }}>
