@@ -17,9 +17,16 @@ body {
 }
 
 .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 40px);
+}
+
+/* 首页专用container，保持1400px宽度 */
+.home-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 clamp(20px, 5vw, 40px);
 }
 
 .platform-data-grid {
@@ -112,5 +119,24 @@ body {
 @media (min-width: 769px) {
   .hero-content-wrapper {
     flex-direction: row;
+  }
+}
+
+/* ========== 基本条件和时间要求对称布局响应式 ========== */
+.requirements-grid {
+  grid-template-columns: 1fr !important;
+}
+
+.requirements-grid > div:nth-child(2) {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .requirements-grid {
+    grid-template-columns: 1fr 1px 1fr !important;
+  }
+  
+  .requirements-grid > div:nth-child(2) {
+    display: block !important;
   }
 }

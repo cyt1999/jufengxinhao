@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 interface CardWithAnimationProps {
   children: ReactNode;
   delay?: number;
+  style?: React.CSSProperties;
 }
 
 /**
@@ -15,6 +16,7 @@ interface CardWithAnimationProps {
 export default function CardWithAnimation({
   children,
   delay = 0,
+  style,
 }: CardWithAnimationProps) {
   const { elementRef, isVisible } = useIntersectionObserver({
     threshold: 0.1,
@@ -29,6 +31,7 @@ export default function CardWithAnimation({
       style={{
         transitionDelay: `${delay}ms`,
         transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
+        ...style,
       }}
     >
       {children}

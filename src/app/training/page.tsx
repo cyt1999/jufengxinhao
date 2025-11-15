@@ -1,48 +1,68 @@
+'use client';
+
 import trainingContent from '@/content/zh/training.json';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Link from 'next/link';
+import SectionWithAnimation from '@/components/ui/SectionWithAnimation';
+import CardWithAnimation from '@/components/ui/CardWithAnimation';
+import { GeometricBackground, GlowEffect } from '@/components/ui/BackgroundDecorations';
 
 export default function TrainingPage() {
   return (
-    <div style={{ paddingTop: '80px', minHeight: '80vh' }}>
+    <div>
       {/* Hero Section */}
       <section style={{
         padding: 'clamp(120px, 15vw, 150px) 0 clamp(60px, 10vw, 100px)',
         background: 'var(--gradient-hero)',
+        position: 'relative',
+        overflow: 'hidden',
       }}>
-        <div className="container">
+        {/* 背景装饰 - 浅色主题适配 */}
+        <GeometricBackground variant="dots" intensity="subtle" />
+        <GlowEffect position="top-right" size={400} color="var(--primary-500)" intensity={0.15} />
+        <GlowEffect position="bottom-left" size={300} color="var(--secondary-500)" intensity={0.1} />
+        
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <div style={{
               display: 'inline-block',
               background: 'var(--primary-50)',
-              color: 'var(--primary)',
+              color: 'var(--primary-500)',
               padding: '6px 15px',
               borderRadius: '20px',
               fontSize: '0.9rem',
               fontWeight: 600,
               marginBottom: '20px',
+              animation: 'fadeInUp 1s ease-out',
             }}>
               {trainingContent.hero.badge}
             </div>
             <h1 style={{
-              fontSize: '3.5rem',
+              fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
               marginBottom: '20px',
               fontWeight: 800,
+              color: 'var(--text-dark)',
+              animation: 'fadeInUp 1s ease-out 0.2s both',
             }}>
               {trainingContent.hero.title1}
-              <span style={{
-                background: 'var(--gradient-primary)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}>
+              <span 
+                className="gradient-text-underline"
+                style={{
+                  background: 'var(--gradient-primary)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
                 {trainingContent.hero.title2}
               </span>
             </h1>
             <p style={{
-              fontSize: '1.3rem',
+              fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
               color: 'var(--text-light)',
               marginBottom: '40px',
+              animation: 'fadeInUp 1s ease-out 0.5s both',
             }}>
               {trainingContent.hero.subtitle}
             </p>
@@ -51,16 +71,18 @@ export default function TrainingPage() {
               justifyContent: 'center',
               gap: '50px',
               flexWrap: 'wrap',
+              animation: 'fadeInUp 1s ease-out 0.8s both',
             }}>
               {trainingContent.hero.stats.map((stat, index) => (
                 <div key={index} style={{ textAlign: 'center' }}>
                   <div style={{
-                    fontSize: '2.5rem',
+                    fontSize: 'clamp(2rem, 4vw, 2.5rem)',
                     fontWeight: 700,
                     marginBottom: '10px',
                     background: 'var(--gradient-primary)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
                   }}>
                     {stat.value}
                   </div>
@@ -78,12 +100,18 @@ export default function TrainingPage() {
       </section>
 
       {/* Welcome Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
-        <div className="container">
-          <Card style={{
-            background: 'var(--success-light)',
-            border: '2px solid var(--success)',
-          }}>
+      <SectionWithAnimation>
+        <section className="section-padding decorative-bg" style={{ 
+          background: 'var(--bg-white)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <GeometricBackground variant="dots" intensity="subtle" />
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            <Card variant="glow" gradient="secondary" style={{
+              background: 'var(--success-light)',
+              border: '2px solid var(--success)',
+            }}>
             <h2 style={{
               fontSize: '2rem',
               marginBottom: '20px',
@@ -123,139 +151,221 @@ export default function TrainingPage() {
             }}>
               {trainingContent.welcome.description}
             </p>
-          </Card>
-        </div>
-      </section>
+            </Card>
+          </div>
+        </section>
+      </SectionWithAnimation>
 
       {/* About Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
-              {trainingContent.about.title}
-            </h2>
-          </div>
-          <Card style={{ marginBottom: '30px' }}>
-            <p style={{
-              fontSize: '1.1rem',
-              lineHeight: 2,
-              color: 'var(--text-dark)',
-              marginBottom: '20px',
-            }}>
-              {trainingContent.about.description1}
-            </p>
-            <p style={{
-              fontSize: '1.1rem',
-              lineHeight: 2,
-              color: 'var(--text-dark)',
-            }}>
-              {trainingContent.about.description2}
-            </p>
-          </Card>
-          <Card>
-            <h3 style={{
-              fontSize: '1.5rem',
-              marginBottom: '20px',
-              fontWeight: 600,
-              color: 'var(--primary)',
-            }}>
-              {trainingContent.about.timeline}
-            </h3>
+      <SectionWithAnimation>
+        <section className="section-padding" style={{ 
+          background: 'var(--bg-light)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <GeometricBackground variant="circles" intensity="subtle" />
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
+                {trainingContent.about.title}
+              </h2>
+            </div>
+            <Card variant="gradient" gradient="primary" style={{ marginBottom: '30px' }}>
+              <p style={{
+                fontSize: '1.1rem',
+                lineHeight: 2,
+                color: 'var(--text-dark)',
+                marginBottom: '20px',
+              }}>
+                {trainingContent.about.description1}
+              </p>
+              <p style={{
+                fontSize: '1.1rem',
+                lineHeight: 2,
+                color: 'var(--text-dark)',
+              }}>
+                {trainingContent.about.description2}
+              </p>
+            </Card>
+            
+            {/* 时间线模块 - 优化UI */}
             <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '30px',
+              background: 'var(--bg-white)',
+              borderRadius: '16px',
+              padding: '40px',
               marginBottom: '30px',
+              border: '2px solid var(--primary-500)',
+              position: 'relative',
+              overflow: 'hidden',
             }}>
-              {trainingContent.about.phases.map((phase, index) => (
-                <div key={index} style={{
-                  padding: '20px',
-                  background: 'var(--bg-light)',
-                  borderRadius: '10px',
-                }}>
-                  <h4 style={{
-                    fontSize: '1.2rem',
-                    marginBottom: '10px',
-                    fontWeight: 600,
-                    color: 'var(--primary)',
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '200px',
+                height: '200px',
+                background: 'var(--gradient-primary)',
+                opacity: 0.1,
+                borderRadius: '50%',
+                transform: 'translate(50%, -50%)',
+              }} />
+              <h3 style={{
+                fontSize: '1.5rem',
+                marginBottom: '30px',
+                fontWeight: 600,
+                color: 'var(--primary-500)',
+                textAlign: 'center',
+              }}>
+                {trainingContent.about.timeline}
+              </h3>
+              
+              {/* 时间线流程 */}
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '20px',
+                position: 'relative',
+                paddingLeft: '40px',
+              }}>
+                {/* 时间线 */}
+                <div style={{
+                  position: 'absolute',
+                  left: '15px',
+                  top: 0,
+                  bottom: 0,
+                  width: '3px',
+                  background: 'var(--gradient-primary)',
+                  borderRadius: '2px',
+                }} />
+                
+                {trainingContent.about.phases.map((phase, index) => (
+                  <div key={index} style={{
+                    position: 'relative',
+                    paddingLeft: '30px',
                   }}>
-                    {phase.title}
-                  </h4>
-                  <p style={{ color: 'var(--text-light)' }}>
-                    {phase.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: '30px',
-            }}>
-              <div style={{
-                padding: '20px',
-                background: 'var(--danger-light)',
-                borderRadius: '10px',
-                border: '2px solid var(--danger)',
-              }}>
-                <h4 style={{
-                  fontSize: '1.2rem',
-                  marginBottom: '10px',
-                  fontWeight: 600,
-                  color: 'var(--danger-dark)',
-                }}>
-                  {trainingContent.about.notfit.title}
-                </h4>
-                <p style={{ color: 'var(--danger-dark)' }}>
-                  {trainingContent.about.notfit.description}
-                </p>
+                    {/* 时间点 */}
+                    <div style={{
+                      position: 'absolute',
+                      left: '-25px',
+                      top: '5px',
+                      width: '20px',
+                      height: '20px',
+                      background: 'var(--gradient-primary)',
+                      borderRadius: '50%',
+                      border: '3px solid var(--bg-white)',
+                      boxShadow: '0 0 0 3px var(--primary-500)',
+                    }} />
+                    
+                    <CardWithAnimation delay={index * 100}>
+                      <Card variant={index % 2 === 0 ? 'gradient' : 'glow'} gradient={index % 3 === 0 ? 'primary' : index % 3 === 1 ? 'secondary' : 'accent'}>
+                        <div style={{ padding: '20px' }}>
+                          <h4 style={{
+                            fontSize: '1.2rem',
+                            marginBottom: '10px',
+                            fontWeight: 600,
+                            color: 'var(--primary-500)',
+                          }}>
+                            {phase.title}
+                          </h4>
+                          <p style={{ color: 'var(--text-light)' }}>
+                            {phase.description}
+                          </p>
+                        </div>
+                      </Card>
+                    </CardWithAnimation>
+                  </div>
+                ))}
               </div>
+              
+              {/* 结果展示 */}
               <div style={{
-                padding: '20px',
-                background: 'var(--success-light)',
-                borderRadius: '10px',
-                border: '2px solid var(--success)',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gridAutoRows: '1fr',
+                gap: '30px',
+                marginTop: '40px',
+                alignItems: 'stretch',
               }}>
-                <h4 style={{
-                  fontSize: '1.2rem',
-                  marginBottom: '10px',
-                  fontWeight: 600,
-                  color: 'var(--success-dark)',
-                }}>
-                  {trainingContent.about.fit.title}
-                </h4>
-                <p style={{ color: 'var(--success-dark)' }}>
-                  {trainingContent.about.fit.description}
-                </p>
+                <CardWithAnimation delay={200} style={{ display: 'flex', height: '100%' }}>
+                  <Card variant="bordered" style={{
+                    background: 'var(--danger-light)',
+                    border: '2px solid var(--danger)',
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}>
+                    <h4 style={{
+                      fontSize: '1.2rem',
+                      marginBottom: '10px',
+                      fontWeight: 600,
+                      color: 'var(--danger-dark)',
+                    }}>
+                      {trainingContent.about.notfit.title}
+                    </h4>
+                    <p style={{ color: 'var(--danger-dark)', lineHeight: 1.8, flex: 1 }}>
+                      {trainingContent.about.notfit.description}
+                    </p>
+                  </Card>
+                </CardWithAnimation>
+                <CardWithAnimation delay={300} style={{ display: 'flex', height: '100%' }}>
+                  <Card variant="glow" gradient="secondary" style={{
+                    background: 'var(--success-light)',
+                    border: '2px solid var(--success)',
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}>
+                    <h4 style={{
+                      fontSize: '1.2rem',
+                      marginBottom: '10px',
+                      fontWeight: 600,
+                      color: 'var(--success-dark)',
+                    }}>
+                      {trainingContent.about.fit.title}
+                    </h4>
+                    <p style={{ color: 'var(--success-dark)', lineHeight: 1.8, flex: 1 }}>
+                      {trainingContent.about.fit.description}
+                    </p>
+                  </Card>
+                </CardWithAnimation>
               </div>
             </div>
-          </Card>
-        </div>
-      </section>
+          </div>
+        </section>
+      </SectionWithAnimation>
 
       {/* Videos Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
-              {trainingContent.videos.title}
-            </h2>
-            <p style={{
-              color: 'var(--text-light)',
-              maxWidth: '800px',
-              margin: '0 auto',
-              fontSize: '1.2rem',
+      <SectionWithAnimation>
+        <section className="section-padding" style={{ 
+          background: 'var(--bg-white)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <GeometricBackground variant="dots" intensity="subtle" />
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
+                {trainingContent.videos.title}
+              </h2>
+              <p style={{
+                color: 'var(--text-light)',
+                maxWidth: '800px',
+                margin: '0 auto',
+                fontSize: '1.2rem',
+              }}>
+                {trainingContent.videos.description}
+              </p>
+            </div>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+              gridAutoRows: '1fr',
+              gap: '30px',
+              alignItems: 'stretch',
             }}>
-              {trainingContent.videos.description}
-            </p>
-          </div>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-            gap: '30px',
-          }}>
-            {trainingContent.videos.videos.map((video, index) => (
-              <Card key={index} hover>
+              {trainingContent.videos.videos.map((video, index) => (
+                <CardWithAnimation key={index} delay={index * 100} style={{ display: 'flex', height: '100%' }}>
+                  <Card hover variant={index % 2 === 0 ? 'glow' : 'gradient'} gradient={index % 2 === 0 ? 'primary' : 'secondary'} style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{
                   height: '200px',
                   background: 'var(--gradient-primary)',
@@ -278,145 +388,238 @@ export default function TrainingPage() {
                   <h3 style={{ fontSize: '1.3rem', fontWeight: 600 }}>
                     {video.title}
                   </h3>
-                  <span style={{
-                    fontSize: '0.9rem',
-                    color: 'var(--primary)',
-                    fontWeight: 600,
+                    <span style={{
+                      fontSize: '0.9rem',
+                      color: 'var(--primary-500)',
+                      fontWeight: 600,
+                    }}>
+                      {video.rating}
+                    </span>
+                  </div>
+                  <p style={{
+                    color: 'var(--text-light)',
+                    lineHeight: 1.8,
+                    marginBottom: '20px',
                   }}>
-                    {video.rating}
-                  </span>
-                </div>
-                <p style={{
-                  color: 'var(--text-light)',
-                  lineHeight: 1.8,
-                  marginBottom: '20px',
-                }}>
-                  {video.description}
-                </p>
-                <Button variant="secondary">
-                  {video.cta}
-                </Button>
-              </Card>
-            ))}
+                    {video.description}
+                  </p>
+                    <div style={{ marginTop: 'auto' }}>
+                      <Button variant="secondary">
+                        {video.cta}
+                      </Button>
+                    </div>
+                  </Card>
+                </CardWithAnimation>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionWithAnimation>
 
       {/* Profile Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
-              {trainingContent.profile.title}
-            </h2>
-          </div>
+      <SectionWithAnimation>
+        <section className="section-padding" style={{ 
+          background: 'var(--bg-light)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <GeometricBackground variant="circles" intensity="subtle" />
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
+                {trainingContent.profile.title}
+              </h2>
+            </div>
 
-          {/* Unsuitable */}
-          <Card style={{
-            marginBottom: '40px',
-            background: 'var(--danger-light)',
-            border: '2px solid var(--danger)',
-          }}>
+            {/* Unsuitable */}
+            <CardWithAnimation delay={0}>
+              <Card variant="bordered" style={{
+                marginBottom: '40px',
+                background: 'var(--danger-light)',
+                border: '2px solid var(--danger)',
+              }}>
             <p style={{
               fontSize: '1.1rem',
               lineHeight: 2,
               color: 'var(--danger-dark)',
             }}>
               {trainingContent.profile.unsuited}
-            </p>
-          </Card>
+              </p>
+              </Card>
+            </CardWithAnimation>
 
-          {/* Income */}
-          <Card style={{ marginBottom: '40px' }}>
-            <h3 style={{
-              fontSize: '1.5rem',
-              marginBottom: '20px',
-              fontWeight: 600,
-              color: 'var(--primary)',
-            }}>
-              {trainingContent.profile.income.title}
-            </h3>
+            {/* Income */}
+            <CardWithAnimation delay={100}>
+              <Card variant="gradient" gradient="primary" style={{ marginBottom: '40px' }}>
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  marginBottom: '20px',
+                  fontWeight: 600,
+                  color: 'var(--primary-500)',
+                }}>
+                  {trainingContent.profile.income.title}
+                </h3>
             <p style={{
               fontSize: '1.1rem',
               lineHeight: 2,
               color: 'var(--text-dark)',
             }}>
               {trainingContent.profile.income.description}
-            </p>
-          </Card>
+                </p>
+              </Card>
+            </CardWithAnimation>
 
-          {/* Basic & Time Requirements */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '30px',
-            marginBottom: '40px',
-          }}>
-            <Card>
-              <h3 style={{
-                fontSize: '1.3rem',
-                marginBottom: '20px',
-                fontWeight: 600,
+            {/* Basic & Time Requirements - 对称展示 */}
+            <CardWithAnimation delay={200}>
+              <Card variant="bordered" style={{
+                background: 'var(--bg-white)',
+                border: '2px solid var(--primary-500)',
+                borderRadius: '16px',
+                padding: 'clamp(20px, 4vw, 40px)',
+                marginBottom: '40px',
               }}>
-                {trainingContent.profile.basic.title}
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                {trainingContent.profile.basic.items.map((item, index) => (
-                  <li key={index} style={{
-                    padding: '12px 0',
-                    borderBottom: index < trainingContent.profile.basic.items.length - 1 
-                      ? '1px solid var(--border-light)' 
-                      : 'none',
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1px 1fr',
+                  gap: 'clamp(20px, 4vw, 40px)',
+                  alignItems: 'start',
+                }}
+                className="requirements-grid"
+                >
+                  {/* 基本条件 */}
+                  <div style={{
                     display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '10px',
+                    flexDirection: 'column',
                   }}>
-                    <span style={{ color: 'var(--primary)', fontSize: '1.2rem' }}>✓</span>
-                    <span style={{ color: 'var(--text-dark)' }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-            <Card>
-              <h3 style={{
-                fontSize: '1.3rem',
-                marginBottom: '20px',
-                fontWeight: 600,
-              }}>
-                {trainingContent.profile.time.title}
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                {trainingContent.profile.time.items.map((item, index) => (
-                  <li key={index} style={{
-                    padding: '12px 0',
-                    borderBottom: index < trainingContent.profile.time.items.length - 1 
-                      ? '1px solid var(--border-light)' 
-                      : 'none',
+                    <h3 style={{
+                      fontSize: '1.5rem',
+                      marginBottom: '25px',
+                      fontWeight: 600,
+                      color: 'var(--primary-500)',
+                      textAlign: 'center',
+                      paddingBottom: '15px',
+                      borderBottom: '2px solid var(--primary-500)',
+                    }}>
+                      {trainingContent.profile.basic.title}
+                    </h3>
+                    <ul style={{ 
+                      listStyle: 'none', 
+                      padding: 0, 
+                      margin: 0,
+                      minHeight: `${trainingContent.profile.basic.items.length * 50}px`,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-start',
+                    }}>
+                      {trainingContent.profile.basic.items.map((item, index) => (
+                        <li key={index} style={{
+                          padding: '15px 0',
+                          borderBottom: index < trainingContent.profile.basic.items.length - 1 
+                            ? '1px solid var(--border-light)' 
+                            : 'none',
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '12px',
+                        }}>
+                          <span style={{ 
+                            color: 'var(--primary-500)', 
+                            fontSize: '1.2rem',
+                            flexShrink: 0,
+                            marginTop: '2px',
+                          }}>✓</span>
+                          <span style={{ 
+                            color: 'var(--text-dark)',
+                            lineHeight: 1.6,
+                            flex: 1,
+                          }}>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* 分隔线 */}
+                  <div style={{
+                    width: '1px',
+                    background: 'linear-gradient(to bottom, transparent, var(--primary-500), transparent)',
+                    height: '100%',
+                    minHeight: '200px',
+                  }} />
+
+                  {/* 时间要求 */}
+                  <div style={{
                     display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '10px',
+                    flexDirection: 'column',
                   }}>
-                    <span style={{ color: 'var(--primary)', fontSize: '1.2rem' }}>⏰</span>
-                    <span style={{ color: 'var(--text-dark)' }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
+                    <h3 style={{
+                      fontSize: '1.5rem',
+                      marginBottom: '25px',
+                      fontWeight: 600,
+                      color: 'var(--secondary-500)',
+                      textAlign: 'center',
+                      paddingBottom: '15px',
+                      borderBottom: '2px solid var(--secondary-500)',
+                    }}>
+                      {trainingContent.profile.time.title}
+                    </h3>
+                    <ul style={{ 
+                      listStyle: 'none', 
+                      padding: 0, 
+                      margin: 0,
+                      minHeight: `${trainingContent.profile.basic.items.length * 50}px`,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-start',
+                    }}>
+                      {trainingContent.profile.time.items.map((item, index) => (
+                        <li key={index} style={{
+                          padding: '15px 0',
+                          borderBottom: index < trainingContent.profile.time.items.length - 1 
+                            ? '1px solid var(--border-light)' 
+                            : 'none',
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '12px',
+                        }}>
+                          <span style={{ 
+                            color: 'var(--secondary-500)', 
+                            fontSize: '1.2rem',
+                            flexShrink: 0,
+                            marginTop: '2px',
+                          }}>⏰</span>
+                          <span style={{ 
+                            color: 'var(--text-dark)',
+                            lineHeight: 1.6,
+                            flex: 1,
+                          }}>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Card>
+            </CardWithAnimation>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionWithAnimation>
 
       {/* Growth Plan Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
-              {trainingContent.plan.title}
-            </h2>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
-            {trainingContent.plan.phases.map((phase, index) => (
-              <Card key={index} hover>
+      <SectionWithAnimation>
+        <section className="section-padding" style={{ 
+          background: 'var(--bg-white)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <GeometricBackground variant="grid" intensity="subtle" />
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
+                {trainingContent.plan.title}
+              </h2>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+              {trainingContent.plan.phases.map((phase, index) => (
+                <CardWithAnimation key={index} delay={index * 100}>
+                  <Card hover variant={index % 3 === 0 ? 'gradient' : index % 3 === 1 ? 'glow' : 'bordered'} gradient={index % 3 === 0 ? 'primary' : index % 3 === 1 ? 'secondary' : 'primary'}>
                 <div style={{
                   display: 'flex',
                   alignItems: 'flex-start',
@@ -527,129 +730,203 @@ export default function TrainingPage() {
                     )}
                   </div>
                 </div>
-              </Card>
-            ))}
+                  </Card>
+                </CardWithAnimation>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionWithAnimation>
 
       {/* Rules Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
-              {trainingContent.rules.title}
-            </h2>
-            <p style={{
-              color: 'var(--text-light)',
-              maxWidth: '900px',
-              margin: '0 auto',
-              fontSize: '1.2rem',
-              lineHeight: 1.8,
-            }}>
-              {trainingContent.rules.description}
-            </p>
-          </div>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-            gap: '30px',
-          }}>
-            <Card style={{
-              border: '2px solid var(--danger)',
-            }}>
-              <h3 style={{
-                fontSize: '1.5rem',
-                marginBottom: '25px',
-                fontWeight: 600,
-                color: 'var(--danger-dark)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
+      <SectionWithAnimation>
+        <section className="section-padding" style={{ 
+          background: 'var(--bg-light)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <GeometricBackground variant="waves" intensity="subtle" />
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
+                {trainingContent.rules.title}
+              </h2>
+              <p style={{
+                color: 'var(--text-light)',
+                maxWidth: '900px',
+                margin: '0 auto',
+                fontSize: '1.2rem',
+                lineHeight: 1.8,
               }}>
-                <span>🚫</span>
-                {trainingContent.rules.trading.title}
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                {trainingContent.rules.trading.items.map((item, index) => (
-                  <li key={index} style={{
-                    padding: '15px 0',
-                    borderBottom: index < trainingContent.rules.trading.items.length - 1 
-                      ? '1px solid var(--border-light)' 
-                      : 'none',
+                {trainingContent.rules.description}
+              </p>
+            </div>
+            {/* 交易规则红线和会议纪律红线 - 对称展示 */}
+            <CardWithAnimation delay={0}>
+              <Card variant="bordered" style={{
+                background: 'var(--bg-white)',
+                border: '2px solid var(--danger)',
+                borderRadius: '16px',
+                padding: 'clamp(20px, 4vw, 40px)',
+              }}>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1px 1fr',
+                  gap: 'clamp(20px, 4vw, 40px)',
+                  alignItems: 'start',
+                }}
+                className="requirements-grid"
+                >
+                  {/* 交易规则红线 */}
+                  <div style={{
                     display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '12px',
+                    flexDirection: 'column',
                   }}>
-                    <span style={{
+                    <h3 style={{
+                      fontSize: '1.5rem',
+                      marginBottom: '25px',
+                      fontWeight: 600,
                       color: 'var(--danger)',
-                      fontSize: '1.2rem',
-                    }}>✗</span>
-                    <span style={{ color: 'var(--text-dark)', lineHeight: 1.6 }}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-            <Card style={{
-              border: '2px solid var(--warning)',
-            }}>
-              <h3 style={{
-                fontSize: '1.5rem',
-                marginBottom: '25px',
-                fontWeight: 600,
-                color: 'var(--warning-dark)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-              }}>
-                <span>📋</span>
-                {trainingContent.rules.meeting.title}
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                {trainingContent.rules.meeting.items.map((item, index) => (
-                  <li key={index} style={{
-                    padding: '15px 0',
-                    borderBottom: index < trainingContent.rules.meeting.items.length - 1 
-                      ? '1px solid var(--border-light)' 
-                      : 'none',
+                      textAlign: 'center',
+                      paddingBottom: '15px',
+                      borderBottom: '2px solid var(--danger)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '10px',
+                    }}>
+                      <span>🚫</span>
+                      {trainingContent.rules.trading.title}
+                    </h3>
+                    <ul style={{ 
+                      listStyle: 'none', 
+                      padding: 0, 
+                      margin: 0,
+                      minHeight: `${Math.max(trainingContent.rules.trading.items.length, trainingContent.rules.meeting.items.length) * 50}px`,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-start',
+                    }}>
+                      {trainingContent.rules.trading.items.map((item, index) => (
+                        <li key={index} style={{
+                          padding: '15px 0',
+                          borderBottom: index < trainingContent.rules.trading.items.length - 1 
+                            ? '1px solid var(--border-light)' 
+                            : 'none',
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '12px',
+                        }}>
+                          <span style={{ 
+                            color: 'var(--danger)', 
+                            fontSize: '1.2rem',
+                            flexShrink: 0,
+                            marginTop: '2px',
+                          }}>✗</span>
+                          <span style={{ 
+                            color: 'var(--text-dark)',
+                            lineHeight: 1.6,
+                            flex: 1,
+                          }}>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* 分隔线 */}
+                  <div style={{
+                    width: '1px',
+                    background: 'linear-gradient(to bottom, transparent, var(--danger), transparent)',
+                    height: '100%',
+                    minHeight: '200px',
+                    alignSelf: 'stretch',
+                  }} />
+
+                  {/* 会议纪律红线 */}
+                  <div style={{
                     display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '12px',
+                    flexDirection: 'column',
                   }}>
-                    <span style={{
+                    <h3 style={{
+                      fontSize: '1.5rem',
+                      marginBottom: '25px',
+                      fontWeight: 600,
                       color: 'var(--warning)',
-                      fontSize: '1.2rem',
-                    }}>✗</span>
-                    <span style={{ color: 'var(--text-dark)', lineHeight: 1.6 }}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
+                      textAlign: 'center',
+                      paddingBottom: '15px',
+                      borderBottom: '2px solid var(--warning)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '10px',
+                    }}>
+                      <span>📋</span>
+                      {trainingContent.rules.meeting.title}
+                    </h3>
+                    <ul style={{ 
+                      listStyle: 'none', 
+                      padding: 0, 
+                      margin: 0,
+                      minHeight: `${Math.max(trainingContent.rules.trading.items.length, trainingContent.rules.meeting.items.length) * 50}px`,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'flex-start',
+                    }}>
+                      {trainingContent.rules.meeting.items.map((item, index) => (
+                        <li key={index} style={{
+                          padding: '15px 0',
+                          borderBottom: index < trainingContent.rules.meeting.items.length - 1 
+                            ? '1px solid var(--border-light)' 
+                            : 'none',
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: '12px',
+                        }}>
+                          <span style={{ 
+                            color: 'var(--warning)', 
+                            fontSize: '1.2rem',
+                            flexShrink: 0,
+                            marginTop: '2px',
+                          }}>✗</span>
+                          <span style={{ 
+                            color: 'var(--text-dark)',
+                            lineHeight: 1.6,
+                            flex: 1,
+                          }}>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Card>
+            </CardWithAnimation>
           </div>
-        </div>
-      </section>
+        </section>
+      </SectionWithAnimation>
 
       {/* Final Section */}
-      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
-              {trainingContent.final.title}
-            </h2>
-            <p style={{
-              fontSize: '1.5rem',
-              fontWeight: 700,
-              color: 'var(--primary)',
-              marginBottom: '40px',
-            }}>
-              {trainingContent.final.motto}
-            </p>
-          </div>
-          <Card>
+      <SectionWithAnimation>
+        <section className="section-padding" style={{ 
+          background: 'var(--bg-white)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <GeometricBackground variant="circles" intensity="subtle" />
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
+                {trainingContent.final.title}
+              </h2>
+              <p style={{
+                fontSize: '1.5rem',
+                fontWeight: 700,
+                color: 'var(--primary-500)',
+                marginBottom: '40px',
+              }}>
+                {trainingContent.final.motto}
+              </p>
+            </div>
+            <Card variant="gradient" gradient="primary">
             {trainingContent.final.paragraphs.map((paragraph, index) => (
               <p key={index} style={{
                 fontSize: '1.1rem',
@@ -677,17 +954,24 @@ export default function TrainingPage() {
                 {trainingContent.final.highlight}
               </p>
             </div>
-          </Card>
-        </div>
-      </section>
+            </Card>
+          </div>
+        </section>
+      </SectionWithAnimation>
 
       {/* CTA Section */}
       <section style={{
         padding: 'clamp(60px, 10vw, 100px) 0',
-        background: 'var(--gradient-primary)',
+        background: 'linear-gradient(135deg, #0A1929 0%, #1A2F4A 50%, #0F1B2E 100%)',
         color: 'white',
+        position: 'relative',
+        overflow: 'hidden',
       }}>
-        <div className="container">
+        <GeometricBackground variant="grid" intensity="subtle" color="rgba(0, 201, 255, 0.15)" />
+        <GlowEffect position="top-right" size={500} color="var(--primary-500)" intensity={0.4} />
+        <GlowEffect position="bottom-left" size={400} color="var(--secondary-500)" intensity={0.3} />
+        <GlowEffect position="center" size={600} color="var(--accent-500)" intensity={0.2} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
             <h2 style={{
               fontSize: '2.5rem',
@@ -716,13 +1000,22 @@ export default function TrainingPage() {
                     borderRadius: '8px',
                     fontWeight: 600,
                     background: 'white',
-                    color: 'var(--primary)',
+                    color: 'var(--primary-500)',
                     border: 'none',
                     cursor: 'pointer',
                     fontSize: '1.1rem',
                     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
                     transition: 'all 0.3s',
-                  }}>
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.3)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.2)';
+                  }}
+                  >
                     {action.label}
                   </button>
                 </Link>

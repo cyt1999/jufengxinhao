@@ -53,7 +53,7 @@ export default function Home() {
           pointerEvents: 'none',
         }} />
         
-        <div className="container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
+        <div className="home-container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <div className="hero-content-wrapper" style={{
             display: 'flex',
             flexDirection: 'column',
@@ -303,7 +303,7 @@ export default function Home() {
           overflow: 'hidden',
         }}>
           <GeometricBackground variant="dots" intensity="subtle" />
-          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
               {homeContent.why.title}
@@ -365,7 +365,7 @@ export default function Home() {
       }}>
         <GeometricBackground variant="grid" intensity="subtle" color="var(--primary-500)" />
         <GlowEffect position="center" size={500} intensity={0.1} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', fontWeight: 700 }}>
               {homeContent.comparison.title}
@@ -469,7 +469,7 @@ export default function Home() {
         overflow: 'hidden',
       }}>
         <GeometricBackground variant="circles" intensity="subtle" />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
               {homeContent.careerPath.title}
@@ -569,7 +569,7 @@ export default function Home() {
           overflow: 'hidden',
         }}>
         <GeometricBackground variant="waves" intensity="subtle" />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
               {homeContent.requirements.title}
@@ -756,7 +756,7 @@ export default function Home() {
           overflow: 'hidden',
         }}>
         <GeometricBackground variant="dots" intensity="subtle" />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
               {homeContent.video.title}
@@ -835,7 +835,7 @@ export default function Home() {
         <GeometricBackground variant="grid" intensity="subtle" />
         <GlowEffect position="top-left" size={400} intensity={0.15} />
         <GlowEffect position="bottom-right" size={300} color="var(--secondary-500)" intensity={0.1} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
               {homeContent.showcase.title}
@@ -1074,7 +1074,7 @@ export default function Home() {
         overflow: 'hidden',
       }}>
         <GeometricBackground variant="circles" intensity="subtle" />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <h2 style={{ 
               fontSize: '2.5rem', 
@@ -1131,7 +1131,7 @@ export default function Home() {
         <GlowEffect position="top-right" size={500} color="var(--primary-500)" intensity={0.4} />
         <GlowEffect position="bottom-left" size={400} color="var(--secondary-500)" intensity={0.3} />
         <GlowEffect position="center" size={600} color="var(--accent-500)" intensity={0.2} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', maxWidth: '900px', margin: '0 auto' }}>
             <h2 style={{
               fontSize: '2.5rem',
