@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Logo from '@/components/ui/Logo';
 
 interface MobileMenuProps {
   navLinks: Array<{ href: string; label: string }>;
@@ -12,11 +13,17 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
 
   // 阻止背景滚动
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      // 聚焦到关闭按钮
+      setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 100);
     } else {
       document.body.style.overflow = '';
     }
@@ -24,6 +31,17 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  // 键盘导航：ESC 关闭菜单
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   // 点击链接后关闭菜单
   const handleLinkClick = () => {
@@ -51,6 +69,10 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
 
       {/* 菜单面板 */}
       <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="移动端导航菜单"
         style={{
           position: 'fixed',
           top: 0,
@@ -73,15 +95,7 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
           padding: '20px',
           borderBottom: '1px solid var(--border)',
         }}>
-          <div style={{
-            fontSize: '20px',
-            fontWeight: 700,
-            background: 'var(--gradient-accent)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}>
-            飓风信号
-          </div>
+          <Logo size={40} showText={true} />
           <button
             onClick={onClose}
             style={{
@@ -102,22 +116,25 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
         </div>
 
         {/* 导航链接 */}
-        <nav style={{ padding: '20px 0' }}>
-          {navLinks.map((link) => {
+        <nav role="navigation" aria-label="移动端导航" style={{ padding: '20px 0' }}>
+          {navLinks.map((link, index) => {
             const isActive = pathname === link.href;
+            const isFirst = index === 0;
             return (
               <Link
                 key={link.href}
+                ref={isFirst ? firstLinkRef : undefined}
                 href={link.href}
                 onClick={handleLinkClick}
+                aria-current={isActive ? 'page' : undefined}
                 style={{
                   display: 'block',
                   padding: '15px 20px',
-                  color: isActive ? 'var(--primary)' : 'var(--text-dark)',
+                  color: isActive ? 'var(--primary-500)' : 'var(--text-medium)',
                   textDecoration: 'none',
                   fontWeight: isActive ? 600 : 400,
-                  borderLeft: isActive ? '3px solid var(--primary)' : '3px solid transparent',
-                  background: isActive ? 'var(--primary-light)' : 'transparent',
+                  borderLeft: isActive ? '3px solid var(--primary-500)' : '3px solid transparent',
+                  background: isActive ? 'var(--primary-50)' : 'transparent',
                   transition: 'all 0.3s',
                 }}
               >
