@@ -7,97 +7,61 @@ import Link from 'next/link';
 import SectionWithAnimation from '@/components/ui/SectionWithAnimation';
 import CardWithAnimation from '@/components/ui/CardWithAnimation';
 import { GeometricBackground, GlowEffect } from '@/components/ui/BackgroundDecorations';
+import Hero from '@/components/ui/Hero';
 
 export default function TrainingPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section style={{
-        padding: 'clamp(120px, 15vw, 150px) 0 clamp(60px, 10vw, 100px)',
-        background: 'var(--gradient-hero)',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        {/* 背景装饰 - 浅色主题适配 */}
-        <GeometricBackground variant="dots" intensity="subtle" />
-        <GlowEffect position="top-right" size={400} color="var(--primary-500)" intensity={0.15} />
-        <GlowEffect position="bottom-left" size={300} color="var(--secondary-500)" intensity={0.1} />
-        
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <div style={{
-              display: 'inline-block',
-              background: 'var(--primary-50)',
-              color: 'var(--primary-500)',
-              padding: '6px 15px',
-              borderRadius: '20px',
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              marginBottom: '20px',
-              animation: 'fadeInUp 1s ease-out',
-            }}>
-              {trainingContent.hero.badge}
+      <Hero
+        badge="实战训练营"
+        title={
+          <>
+            {trainingContent.hero.title1}
+            <span 
+              className="gradient-text-underline"
+              style={{
+                background: 'linear-gradient(to right, var(--primary-500), var(--secondary-500))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              {trainingContent.hero.title2}
+            </span>
+          </>
+        }
+        subtitle={trainingContent.hero.subtitle}
+      >
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '50px',
+          flexWrap: 'wrap',
+        }}>
+          {trainingContent.hero.stats.map((stat, index) => (
+            <div key={index} style={{ textAlign: 'center' }}>
+              <div style={{
+                fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+                fontWeight: 700,
+                marginBottom: '10px',
+                background: 'var(--gradient-primary)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}>
+                {stat.value}
+              </div>
+              <div style={{
+                color: 'rgba(255, 255, 255, 0.85)',
+                fontSize: '1.1rem',
+              }}>
+                {stat.label}
+              </div>
             </div>
-            <h1 style={{
-              fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-              marginBottom: '20px',
-              fontWeight: 800,
-              color: 'var(--text-dark)',
-              animation: 'fadeInUp 1s ease-out 0.2s both',
-            }}>
-              {trainingContent.hero.title1}
-              <span 
-                className="gradient-text-underline"
-                style={{
-                  background: 'var(--gradient-primary)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                {trainingContent.hero.title2}
-              </span>
-            </h1>
-            <p style={{
-              fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
-              color: 'var(--text-light)',
-              marginBottom: '40px',
-              animation: 'fadeInUp 1s ease-out 0.5s both',
-            }}>
-              {trainingContent.hero.subtitle}
-            </p>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '50px',
-              flexWrap: 'wrap',
-              animation: 'fadeInUp 1s ease-out 0.8s both',
-            }}>
-              {trainingContent.hero.stats.map((stat, index) => (
-                <div key={index} style={{ textAlign: 'center' }}>
-                  <div style={{
-                    fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-                    fontWeight: 700,
-                    marginBottom: '10px',
-                    background: 'var(--gradient-primary)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}>
-                    {stat.value}
-                  </div>
-                  <div style={{
-                    color: 'var(--text-light)',
-                    fontSize: '1.1rem',
-                  }}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </Hero>
 
       {/* Welcome Section */}
       <SectionWithAnimation>

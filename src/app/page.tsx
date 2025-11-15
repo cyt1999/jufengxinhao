@@ -17,9 +17,7 @@ export default function Home() {
       <section style={{
         paddingTop: 'calc(80px + clamp(120px, 15vw, 180px))',
         paddingBottom: 'clamp(60px, 10vw, 100px)',
-        background: 'linear-gradient(-45deg, #0A1929, #1A2F4A, #1a365d, #0F1B2E)',
-        backgroundSize: '400% 400%',
-        animation: 'gradientShift 18s ease infinite',
+        background: 'linear-gradient(135deg, #0A1929 0%, #1A2F4A 50%, #0F1B2E 100%)',
         position: 'relative',
         overflow: 'hidden',
         marginTop: 0,
@@ -73,21 +71,21 @@ export default function Home() {
                 alignItems: 'center',
                 background: 'rgba(0, 201, 255, 0.15)',
                 color: 'var(--primary-500)',
-                padding: '10px 25px',
-                borderRadius: '30px',
-                fontSize: '0.95rem',
+                padding: '6px 18px',
+                borderRadius: '20px',
+                fontSize: '0.85rem',
                 fontWeight: 600,
-                marginBottom: '35px',
+                marginBottom: '20px',
                 animation: 'fadeInUp 1s ease-out',
                 backdropFilter: 'blur(10px)',
                 border: '1px solid rgba(0, 201, 255, 0.3)',
                 boxShadow: '0 5px 15px rgba(0, 0, 0, 0.1)',
               }}>
                 <span style={{
-                  marginRight: '8px',
-                  fontSize: '1.1rem',
+                  marginRight: '6px',
+                  fontSize: '0.95rem',
                 }}>⚡</span>
-                专业交易员培训平台
+                职业交易员培训
               </div>
               
               <h1 style={{

@@ -1,24 +1,24 @@
 import aboutContent from '@/content/zh/about.json';
 import Card from '@/components/ui/Card';
+import Hero from '@/components/ui/Hero';
 
 export default function AboutPage() {
   return (
-    <div style={{ paddingTop: 'clamp(80px, 10vw, 100px)', minHeight: '80vh' }}>
-      <div className="container">
-        {/* Hero Section */}
-        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <h1 style={{ fontSize: '3.5rem', marginBottom: '20px', fontWeight: 700 }}>
-            {aboutContent.hero.title}
-          </h1>
-          <p style={{
-            fontSize: '1.3rem',
-            color: 'var(--text-light)',
-            maxWidth: '800px',
-            margin: '0 auto',
-          }}>
-            {aboutContent.hero.subtitle}
-          </p>
-        </div>
+    <div>
+      {/* Hero Section */}
+      <Hero
+        badge="关于我们"
+        title={aboutContent.hero.title}
+        subtitle={aboutContent.hero.subtitle}
+      />
+
+      {/* Main Content */}
+      <section className="section-padding" style={{ 
+        background: 'var(--bg-white)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div className="container">
 
         {/* Welcome Section */}
         <section style={{ marginBottom: '80px' }}>
@@ -526,7 +526,8 @@ export default function AboutPage() {
             </Card>
           </div>
         </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

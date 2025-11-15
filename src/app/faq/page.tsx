@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Card from '@/components/ui/Card';
+import Hero from '@/components/ui/Hero';
 import faqContent from '@/content/zh/faq.json';
 
 export default function FAQPage() {
@@ -19,19 +20,21 @@ export default function FAQPage() {
   };
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '80vh' }}>
-      <div className="container" style={{ maxWidth: '900px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h1 style={{ fontSize: '3rem', marginBottom: '20px', fontWeight: 700 }}>
-            {faqContent.title}
-          </h1>
-          <p style={{
-            fontSize: '1.2rem',
-            color: 'var(--text-light)',
-          }}>
-            {faqContent.subtitle}
-          </p>
-        </div>
+    <div>
+      {/* Hero Section */}
+      <Hero
+        badge="常见问题"
+        title={faqContent.title}
+        subtitle={faqContent.subtitle}
+      />
+
+      {/* FAQ Content */}
+      <section className="section-padding" style={{ 
+        background: 'var(--bg-white)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        <div className="container" style={{ maxWidth: '900px' }}>
 
         {faqContent.categories.map((category) => (
           <div key={category.key} style={{ marginBottom: '50px' }}>
@@ -99,7 +102,8 @@ export default function FAQPage() {
             })}
           </div>
         ))}
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

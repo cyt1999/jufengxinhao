@@ -1,81 +1,59 @@
 import donateContent from '@/content/zh/donate.json';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
+import Hero from '@/components/ui/Hero';
 import Link from 'next/link';
 
 export default function DonatePage() {
   return (
-    <div style={{ paddingTop: '80px', minHeight: '80vh' }}>
+    <div>
       {/* Hero Section */}
-      <section style={{
-        padding: 'clamp(120px, 15vw, 150px) 0 clamp(60px, 10vw, 100px)',
-        background: 'var(--gradient-hero)',
-      }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <div style={{
-              display: 'inline-block',
-              background: 'var(--primary-50)',
-              color: 'var(--primary)',
-              padding: '6px 15px',
-              borderRadius: '20px',
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              marginBottom: '20px',
+      <Hero
+        badge="全球试用会员"
+        title={
+          <>
+            {donateContent.hero.title1}
+            <span style={{
+              background: 'linear-gradient(to right, var(--primary-500), var(--secondary-500))',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
             }}>
-              {donateContent.hero.badge}
-            </div>
-            <h1 style={{
-              fontSize: '3.5rem',
-              marginBottom: '20px',
-              fontWeight: 800,
-            }}>
-              {donateContent.hero.title1}
-              <span style={{
+              {donateContent.hero.title2}
+            </span>
+          </>
+        }
+        subtitle={donateContent.hero.description}
+      >
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          gap: '50px',
+          flexWrap: 'wrap',
+        }}>
+          {donateContent.hero.stats.map((stat, index) => (
+            <div key={index} style={{ textAlign: 'center' }}>
+              <div style={{
+                fontSize: 'clamp(2rem, 4vw, 2.5rem)',
+                fontWeight: 700,
+                marginBottom: '10px',
                 background: 'var(--gradient-primary)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
               }}>
-                {donateContent.hero.title2}
-              </span>
-            </h1>
-            <p style={{
-              fontSize: '1.3rem',
-              color: 'var(--text-light)',
-              marginBottom: '40px',
-            }}>
-              {donateContent.hero.description}
-            </p>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '50px',
-              flexWrap: 'wrap',
-            }}>
-              {donateContent.hero.stats.map((stat, index) => (
-                <div key={index} style={{ textAlign: 'center' }}>
-                  <div style={{
-                    fontSize: '2.5rem',
-                    fontWeight: 700,
-                    marginBottom: '10px',
-                    background: 'var(--gradient-primary)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                  }}>
-                    {stat.value}
-                  </div>
-                  <div style={{
-                    color: 'var(--text-light)',
-                    fontSize: '1.1rem',
-                  }}>
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+                {stat.value}
+              </div>
+              <div style={{
+                color: 'rgba(255, 255, 255, 0.85)',
+                fontSize: '1.1rem',
+              }}>
+                {stat.label}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </Hero>
 
       {/* Donation Amount Section */}
       <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
