@@ -1022,14 +1022,14 @@ export default function TrainingPage() {
                         );
                       }
                       return (
-                        <Link key={index} href={action.href} style={{ textDecoration: 'none' }}>
-                          <Button 
+                      <Link key={index} href={action.href} style={{ textDecoration: 'none' }}>
+                        <Button 
                             variant={index === 0 ? 'outline' : 'primary'} 
-                            size="lg"
-                          >
-                            {action.label}
-                          </Button>
-                        </Link>
+                          size="lg"
+                        >
+                          {action.label}
+                        </Button>
+                      </Link>
                       );
                     })}
                   </div>
