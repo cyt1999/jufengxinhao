@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import homeContent from '@/content/zh/home.json';
+import testimonialsData from '@/content/zh/testimonials.json';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import Link from 'next/link';
@@ -46,6 +47,7 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [earningsImages.length]);
+
 
   // 获取当前要显示的3张图片
   const getCurrentImages = () => {
@@ -1081,6 +1083,318 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <SectionWithAnimation delay={200}>
+        <section className="section-padding" style={{ 
+          background: 'var(--bg-white)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+        <GeometricBackground variant="dots" intensity="subtle" />
+        <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
+              {homeContent.testimonials.title}
+            </h2>
+            <p style={{
+              color: 'var(--text-light)',
+              maxWidth: '800px',
+              margin: '0 auto',
+              fontSize: '1.2rem',
+            }}>
+              {homeContent.testimonials.subtitle}
+            </p>
+          </div>
+
+          {/* Testimonials Scrolling Banner */}
+          {testimonialsData.testimonials.length > 0 && (
+            <div style={{
+              position: 'relative',
+              overflow: 'hidden',
+              width: '100%',
+            }}>
+              <div className="testimonials-scroll-container">
+                <div className="testimonials-scroll-track">
+                  {/* 第一组卡片 */}
+                  {testimonialsData.testimonials.map((testimonial, index) => (
+                    <div
+                      key={`first-${index}`}
+                      className="testimonial-card-wrapper"
+                    >
+                      <Card hover style={{
+                        padding: '0',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        minWidth: '300px',
+                        maxWidth: '300px',
+                        background: 'white',
+                        borderRadius: '16px',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                        border: '1px solid var(--border)',
+                      }}>
+                        {/* 顶部装饰条 */}
+                        <div style={{
+                          height: '4px',
+                          background: 'var(--gradient-primary)',
+                          width: '100%',
+                        }} />
+                        
+                        <div style={{
+                          padding: '24px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          flex: 1,
+                        }}>
+                          {/* 头部信息 */}
+                          <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '16px',
+                            marginBottom: '20px',
+                          }}>
+                            {/* 头像圆圈 */}
+                            <div style={{
+                              width: '56px',
+                              height: '56px',
+                              borderRadius: '50%',
+                              background: 'var(--gradient-primary)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              fontSize: '1.5rem',
+                              fontWeight: 700,
+                              color: 'white',
+                              flexShrink: 0,
+                            }}>
+                              {testimonial.name.charAt(0)}
+                            </div>
+                            
+                            <div style={{ flex: 1 }}>
+                              <h3 style={{
+                                fontSize: '1.2rem',
+                                fontWeight: 700,
+                                marginBottom: '4px',
+                                color: 'var(--text-dark)',
+                              }}>
+                                {testimonial.name}
+                              </h3>
+                              <div style={{
+                                display: 'inline-block',
+                                padding: '4px 12px',
+                                borderRadius: '12px',
+                                background: 'var(--primary-50)',
+                                fontSize: '0.8rem',
+                                fontWeight: 600,
+                                color: 'var(--primary-700)',
+                              }}>
+                                {testimonial.role}
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Star Rating */}
+                          <div style={{
+                            display: 'flex',
+                            gap: '4px',
+                            marginBottom: '16px',
+                            alignItems: 'center',
+                          }}>
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <span
+                                key={i}
+                                style={{
+                                  color: i < testimonial.rating ? '#FFD700' : '#E2E8F0',
+                                  fontSize: '1.1rem',
+                                }}
+                              >
+                                ★
+                              </span>
+                            ))}
+                            <span style={{
+                              marginLeft: '8px',
+                              fontSize: '0.85rem',
+                              color: 'var(--text-light)',
+                            }}>
+                              {testimonial.date}
+                            </span>
+                          </div>
+
+                          {/* Content */}
+                          <div style={{
+                            position: 'relative',
+                            flex: 1,
+                          }}>
+                            <div style={{
+                              position: 'absolute',
+                              top: '-8px',
+                              left: '-8px',
+                              fontSize: '3rem',
+                              color: 'var(--primary-50)',
+                              lineHeight: 1,
+                              fontFamily: 'serif',
+                            }}>
+                              "
+                            </div>
+                            <p style={{
+                              color: 'var(--text-medium)',
+                              lineHeight: 1.8,
+                              fontSize: '0.95rem',
+                              position: 'relative',
+                              zIndex: 1,
+                            }}>
+                              {testimonial.content}
+                            </p>
+                          </div>
+                        </div>
+                      </Card>
+                    </div>
+                  ))}
+                  {/* 第二组卡片（用于无缝循环） */}
+                  {testimonialsData.testimonials.map((testimonial, index) => (
+                    <div
+                      key={`second-${index}`}
+                      className="testimonial-card-wrapper"
+                    >
+                      <Card hover style={{
+                        padding: '0',
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        minWidth: '300px',
+                        maxWidth: '300px',
+                        background: 'white',
+                        borderRadius: '16px',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                        border: '1px solid var(--border)',
+                      }}>
+                        {/* 顶部装饰条 */}
+                        <div style={{
+                          height: '4px',
+                          background: 'var(--gradient-primary)',
+                          width: '100%',
+                        }} />
+                        
+                        <div style={{
+                          padding: '24px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          flex: 1,
+                        }}>
+                          {/* 头部信息 */}
+                          <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '16px',
+                            marginBottom: '20px',
+                          }}>
+                            {/* 头像圆圈 */}
+                            <div style={{
+                              width: '56px',
+                              height: '56px',
+                              borderRadius: '50%',
+                              background: 'var(--gradient-primary)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              fontSize: '1.5rem',
+                              fontWeight: 700,
+                              color: 'white',
+                              flexShrink: 0,
+                            }}>
+                              {testimonial.name.charAt(0)}
+                            </div>
+                            
+                            <div style={{ flex: 1 }}>
+                              <h3 style={{
+                                fontSize: '1.2rem',
+                                fontWeight: 700,
+                                marginBottom: '4px',
+                                color: 'var(--text-dark)',
+                              }}>
+                                {testimonial.name}
+                              </h3>
+                              <div style={{
+                                display: 'inline-block',
+                                padding: '4px 12px',
+                                borderRadius: '12px',
+                                background: 'var(--primary-50)',
+                                fontSize: '0.8rem',
+                                fontWeight: 600,
+                                color: 'var(--primary-700)',
+                              }}>
+                                {testimonial.role}
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Star Rating */}
+                          <div style={{
+                            display: 'flex',
+                            gap: '4px',
+                            marginBottom: '16px',
+                            alignItems: 'center',
+                          }}>
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <span
+                                key={i}
+                                style={{
+                                  color: i < testimonial.rating ? '#FFD700' : '#E2E8F0',
+                                  fontSize: '1.1rem',
+                                }}
+                              >
+                                ★
+                              </span>
+                            ))}
+                            <span style={{
+                              marginLeft: '8px',
+                              fontSize: '0.85rem',
+                              color: 'var(--text-light)',
+                            }}>
+                              {testimonial.date}
+                            </span>
+                          </div>
+
+                          {/* Content */}
+                          <div style={{
+                            position: 'relative',
+                            flex: 1,
+                          }}>
+                            <div style={{
+                              position: 'absolute',
+                              top: '-8px',
+                              left: '-8px',
+                              fontSize: '3rem',
+                              color: 'var(--primary-50)',
+                              lineHeight: 1,
+                              fontFamily: 'serif',
+                            }}>
+                              "
+                            </div>
+                            <p style={{
+                              color: 'var(--text-medium)',
+                              lineHeight: 1.8,
+                              fontSize: '0.95rem',
+                              position: 'relative',
+                              zIndex: 1,
+                            }}>
+                              {testimonial.content}
+                            </p>
+                          </div>
+                        </div>
+                      </Card>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+      </SectionWithAnimation>
 
       {/* CTA Section */}
       <section className="section-padding" style={{

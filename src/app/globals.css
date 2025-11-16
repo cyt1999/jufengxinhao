@@ -324,3 +324,58 @@ body {
     display: block !important;
   }
 }
+
+/* ========== 学员感言滚动横幅 ========== */
+.testimonials-scroll-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* 确保一行最多显示4个卡片：每个卡片300px + 间距24px */
+  max-width: calc(300px * 4 + 24px * 3);
+  margin: 0 auto;
+}
+
+.testimonials-scroll-track {
+  display: flex;
+  gap: 24px;
+  animation: scrollLeft 60s linear infinite;
+  width: fit-content;
+  will-change: transform;
+}
+
+.testimonial-card-wrapper {
+  flex-shrink: 0;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 鼠标悬停时暂停动画 */
+.testimonials-scroll-container:hover .testimonials-scroll-track {
+  animation-play-state: paused;
+}
+
+/* 响应式：根据屏幕宽度调整显示卡片数量 */
+@media (max-width: 1279px) {
+  .testimonials-scroll-container {
+    max-width: calc(300px * 3 + 24px * 2);
+  }
+}
+
+@media (max-width: 959px) {
+  .testimonials-scroll-container {
+    max-width: calc(300px * 2 + 24px * 1);
+  }
+}
+
+@media (max-width: 639px) {
+  .testimonials-scroll-container {
+    max-width: 300px;
+  }
+}
