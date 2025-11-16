@@ -1,847 +1,208 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>飓风信号 - 智能交易平台</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #00C9FF;
-            --primary-light: #E6F9FF;
-            --secondary: #00FFAA;
-            --accent: #6C63FF;
-            --text-dark: #2D3748;
-            --text-light: #718096;
-            --bg-white: #FFFFFF;
-            --bg-light: #F7FAFC;
-            --bg-gray: #EDF2F7;
-            --border: #E2E8F0;
-            --success: #48BB78;
-            --warning: #ED8936;
-            --danger: #F56565;
-            --dark-bg: #0f172a;
-            --dark-card: #1e293b;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-        }
-        
-        body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* 导航栏优化 */
-        header {
-            background-color: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            animation: slideDown 0.8s ease-out;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-icon {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 12px;
-            color: white;
-            font-size: 20px;
-            animation: pulse 2.5s infinite;
-            box-shadow: 0 0 20px rgba(0, 201, 255, 0.4);
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(0, 201, 255, 0.7);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 0 0 15px rgba(0, 201, 255, 0);
-                transform: scale(1.05);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(0, 201, 255, 0);
-                transform: scale(1);
-            }
-        }
-        
-        .logo-text {
-            font-size: 26px;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-            position: relative;
-        }
-        
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-            padding: 8px 0;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .nav-links a.active {
-            color: white;
-        }
-        
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 3px;
-            box-shadow: 0 0 10px rgba(0, 201, 255, 0.5);
-        }
-        
-        .auth-buttons {
-            display: flex;
-        }
-        
-        .btn {
-            padding: 10px 24px;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-        }
-        
-        .btn-login {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            margin-right: 15px;
-        }
-        
-        .btn-login:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        
-        .btn-signup {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border: none;
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 201, 255, 0.3);
-        }
-        
-        .btn-signup:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 201, 255, 0.5);
-        }
-        
-        /* 英雄区域优化 */
-        .hero {
-            padding: 180px 0 100px;
-            background: linear-gradient(-45deg, #0f172a, #1e293b, #1a365d, #2d3748);
-            background-size: 400% 400%;
-            animation: gradientShift 18s ease infinite;
-            position: relative;
-            overflow: hidden;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-        
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 201, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 255, 170, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(108, 99, 255, 0.05) 0%, transparent 50%);
-            opacity: 0.7;
-        }
-        
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
-        
-        .hero-text {
-            max-width: 900px;
-            margin-bottom: 60px;
-        }
-        
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(0, 201, 255, 0.15);
-            color: var(--primary);
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 35px;
-            animation: fadeInUp 1s ease-out;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 201, 255, 0.3);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .hero-badge i {
-            margin-right: 8px;
-            font-size: 1.1rem;
-        }
-        
-        .hero h1 {
-            font-size: 3.8rem;
-            margin-bottom: 30px;
-            line-height: 1.15;
-            color: white;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out 0.2s both;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        
-        .hero h1 span {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-        }
-        
-        .hero h1 span::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 3px;
-            opacity: 0.7;
-        }
-        
-        .hero p {
-            font-size: 1.35rem;
-            margin-bottom: 50px;
-            color: rgba(255, 255, 255, 0.85);
-            animation: fadeInUp 1s ease-out 0.5s both;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-            font-weight: 400;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            padding: 16px 40px;
-            font-size: 1.15rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 201, 255, 0.4);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: all 0.6s;
-        }
-        
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 201, 255, 0.6);
-        }
-        
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 16px 40px;
-            font-size: 1.15rem;
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .btn-secondary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: all 0.6s;
-        }
-        
-        .btn-secondary:hover::before {
-            left: 100%;
-        }
-        
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* 数据指标展示优化 */
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            margin-top: 80px;
-            animation: fadeInUp 1s ease-out 1.1s both;
-            flex-wrap: wrap;
-        }
-        
-        .stat-item {
-            text-align: center;
-            position: relative;
-            padding: 0 20px;
-        }
-        
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: -1;
-            transition: all 0.3s;
-        }
-        
-        .stat-item:hover::before {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-        }
-        
-        .stat-value {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .stat-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.05rem;
-            font-weight: 500;
-        }
-        
-        /* 动画元素优化 */
-        .floating-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            overflow: hidden;
-        }
-        
-        .floating-element {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 201, 255, 0.15) 0%, transparent 70%);
-            animation: float 20s infinite linear;
-            filter: blur(1px);
-        }
-        
-        .floating-element:nth-child(1) {
-            width: 120px;
-            height: 120px;
-            top: 15%;
-            left: 10%;
-            animation-delay: 0s;
-            animation-duration: 25s;
-        }
-        
-        .floating-element:nth-child(2) {
-            width: 180px;
-            height: 180px;
-            top: 65%;
-            left: 85%;
-            animation-delay: -8s;
-            animation-duration: 30s;
-        }
-        
-        .floating-element:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            top: 80%;
-            left: 15%;
-            animation-delay: -15s;
-            animation-duration: 20s;
-        }
-        
-        .floating-element:nth-child(4) {
-            width: 150px;
-            height: 150px;
-            top: 25%;
-            left: 75%;
-            animation-delay: -5s;
-            animation-duration: 35s;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0deg) scale(1);
-                opacity: 0.7;
-            }
-            33% {
-                transform: translateY(-30px) rotate(120deg) scale(1.1);
-                opacity: 0.4;
-            }
-            66% {
-                transform: translateY(20px) rotate(240deg) scale(0.9);
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(0) rotate(360deg) scale(1);
-                opacity: 0.7;
-            }
-        }
-        
-        /* 粒子背景效果优化 */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* 滚动指示器 */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            animation: bounce 2s infinite;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            z-index: 10;
-        }
-        
-        .scroll-indicator i {
-            font-size: 1.5rem;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-5px) translateX(-50%);
-            }
-        }
-        
-        /* 响应式设计优化 */
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-            
-            .hero-stats {
-                gap: 40px;
-            }
-            
-            .stat-value {
-                font-size: 2.4rem;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                gap: 15px;
-                width: 100%;
-                max-width: 400px;
-            }
-            
-            .btn-primary, .btn-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .hero-stats {
-                gap: 30px;
-            }
-            
-            .stat-item {
-                flex: 1 1 45%;
-                margin-bottom: 20px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero {
-                padding: 150px 0 80px;
-            }
-            
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .hero-badge {
-                font-size: 0.9rem;
-                padding: 8px 20px;
-            }
-            
-            .hero-stats {
-                margin-top: 50px;
-            }
-            
-            .stat-value {
-                font-size: 2rem;
-            }
-            
-            .stat-label {
-                font-size: 0.95rem;
-            }
-            
-            .btn {
-                padding: 14px 30px;
-                font-size: 1rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-stats {
-                gap: 20px;
-            }
-            
-            .stat-item {
-                flex: 1 1 100%;
-            }
-            
-            .logo-text {
-                font-size: 22px;
-            }
-            
-            .logo-icon {
-                width: 40px;
-                height: 40px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- 导航栏 -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="logo-text">飓风信号</div>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#" class="active">首页</a></li>
-                    <li><a href="#">信号</a></li>
-                    <li><a href="#">策略</a></li>
-                    <li><a href="#">市场分析</a></li>
-                    <li><a href="#">定价</a></li>
-                </ul>
-                <div class="auth-buttons">
-                    <button class="btn btn-login">登录</button>
-                    <button class="btn btn-signup">注册</button>
-                </div>
-            </nav>
-        </div>
-    </header>
+"use client";
 
-    <!-- 英雄区域 -->
-    <section class="hero">
-        <div id="particles-js"></div>
-        <div class="floating-elements">
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-            <div class="floating-element"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-badge">
-                        <i class="fas fa-bolt"></i> AI驱动的智能交易信号
-                    </div>
-                    <h1>让交易更<span>简单</span>，让收益更<span>稳定</span></h1>
-                    <p>飓风信号结合人工智能与专业交易策略，为您提供精准的买卖点信号，助您在金融市场中乘风破浪，实现持续稳定的投资回报。</p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-primary">
-                            <i class="fas fa-rocket"></i> 免费试用7天
-                        </button>
-                        <button class="btn btn-secondary">
-                            <i class="fas fa-play-circle"></i> 观看演示视频
-                        </button>
-                    </div>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-value">76.8%</div>
-                        <div class="stat-label">信号准确率</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">15,328</div>
-                        <div class="stat-label">活跃用户</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">42.5%</div>
-                        <div class="stat-label">平均月收益率</div>
-                    </div>
-                </div>
+import { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
+
+export default function FloatingContactForm() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const { language } = useLanguage();
+  const isZh = language === 'zh';
+
+  const emailAddress = "jufengxinhao@gmail.com";
+  const siteUrl = "jufengxinhao.com";
+
+  const handleSubmit = (e: React.FormEvent) => {
+    // Form will be submitted by FormSubmit.co
+    // No need to prevent default
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  return (
+    <>
+      {/* Floating Toggle Button */}
+      {!isOpen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed right-8 bottom-24 z-40 bg-black dark:bg-white text-white dark:text-black p-4 border-2 border-black dark:border-white shadow-2xl hover:scale-110 transition-transform"
+          aria-label={isZh ? '联系我们' : 'Contact Us'}
+          title={isZh ? '快速联系我们' : 'Quick Contact'}
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
+          </svg>
+        </button>
+      )}
+
+      {/* Floating Form */}
+      {isOpen && (
+        <div className="fixed right-8 bottom-24 z-40 w-96 max-w-[calc(100vw-3rem)]">
+          <div className="bg-white dark:bg-gray-900 border-2 border-black dark:border-white shadow-2xl">
+            {/* Header */}
+            <div className="bg-black dark:bg-white text-white dark:text-black px-6 py-4 flex items-center justify-between">
+              <h3 className="text-lg font-bold">
+                {isZh ? '快速联系' : 'Quick Contact'}
+              </h3>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="hover:scale-110 transition-transform"
+                aria-label={isZh ? '关闭' : 'Close'}
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>探索更多</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        // 粒子背景初始化
-        particlesJS('particles-js', {
-            particles: {
-                number: { 
-                    value: 70, 
-                    density: { 
-                        enable: true, 
-                        value_area: 800 
-                    } 
-                },
-                color: { 
-                    value: "#00C9FF" 
-                },
-                shape: { 
-                    type: "circle" 
-                },
-                opacity: { 
-                    value: 0.25, 
-                    random: true 
-                },
-                size: { 
-                    value: 3, 
-                    random: true 
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#00C9FF",
-                    opacity: 0.15,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 1.5,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { 
-                        enable: true, 
-                        mode: "repulse" 
-                    },
-                    onclick: { 
-                        enable: true, 
-                        mode: "push" 
-                    },
-                    resize: true
-                }
-            }
-        });
+            {/* Form */}
+            <form
+              action={`https://formsubmit.co/${emailAddress}`}
+              method="POST"
+              onSubmit={handleSubmit}
+              className="p-6 space-y-4"
+            >
+              {/* Hidden Fields */}
+              <input
+                type="hidden"
+                name="_next"
+                value={`${siteUrl}/${language}/thank-you`}
+              />
+              <input
+                type="hidden"
+                name="_subject"
+                value="职业交易员沟通"
+              />
+              <input type="hidden" name="_captcha" value="false" />
 
-        // 按钮悬停效果
-        document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                });
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-            
-            // 滚动指示器点击事件
-            document.querySelector('.scroll-indicator').addEventListener('click', function() {
-                window.scrollTo({
-                    top: window.innerHeight,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body>
-</html>
+              {/* Name Field */}
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-bold mb-2 text-black dark:text-white"
+                >
+                  {isZh ? '姓名 *' : 'Name *'}
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white focus:border-black dark:focus:border-white outline-none transition-colors"
+                  placeholder={isZh ? '请输入您的姓名' : 'Enter your name'}
+                />
+              </div>
+
+              {/* Email Field */}
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-bold mb-2 text-black dark:text-white"
+                >
+                  {isZh ? '邮箱 *' : 'Email *'}
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white focus:border-black dark:focus:border-white outline-none transition-colors"
+                  placeholder={isZh ? '请输入您的邮箱' : 'Enter your email'}
+                />
+              </div>
+
+              {/* Phone Field */}
+              <div>
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-bold mb-2 text-black dark:text-white"
+                >
+                  {isZh ? '电话' : 'Phone'}
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white focus:border-black dark:focus:border-white outline-none transition-colors"
+                  placeholder={isZh ? '请输入您的电话（可选）' : 'Enter your phone (optional)'}
+                />
+              </div>
+
+              {/* Message Field */}
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-bold mb-2 text-black dark:text-white"
+                >
+                  {isZh ? '留言' : 'Message'}
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={3}
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white focus:border-black dark:focus:border-white outline-none transition-colors resize-none"
+                  placeholder={isZh ? '请告诉我们您的需求...' : 'Tell us your needs...'}
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full px-6 py-3 bg-black dark:bg-white text-white dark:text-black font-bold border-2 border-black dark:border-white hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white transition-colors"
+              >
+                {isZh ? '快联系我' : 'Contact Me'}
+              </button>
+
+              {/* Privacy Note */}
+              <p className="text-xs text-gray-600 dark:text-gray-400 text-center">
+                {isZh
+                  ? '我们重视您的隐私，不会分享您的信息。'
+                  : 'We value your privacy and will not share your information.'}
+              </p>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}

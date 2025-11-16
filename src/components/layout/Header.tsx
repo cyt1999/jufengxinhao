@@ -17,7 +17,6 @@ export default function Header() {
     { href: '/assessment', label: '测评' },
     { href: '/faq', label: 'FAQ' },
     { href: '/donate', label: '捐赠' },
-    { href: '/about', label: '关于我们' },
   ];
 
   return (
@@ -104,35 +103,6 @@ export default function Header() {
 
             {/* 右侧按钮区域 */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-              {/* 桌面端申请按钮 */}
-              <div className="desktop-only">
-                <Link href="/training">
-                  <button style={{
-                    padding: '8px 20px',
-                    borderRadius: '8px',
-                    fontWeight: 500,
-                    background: 'var(--gradient-primary)',
-                    border: 'none',
-                    color: 'white',
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 10px rgba(0, 201, 255, 0.3)',
-                    transition: 'all 0.3s',
-                    fontSize: 'clamp(0.85rem, 1vw, 1rem)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 6px 15px rgba(0, 201, 255, 0.4)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 10px rgba(0, 201, 255, 0.3)';
-                  }}
-                  >
-                    申请训练营
-                  </button>
-                </Link>
-              </div>
-
               {/* 移动端菜单按钮 */}
               <button
                 className="mobile-only"

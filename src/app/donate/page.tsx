@@ -504,7 +504,7 @@ export default function DonatePage() {
                   </Button>
                 </Link>
                 <a
-                  href={`mailto:x.stark.dylan@gmail.com?subject=申请成为试用会员&body=您好，我想申请成为90天试用会员。`}
+                  href={`mailto:jufengxinhao@gmail.com?subject=申请成为试用会员&body=您好，我想申请成为90天试用会员。`}
                   style={{ textDecoration: 'none' }}
                 >
                   <Button variant="outline" size="lg">

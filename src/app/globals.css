@@ -49,6 +49,188 @@ body {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 订阅通知动画 */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px) translateY(20px);
+  }
+}
+
+.subscription-notification {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+
+.subscription-notification.fade-out {
+  animation: slideOutLeft 0.3s ease-out forwards;
+}
+
+/* 订阅通知卡片响应式 */
+.subscription-notification-card {
+  max-width: 320px;
+}
+
+@media (max-width: 640px) {
+  .subscription-notification-card {
+    max-width: calc(100vw - 48px);
+  }
+}
+
+/* 浮动按钮提示文字 */
+.floating-button-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--text-dark);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.floating-button-tooltip::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: var(--text-dark);
+}
+
+/* 浮动按钮响应式 */
+@media (max-width: 640px) {
+  /* 移动端调整按钮大小和位置 */
+  [data-floating-buttons] {
+    bottom: 16px !important;
+    right: 16px !important;
+    gap: 10px !important;
+  }
+  
+  .floating-button {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 18px !important;
+  }
+  
+  .floating-button-tooltip {
+    right: calc(100% + 8px);
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+}
+
+/* 快速联系表单响应式 */
+@media (max-width: 640px) {
+  /* 移动端表单位置调整 */
+  [data-contact-form] {
+    right: 16px !important;
+    bottom: 80px !important;
+    width: calc(100vw - 32px) !important;
+    max-width: none !important;
+  }
+}
+
+/* 快速上下抖动动画 - 每隔2秒抖动3次 */
+@keyframes quickShake {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  5% {
+    transform: translateY(-8px);
+  }
+  10% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(-8px);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-8px);
+  }
+  30%, 100% {
+    transform: translateY(0);
+  }
+}
+
+/* 抖动按钮样式 - 每隔2秒快速上下抖动3次 */
+.shake-button {
+  animation: quickShake 2s ease-in-out infinite;
+}
+
+/* 鼠标悬停时停止晃动 */
+.shake-button:hover {
+  animation: none;
+  transform: translateY(0);
+}
+
+/* 学员收益截图网格布局 */
+.earnings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .earnings-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .earnings-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 特别提示网格布局 */
+.notice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 640px) {
+  .notice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ========== 响应式优化 ========== */
 @media (max-width: 768px) {
   .container {
@@ -140,5 +322,71 @@ body {
   
   .requirements-grid > div:nth-child(2) {
     display: block !important;
+  }
+}
+
+/* ========== 你是否符合基本条件 - 移动端适配 ========== */
+.requirements-grid-responsive {
+  grid-template-columns: 1fr !important;
+}
+
+@media (min-width: 768px) {
+  .requirements-grid-responsive {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ========== 学员感言滚动横幅 ========== */
+.testimonials-scroll-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* 确保一行最多显示4个卡片：每个卡片300px + 间距24px */
+  max-width: calc(300px * 4 + 24px * 3);
+  margin: 0 auto;
+}
+
+.testimonials-scroll-track {
+  display: flex;
+  gap: 24px;
+  animation: scrollLeft 60s linear infinite;
+  width: fit-content;
+  will-change: transform;
+}
+
+.testimonial-card-wrapper {
+  flex-shrink: 0;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 鼠标悬停时暂停动画 */
+.testimonials-scroll-container:hover .testimonials-scroll-track {
+  animation-play-state: paused;
+}
+
+/* 响应式：根据屏幕宽度调整显示卡片数量 */
+@media (max-width: 1279px) {
+  .testimonials-scroll-container {
+    max-width: calc(300px * 3 + 24px * 2);
+  }
+}
+
+@media (max-width: 959px) {
+  .testimonials-scroll-container {
+    max-width: calc(300px * 2 + 24px * 1);
+  }
+}
+
+@media (max-width: 639px) {
+  .testimonials-scroll-container {
+    max-width: 300px;
   }
 }

@@ -77,7 +77,9 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
           position: 'fixed',
           top: 0,
           right: 0,
-          width: '280px',
+          width: 'max-content',
+          minWidth: '160px',
+          maxWidth: '70vw',
           height: '100vh',
           background: 'var(--bg-white)',
           boxShadow: '-4px 0 20px rgba(0, 0, 0, 0.1)',
@@ -92,10 +94,10 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          padding: '20px',
+          padding: '12px 14px',
           borderBottom: '1px solid var(--border)',
         }}>
-          <Logo size={40} showText={true} />
+          <Logo size={28} showText={false} />
           <button
             onClick={onClose}
             style={{
@@ -116,9 +118,12 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
         </div>
 
         {/* 导航链接 */}
-        <nav role="navigation" aria-label="移动端导航" style={{ padding: '20px 0' }}>
+        <nav role="navigation" aria-label="移动端导航" style={{ padding: '12px 0' }}>
           {navLinks.map((link, index) => {
-            const isActive = pathname === link.href;
+            // 改进路径匹配逻辑：支持精确匹配和子路径匹配
+            const isActive = link.href === '/' 
+              ? pathname === '/' 
+              : pathname === link.href || pathname.startsWith(link.href + '/');
             const isFirst = index === 0;
             return (
               <Link
@@ -129,13 +134,27 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
                 aria-current={isActive ? 'page' : undefined}
                 style={{
                   display: 'block',
-                  padding: '15px 20px',
-                  color: isActive ? 'var(--primary-500)' : 'var(--text-medium)',
+                  padding: '12px 16px',
+                  color: isActive ? 'var(--primary-700)' : 'var(--text-medium)',
                   textDecoration: 'none',
-                  fontWeight: isActive ? 600 : 400,
-                  borderLeft: isActive ? '3px solid var(--primary-500)' : '3px solid transparent',
+                  fontWeight: isActive ? 700 : 400,
+                  borderLeft: isActive ? '4px solid var(--primary-500)' : '4px solid transparent',
                   background: isActive ? 'var(--primary-50)' : 'transparent',
                   transition: 'all 0.3s',
+                  position: 'relative',
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.background = 'var(--bg-gray)';
+                    e.currentTarget.style.color = 'var(--primary-500)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive) {
+                    e.currentTarget.style.background = 'transparent';
+                    e.currentTarget.style.color = 'var(--text-medium)';
+                  }
                 }}
               >
                 {link.label}
@@ -143,26 +162,6 @@ export default function MobileMenu({ navLinks, isOpen, onClose }: MobileMenuProp
             );
           })}
         </nav>
-
-        {/* 申请按钮 */}
-        <div style={{ padding: '20px' }}>
-          <Link href="/training" onClick={handleLinkClick}>
-            <button style={{
-              width: '100%',
-              padding: '12px 20px',
-              borderRadius: '8px',
-              fontWeight: 600,
-              background: 'var(--gradient-primary)',
-              border: 'none',
-              color: 'white',
-              cursor: 'pointer',
-              boxShadow: '0 4px 10px rgba(0, 201, 255, 0.3)',
-              transition: 'all 0.3s',
-            }}>
-              申请训练营
-            </button>
-          </Link>
-        </div>
       </div>
     </>
   );

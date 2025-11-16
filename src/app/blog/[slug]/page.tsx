@@ -54,6 +54,7 @@ export default async function BlogPostPage({
         title={post.title}
         align="left"
         maxWidth="900px"
+        className="blog-hero"
       >
         <Link
           href="/blog"
@@ -131,7 +132,7 @@ export default async function BlogPostPage({
 
       {/* Article Content */}
       <SectionWithAnimation>
-        <section className="section-padding" style={{ 
+        <section className="blog-content-section" style={{ 
           background: 'var(--bg-light)',
           position: 'relative',
           overflow: 'hidden',
