@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -33,6 +31,9 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+
+    // 在函数内部创建 Resend 实例，避免构建时错误
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     // 发送邮件
     const { data, error } = await resend.emails.send({
