@@ -1007,8 +1007,9 @@ export default function TrainingPage() {
                     {trainingContent.cta.actions.map((action, index) => (
                       <Link key={index} href={action.href} style={{ textDecoration: 'none' }}>
                         <Button 
-                          variant={index === 0 ? 'primary' : 'outline'} 
+                          variant={index === 0 ? 'outline' : 'primary'} 
                           size="lg"
+                          className={action.label === '预约面试' ? 'shake-button' : ''}
                         >
                           {action.label}
                         </Button>

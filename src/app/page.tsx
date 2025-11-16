@@ -192,7 +192,7 @@ export default function Home() {
                 animation: 'fadeInUp 1s ease-out 0.8s both',
               }}>
                 <Link href="/training" style={{ textDecoration: 'none' }}>
-                  <Button variant="primary" size="lg">
+                  <Button variant="primary" size="lg" className="shake-button">
                     {homeContent.hero.cta.primary}
                   </Button>
                 </Link>
@@ -939,25 +939,25 @@ export default function Home() {
           {/* 学员收益截图 */}
           {earningsImages.length > 0 && (
             <Card variant="glow">
-              <h3 style={{
-                fontSize: '1.5rem',
-                marginBottom: '30px',
-                fontWeight: 600,
-                textAlign: 'center',
-              }}>
+            <h3 style={{
+              fontSize: '1.5rem',
+              marginBottom: '30px',
+              fontWeight: 600,
+              textAlign: 'center',
+            }}>
                 {homeContent.showcase.screenshots.title}
-              </h3>
+            </h3>
               <div 
                 className="earnings-grid"
                 style={{
-                  padding: '20px',
+              padding: '20px',
                 }}
               >
                 {getCurrentImages().map((image, index) => (
                   <div
                     key={`${currentIndex}-${index}`}
                     style={{
-                      position: 'relative',
+                position: 'relative',
                       width: '100%',
                       aspectRatio: '16/9',
                       borderRadius: '12px',
@@ -977,8 +977,8 @@ export default function Home() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                   </div>
-                ))}
-              </div>
+                  ))}
+                </div>
               {/* 指示器 */}
               {earningsImages.length > 3 && (
                 <div style={{
@@ -1012,17 +1012,17 @@ export default function Home() {
               )}
               {homeContent.showcase.screenshots.note && (
                 <p style={{
-                  textAlign: 'center',
+                      textAlign: 'center',
                   color: 'var(--text-light)',
                   fontSize: '0.9rem',
                   marginTop: '20px',
                   paddingTop: '20px',
                   borderTop: '1px solid var(--border)',
-                }}>
+                    }}>
                   {homeContent.showcase.screenshots.note}
                 </p>
               )}
-            </Card>
+          </Card>
           )}
         </div>
       </section>
@@ -1125,7 +1125,7 @@ export default function Home() {
               <div 
                 className="notice-grid"
                 style={{
-                  display: 'grid',
+                display: 'grid',
                   gridTemplateColumns: 'repeat(2, 1fr)',
                   gap: '30px',
                 }}
@@ -1183,18 +1183,21 @@ export default function Home() {
 
             <div style={{ display: 'inline-block' }}>
               <Link href="/training" style={{ textDecoration: 'none' }}>
-                <button style={{
-                  padding: '15px 40px',
-                  borderRadius: '8px',
-                  fontWeight: 600,
-                  background: 'white',
-                  color: 'var(--primary-500)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontSize: '1.2rem',
-                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-                  transition: 'all 0.3s',
-                }}>
+                <button 
+                  className="shake-button"
+                  style={{
+                    padding: '15px 40px',
+                    borderRadius: '8px',
+                    fontWeight: 600,
+                    background: 'white',
+                    color: 'var(--primary-500)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: '1.2rem',
+                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+                    transition: 'all 0.3s',
+                  }}
+                >
                   {homeContent.cta.button.primary}
                 </button>
               </Link>

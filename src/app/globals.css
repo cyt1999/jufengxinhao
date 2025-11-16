@@ -60,6 +60,42 @@ body {
   }
 }
 
+/* 快速上下抖动动画 - 每隔2秒抖动3次 */
+@keyframes quickShake {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  5% {
+    transform: translateY(-8px);
+  }
+  10% {
+    transform: translateY(0);
+  }
+  15% {
+    transform: translateY(-8px);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-8px);
+  }
+  30%, 100% {
+    transform: translateY(0);
+  }
+}
+
+/* 抖动按钮样式 - 每隔2秒快速上下抖动3次 */
+.shake-button {
+  animation: quickShake 2s ease-in-out infinite;
+}
+
+/* 鼠标悬停时停止晃动 */
+.shake-button:hover {
+  animation: none;
+  transform: translateY(0);
+}
+
 /* 学员收益截图网格布局 */
 .earnings-grid {
   display: grid;
