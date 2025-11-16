@@ -371,7 +371,7 @@ export default function TrainingPage() {
                     {video.description}
                   </p>
                     <div style={{ marginTop: 'auto' }}>
-                      <Button variant="secondary">
+                      <Button variant="primary">
                         {video.cta}
                       </Button>
                     </div>

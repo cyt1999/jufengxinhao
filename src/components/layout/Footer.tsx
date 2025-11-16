@@ -71,7 +71,7 @@ export default function Footer() {
           <div>
             <h3 style={{ marginBottom: '20px', fontSize: '1.2rem' }}>公司</h3>
             <ul style={{ listStyle: 'none' }}>
-              {['关于我们', '联系我们', '隐私政策', '服务条款'].map((item) => (
+              {['联系我们', '隐私政策', '服务条款'].map((item) => (
                 <li key={item} style={{ marginBottom: '10px' }}>
                   <a href="#" style={{ color: 'rgba(255, 255, 255, 0.7)', textDecoration: 'none' }}>
                     {item}

@@ -17,7 +17,6 @@ export default function Header() {
     { href: '/assessment', label: '测评' },
     { href: '/faq', label: 'FAQ' },
     { href: '/donate', label: '捐赠' },
-    { href: '/about', label: '关于我们' },
   ];
 
   return (
