@@ -443,6 +443,8 @@ export default function AssessmentPage() {
                       setCurrentQuestion(0);
                       setAnswers([]);
                       setPageState('intro');
+                      // 滚动到页面顶部
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                   >
                     重新测试
@@ -709,7 +711,11 @@ export default function AssessmentPage() {
                   <Button
                     variant="primary"
                     size="lg"
-                    onClick={() => setPageState('testing')}
+                    onClick={() => {
+                      setPageState('testing');
+                      // 滚动到页面顶部
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                   >
                     开始测试
                   </Button>
