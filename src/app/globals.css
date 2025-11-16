@@ -325,6 +325,17 @@ body {
   }
 }
 
+/* ========== 你是否符合基本条件 - 移动端适配 ========== */
+.requirements-grid-responsive {
+  grid-template-columns: 1fr !important;
+}
+
+@media (min-width: 768px) {
+  .requirements-grid-responsive {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
 /* ========== 学员感言滚动横幅 ========== */
 .testimonials-scroll-container {
   width: 100%;

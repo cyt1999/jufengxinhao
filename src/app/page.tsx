@@ -622,15 +622,20 @@ export default function Home() {
         }}>
         <GeometricBackground variant="waves" intensity="subtle" />
         <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '15px', fontWeight: 700 }}>
+          <div style={{ textAlign: 'center', marginBottom: 'clamp(40px, 8vw, 60px)' }}>
+            <h2 style={{ 
+              fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', 
+              marginBottom: '15px', 
+              fontWeight: 700 
+            }}>
               {homeContent.requirements.title}
             </h2>
             <p style={{
               color: 'var(--text-light)',
               maxWidth: '800px',
               margin: '0 auto',
-              fontSize: '1.2rem',
+              fontSize: 'clamp(1rem, 3vw, 1.2rem)',
+              padding: '0 20px',
             }}>
               {homeContent.requirements.subtitle}
             </p>
@@ -639,24 +644,35 @@ export default function Home() {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '30px',
-            marginBottom: '40px',
-          }}>
+            gap: 'clamp(20px, 4vw, 30px)',
+            marginBottom: 'clamp(30px, 6vw, 40px)',
+          }}
+          className="requirements-grid-responsive"
+          >
             {/* 人群画像 */}
             <Card variant="gradient" gradient="primary" hover>
-              <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', fontWeight: 600 }}>
+              <h3 style={{ 
+                fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', 
+                marginBottom: 'clamp(15px, 3vw, 20px)', 
+                fontWeight: 600 
+              }}>
                 {homeContent.requirements.profile.title}
               </h3>
               {homeContent.requirements.profile.items.map((item, index) => (
-                <div key={index} style={{ marginBottom: '20px' }}>
+                <div key={index} style={{ marginBottom: 'clamp(15px, 3vw, 20px)' }}>
                   <div style={{
                     fontWeight: 600,
                     marginBottom: '8px',
                     color: 'var(--primary-500)',
+                    fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
                   }}>
                     {item.label}
                   </div>
-                  <div style={{ color: 'var(--text-light)' }}>
+                  <div style={{ 
+                    color: 'var(--text-light)',
+                    fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)',
+                    lineHeight: 1.6,
+                  }}>
                     {item.value}
                   </div>
                 </div>
@@ -665,19 +681,28 @@ export default function Home() {
 
             {/* 时间与环境 */}
             <Card variant="gradient" gradient="secondary" hover>
-              <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', fontWeight: 600 }}>
+              <h3 style={{ 
+                fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', 
+                marginBottom: 'clamp(15px, 3vw, 20px)', 
+                fontWeight: 600 
+              }}>
                 {homeContent.requirements.time.title}
               </h3>
               {homeContent.requirements.time.items.map((item, index) => (
-                <div key={index} style={{ marginBottom: '20px' }}>
+                <div key={index} style={{ marginBottom: 'clamp(15px, 3vw, 20px)' }}>
                   <div style={{
                     fontWeight: 600,
                     marginBottom: '8px',
                     color: 'var(--primary-500)',
+                    fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
                   }}>
                     {item.label}
                   </div>
-                  <div style={{ color: 'var(--text-light)' }}>
+                  <div style={{ 
+                    color: 'var(--text-light)',
+                    fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)',
+                    lineHeight: 1.6,
+                  }}>
                     {item.value}
                   </div>
                 </div>
@@ -686,19 +711,28 @@ export default function Home() {
 
             {/* 在线时间 */}
             <Card variant="gradient" gradient="secondary" hover>
-              <h3 style={{ fontSize: '1.3rem', marginBottom: '20px', fontWeight: 600 }}>
+              <h3 style={{ 
+                fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', 
+                marginBottom: 'clamp(15px, 3vw, 20px)', 
+                fontWeight: 600 
+              }}>
                 {homeContent.requirements.online.title}
               </h3>
               {homeContent.requirements.online.items.map((item, index) => (
-                <div key={index} style={{ marginBottom: '20px' }}>
+                <div key={index} style={{ marginBottom: 'clamp(15px, 3vw, 20px)' }}>
                   <div style={{
                     fontWeight: 600,
                     marginBottom: '8px',
                     color: 'var(--primary-500)',
+                    fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
                   }}>
                     {item.label}
                   </div>
-                  <div style={{ color: 'var(--text-light)' }}>
+                  <div style={{ 
+                    color: 'var(--text-light)',
+                    fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)',
+                    lineHeight: 1.6,
+                  }}>
                     {item.value}
                   </div>
                 </div>
@@ -708,18 +742,18 @@ export default function Home() {
             {/* 明确不适合的人群 */}
             <Card variant="gradient" gradient="primary" hover>
               <h3 style={{
-                fontSize: '1.3rem',
-                marginBottom: '20px',
+                fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
+                marginBottom: 'clamp(15px, 3vw, 20px)',
                 fontWeight: 600,
                 display: 'flex',
                 alignItems: 'center',
                 gap: '10px',
               }}>
-                <span style={{ fontSize: '1.2rem' }}>⚠️</span>
+                <span style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)' }}>⚠️</span>
                 {homeContent.requirements.unsuitable.title}
               </h3>
               {homeContent.requirements.unsuitable.items.map((item, index) => (
-                <div key={index} style={{ marginBottom: '20px' }}>
+                <div key={index} style={{ marginBottom: 'clamp(15px, 3vw, 20px)' }}>
                   <div style={{
                     display: 'flex',
                     alignItems: 'flex-start',
@@ -727,10 +761,11 @@ export default function Home() {
                     marginBottom: '8px',
                   }}>
                     <span style={{
-                      fontSize: '1rem',
+                      fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
                       color: item.type === 'unsuitable' 
                         ? 'var(--danger)' 
                         : 'var(--success)',
+                      flexShrink: 0,
                     }}>
                       {item.type === 'unsuitable' ? '✗' : '✓'}
                     </span>
@@ -739,6 +774,7 @@ export default function Home() {
                       color: item.type === 'unsuitable' 
                         ? 'var(--danger-dark)' 
                         : 'var(--success-dark)',
+                      fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
                     }}>
                       {item.label}
                     </div>
@@ -748,8 +784,8 @@ export default function Home() {
                       ? 'var(--danger-dark)' 
                       : 'var(--success-dark)',
                     lineHeight: 1.6,
-                    marginLeft: '24px',
-                    fontSize: '0.95rem',
+                    marginLeft: 'clamp(20px, 4vw, 24px)',
+                    fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)',
                   }}>
                     {item.description}
                   </p>
@@ -762,36 +798,38 @@ export default function Home() {
           <div style={{
             background: 'var(--warning-light)',
             border: '2px solid var(--warning)',
-            borderRadius: '15px',
-            padding: '30px',
+            borderRadius: 'clamp(12px, 2vw, 15px)',
+            padding: 'clamp(20px, 4vw, 30px)',
             boxShadow: '0 5px 15px rgba(0, 0, 0, 0.05)',
           }}>
             <h3 style={{
-              fontSize: '1.5rem',
-              marginBottom: '20px',
+              fontSize: 'clamp(1.2rem, 4vw, 1.5rem)',
+              marginBottom: 'clamp(15px, 3vw, 20px)',
               fontWeight: 700,
               color: 'var(--warning-dark)',
             }}>
               {homeContent.requirements.notice.title}
             </h3>
             <div style={{
-              fontSize: '1.2rem',
+              fontSize: 'clamp(1rem, 3vw, 1.2rem)',
               fontWeight: 700,
               color: 'var(--danger)',
-              marginBottom: '20px',
+              marginBottom: 'clamp(15px, 3vw, 20px)',
             }}>
               {homeContent.requirements.notice.once}
             </div>
             <p style={{
               color: 'var(--text-dark)',
               lineHeight: 1.8,
-              marginBottom: '20px',
+              marginBottom: 'clamp(15px, 3vw, 20px)',
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
             }}>
               {homeContent.requirements.notice.description}
             </p>
             <p style={{
               color: 'var(--text-dark)',
               lineHeight: 1.8,
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
             }}>
               {homeContent.requirements.notice.philosophy}
             </p>
@@ -1514,8 +1552,8 @@ export default function Home() {
                   transition: 'all 0.3s',
                 }}
               >
-                {homeContent.cta.button.primary}
-              </button>
+                  {homeContent.cta.button.primary}
+                </button>
             </div>
             <p style={{
               marginTop: '20px',

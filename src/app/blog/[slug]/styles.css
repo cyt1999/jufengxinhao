@@ -17,6 +17,40 @@
 /* 博客Hero区域 - 减少底部padding，让内容同步显示 */
 .blog-hero {
   padding-bottom: clamp(30px, 4vw, 50px) !important;
+  padding-top: clamp(100px, 15vw, 200px) !important;
+}
+
+/* 博客Hero标题 - 确保移动端可见 */
+.blog-hero h1 {
+  font-size: clamp(1.8rem, 5vw, 3.8rem) !important;
+  color: #FFFFFF !important;
+  visibility: visible !important;
+  display: block !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  margin-bottom: clamp(20px, 4vw, 30px) !important;
+  line-height: 1.2 !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+/* 博客Hero容器 - 确保内容可见 */
+.blog-hero .container {
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .blog-hero {
+    padding-top: clamp(80px, 12vw, 120px) !important;
+  }
+  
+  .blog-hero h1 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+    margin-bottom: clamp(15px, 3vw, 25px) !important;
+  }
 }
 
 /* 博客内容区域 - 减少顶部padding，与Hero区域紧贴 */
