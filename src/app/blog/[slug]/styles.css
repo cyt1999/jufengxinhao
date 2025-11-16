@@ -14,6 +14,17 @@
   transform: translateX(-5px);
 }
 
+/* 博客Hero区域 - 减少底部padding，让内容同步显示 */
+.blog-hero {
+  padding-bottom: clamp(30px, 4vw, 50px) !important;
+}
+
+/* 博客内容区域 - 减少顶部padding，与Hero区域紧贴 */
+.blog-content-section {
+  padding-top: clamp(20px, 3vw, 40px) !important;
+  padding-bottom: clamp(40px, 8vw, 60px) !important;
+}
+
 /* Markdown内容样式 */
 .blog-content {
   line-height: 2;
