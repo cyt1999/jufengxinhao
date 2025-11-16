@@ -905,7 +905,7 @@ export default function Home() {
             alignItems: 'stretch',
           }}>
             {homeContent.showcase.levels.map((level, index) => (
-              <Card key={index} hover variant={index === 0 ? 'glow' : index === 1 ? 'gradient' : 'bordered'} gradient={index === 1 ? 'secondary' : 'primary'} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <Card key={index} hover variant="glow" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ textAlign: 'center' }}>
                   <h3 style={{
                     fontSize: '1.4rem',
@@ -1054,7 +1054,7 @@ export default function Home() {
           </div>
           <div className="platform-data-grid">
             {homeContent.platformData.items.map((item, index) => (
-              <Card key={index} hover variant={index % 4 === 0 ? 'glow' : index % 4 === 1 ? 'gradient' : index % 4 === 2 ? 'bordered' : 'default'} gradient={index % 3 === 0 ? 'primary' : index % 3 === 1 ? 'secondary' : 'accent'} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <Card key={index} hover variant="glow" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{
                     fontSize: '2.5rem',
@@ -1122,11 +1122,14 @@ export default function Home() {
               }}>
                 {homeContent.cta.notice.title}
               </h3>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '25px',
-              }}>
+              <div 
+                className="notice-grid"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '30px',
+                }}
+              >
                 <div style={{ textAlign: 'center' }}>
                   <div style={{
                     fontSize: '2rem',

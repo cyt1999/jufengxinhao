@@ -79,6 +79,19 @@ body {
   }
 }
 
+/* 特别提示网格布局 */
+.notice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 640px) {
+  .notice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ========== 响应式优化 ========== */
 @media (max-width: 768px) {
   .container {
