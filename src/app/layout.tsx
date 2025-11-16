@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SubscriptionNotification from "@/components/ui/SubscriptionNotification";
+import FloatingButtons from "@/components/ui/FloatingButtons";
 
 export const metadata: Metadata = {
   title: "飓风信号·外汇交易职业交易员培训",
@@ -27,6 +28,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <SubscriptionNotification />
+        <FloatingButtons />
       </body>
     </html>
   );
