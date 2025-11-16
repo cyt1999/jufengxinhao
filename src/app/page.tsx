@@ -11,10 +11,12 @@ import CardWithAnimation from '@/components/ui/CardWithAnimation';
 import { GeometricBackground, GlowEffect, GradientOverlay } from '@/components/ui/BackgroundDecorations';
 import { FloatingElements } from '@/components/ui/FloatingElements';
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
+import InterviewDialog from '@/components/ui/InterviewDialog';
 
 export default function Home() {
   const [earningsImages, setEarningsImages] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isInterviewDialogOpen, setIsInterviewDialogOpen] = useState(false);
 
   useEffect(() => {
     // 动态加载学员收益截图
@@ -1182,25 +1184,24 @@ export default function Home() {
             </div>
 
             <div style={{ display: 'inline-block' }}>
-              <Link href="/training" style={{ textDecoration: 'none' }}>
-                <button 
-                  className="shake-button"
-                  style={{
-                    padding: '15px 40px',
-                    borderRadius: '8px',
-                    fontWeight: 600,
-                    background: 'white',
-                    color: 'var(--primary-500)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    fontSize: '1.2rem',
-                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
-                    transition: 'all 0.3s',
-                  }}
-                >
-                  {homeContent.cta.button.primary}
-                </button>
-              </Link>
+              <button 
+                className="shake-button"
+                onClick={() => setIsInterviewDialogOpen(true)}
+                style={{
+                  padding: '15px 40px',
+                  borderRadius: '8px',
+                  fontWeight: 600,
+                  background: 'white',
+                  color: 'var(--primary-500)',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '1.2rem',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2)',
+                  transition: 'all 0.3s',
+                }}
+              >
+                {homeContent.cta.button.primary}
+              </button>
             </div>
             <p style={{
               marginTop: '20px',
@@ -1212,6 +1213,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* 预约面试对话框 */}
+      <InterviewDialog 
+        isOpen={isInterviewDialogOpen} 
+        onClose={() => setIsInterviewDialogOpen(false)} 
+      />
     </div>
   );
 }

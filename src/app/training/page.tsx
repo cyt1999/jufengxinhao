@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import trainingContent from '@/content/zh/training.json';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
@@ -8,8 +9,10 @@ import SectionWithAnimation from '@/components/ui/SectionWithAnimation';
 import CardWithAnimation from '@/components/ui/CardWithAnimation';
 import { GeometricBackground, GlowEffect } from '@/components/ui/BackgroundDecorations';
 import Hero from '@/components/ui/Hero';
+import InterviewDialog from '@/components/ui/InterviewDialog';
 
 export default function TrainingPage() {
+  const [isInterviewDialogOpen, setIsInterviewDialogOpen] = useState(false);
   return (
     <div>
       {/* Hero Section */}
@@ -1004,17 +1007,31 @@ export default function TrainingPage() {
                     gap: '20px',
                     flexWrap: 'wrap',
                   }}>
-                    {trainingContent.cta.actions.map((action, index) => (
-                      <Link key={index} href={action.href} style={{ textDecoration: 'none' }}>
-                        <Button 
-                          variant={index === 0 ? 'outline' : 'primary'} 
-                          size="lg"
-                          className={action.label === '预约面试' ? 'shake-button' : ''}
-                        >
-                          {action.label}
-                        </Button>
-                      </Link>
-                    ))}
+                    {trainingContent.cta.actions.map((action, index) => {
+                      if (action.label === '预约面试') {
+                        return (
+                          <Button
+                            key={index}
+                            variant={index === 0 ? 'outline' : 'primary'}
+                            size="lg"
+                            className="shake-button"
+                            onClick={() => setIsInterviewDialogOpen(true)}
+                          >
+                            {action.label}
+                          </Button>
+                        );
+                      }
+                      return (
+                        <Link key={index} href={action.href} style={{ textDecoration: 'none' }}>
+                          <Button 
+                            variant={index === 0 ? 'outline' : 'primary'} 
+                            size="lg"
+                          >
+                            {action.label}
+                          </Button>
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -1022,6 +1039,12 @@ export default function TrainingPage() {
           </div>
         </section>
       </SectionWithAnimation>
+
+      {/* 预约面试对话框 */}
+      <InterviewDialog 
+        isOpen={isInterviewDialogOpen} 
+        onClose={() => setIsInterviewDialogOpen(false)} 
+      />
     </div>
   );
 }
