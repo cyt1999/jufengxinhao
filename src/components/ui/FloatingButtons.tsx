@@ -69,12 +69,13 @@ export default function FloatingButtons() {
       label: '快速联系',
       onClick: () => { setIsContactFormOpen(true); },
     },
-    {
-      id: 'consultation',
-      icon: '📅',
-      label: '预约咨询',
-      onClick: () => { window.location.href = '/training'; },
-    },
+    // 预约咨询功能暂时隐藏
+    // {
+    //   id: 'consultation',
+    //   icon: '📅',
+    //   label: '预约咨询',
+    //   onClick: () => { window.location.href = '/consultation'; },
+    // },
   ];
 
   // 处理悬停效果
