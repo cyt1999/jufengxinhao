@@ -199,20 +199,8 @@
         "incomeLabel": "月收入范围"
       }
     ],
-    "chart": {
-      "title": "学员收益曲线",
-      "months": ["第1月", "第2月", "第3月", "第4月", "第5月", "第6月"],
-      "data": [
-        { "month": "第1月", "return": 8.5 },
-        { "month": "第2月", "return": 12.3 },
-        { "month": "第3月", "return": 15.8 },
-        { "month": "第4月", "return": 18.2 },
-        { "month": "第5月", "return": 22.5 },
-        { "month": "第6月", "return": 25.8 }
-      ]
-    },
     "screenshots": {
-      "title": "学员实盘收益截图",
+      "title": "学员收益截图",
       "note": "以上为学员真实交易收益截图"
     }
   },

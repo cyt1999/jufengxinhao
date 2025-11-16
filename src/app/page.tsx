@@ -1,5 +1,7 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import homeContent from '@/content/zh/home.json';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
@@ -11,6 +13,50 @@ import { FloatingElements } from '@/components/ui/FloatingElements';
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 
 export default function Home() {
+  const [earningsImages, setEarningsImages] = useState<string[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    // 动态加载学员收益截图
+    fetch('/api/student-earnings')
+      .then(res => res.json())
+      .then(data => {
+        if (data.images && Array.isArray(data.images)) {
+          setEarningsImages(data.images);
+        }
+      })
+      .catch(err => {
+        console.error('Failed to load earnings images:', err);
+      });
+  }, []);
+
+  useEffect(() => {
+    // 自动轮播：每5秒切换一次
+    if (earningsImages.length <= 3) return; // 如果图片少于等于3张，不需要轮播
+    
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        // 计算下一个索引，确保循环显示
+        const nextIndex = prevIndex + 3;
+        return nextIndex >= earningsImages.length ? 0 : nextIndex;
+      });
+    }, 5000); // 5秒切换一次
+
+    return () => clearInterval(interval);
+  }, [earningsImages.length]);
+
+  // 获取当前要显示的3张图片
+  const getCurrentImages = () => {
+    if (earningsImages.length === 0) return [];
+    if (earningsImages.length <= 3) return earningsImages;
+    
+    const images = [];
+    for (let i = 0; i < 3; i++) {
+      const index = (currentIndex + i) % earningsImages.length;
+      images.push(earningsImages[index]);
+    }
+    return images;
+  };
   return (
     <div>
       {/* Hero Section */}
@@ -890,189 +936,94 @@ export default function Home() {
             ))}
           </div>
 
-          {/* 收益曲线 */}
-          <Card variant="glow" hover>
-            <h3 style={{
-              fontSize: '1.5rem',
-              marginBottom: '30px',
-              fontWeight: 600,
-              textAlign: 'center',
-            }}>
-              {homeContent.showcase.chart.title}
-            </h3>
-            <div style={{
-              position: 'relative',
-              height: '300px',
-              padding: '20px',
-            }}>
-              {/* Y轴标签 */}
-              <div style={{
-                position: 'absolute',
-                left: '0',
-                top: '0',
-                bottom: '0',
-                width: '50px',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                paddingTop: '20px',
-                paddingBottom: '20px',
+          {/* 学员收益截图 */}
+          {earningsImages.length > 0 && (
+            <Card variant="glow">
+              <h3 style={{
+                fontSize: '1.5rem',
+                marginBottom: '30px',
+                fontWeight: 600,
+                textAlign: 'center',
               }}>
-                {[30, 20, 10, 0].map((value) => (
-                  <span key={value} style={{
-                    fontSize: '0.85rem',
-                    color: 'var(--text-light)',
-                    textAlign: 'right',
-                  }}>
-                    {value}%
-                  </span>
+                {homeContent.showcase.screenshots.title}
+              </h3>
+              <div 
+                className="earnings-grid"
+                style={{
+                  padding: '20px',
+                }}
+              >
+                {getCurrentImages().map((image, index) => (
+                  <div
+                    key={`${currentIndex}-${index}`}
+                    style={{
+                      position: 'relative',
+                      width: '100%',
+                      aspectRatio: '16/9',
+                      borderRadius: '12px',
+                      overflow: 'hidden',
+                      background: 'var(--bg-secondary)',
+                      border: '1px solid var(--border)',
+                      animation: 'fadeIn 0.5s ease-in',
+                    }}
+                  >
+                    <Image
+                      src={image}
+                      alt={`学员收益截图 ${currentIndex + index + 1}`}
+                      fill
+                      style={{
+                        objectFit: 'cover',
+                      }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
                 ))}
               </div>
-
-              {/* 图表区域 */}
-              <div style={{
-                marginLeft: '60px',
-                position: 'relative',
-                height: '100%',
-              }}>
-                {/* 网格线 */}
+              {/* 指示器 */}
+              {earningsImages.length > 3 && (
                 <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
                   display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  marginTop: '20px',
                 }}>
-                  {[0, 1, 2, 3].map((i) => (
-                    <div key={i} style={{
-                      width: '100%',
-                      height: '1px',
-                      background: 'var(--border)',
-                    }} />
-                  ))}
-                </div>
-
-                {/* SVG 连线 */}
-                <svg style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  paddingBottom: '40px',
-                  zIndex: 1,
-                }}>
-                  {homeContent.showcase.chart.data.map((point, index) => {
-                    if (index === homeContent.showcase.chart.data.length - 1) return null;
-                    const currentHeight = (point.return / 30) * 100;
-                    const nextPoint = homeContent.showcase.chart.data[index + 1];
-                    const nextHeight = (nextPoint.return / 30) * 100;
-                    const pointWidth = 100 / homeContent.showcase.chart.data.length;
-                    const x1 = (index + 0.5) * pointWidth + '%';
-                    const y1 = (100 - currentHeight) + '%';
-                    const x2 = (index + 1.5) * pointWidth + '%';
-                    const y2 = (100 - nextHeight) + '%';
-                    
+                  {Array.from({ length: Math.ceil(earningsImages.length / 3) }).map((_, index) => {
+                    const pageIndex = index * 3;
+                    const isActive = Math.floor(currentIndex / 3) === index;
                     return (
-                      <line
+                      <button
                         key={index}
-                        x1={x1}
-                        y1={y1}
-                        x2={x2}
-                        y2={y2}
-                        stroke="url(#gradient)"
-                        strokeWidth="3"
-                        strokeLinecap="round"
+                        onClick={() => setCurrentIndex(pageIndex)}
+                        style={{
+                          width: '10px',
+                          height: '10px',
+                          borderRadius: '50%',
+                          border: 'none',
+                          background: isActive ? 'var(--primary-500)' : 'var(--border)',
+                          cursor: 'pointer',
+                          transition: 'background 0.3s ease',
+                          padding: 0,
+                        }}
+                        aria-label={`切换到第 ${index + 1} 页`}
                       />
                     );
                   })}
-                  <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#00C9FF" />
-                      <stop offset="100%" stopColor="#00FFAA" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-
-                {/* 数据点和数值标签 */}
-                <div style={{
-                  position: 'relative',
-                  height: '100%',
-                  display: 'flex',
-                  alignItems: 'flex-end',
-                  justifyContent: 'space-around',
-                  paddingBottom: '40px',
-                  zIndex: 2,
-                }}>
-                  {homeContent.showcase.chart.data.map((point, index) => {
-                    const height = (point.return / 30) * 100; // 30%为最大值
-                    
-                    return (
-                      <div key={index} style={{
-                        position: 'relative',
-                        flex: 1,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        height: '100%',
-                      }}>
-                        {/* 数据点 */}
-                        <div style={{
-                          position: 'absolute',
-                          bottom: `${height}%`,
-                          width: '14px',
-                          height: '14px',
-                          background: 'var(--primary-500)',
-                          borderRadius: '50%',
-                          border: '3px solid white',
-                          boxShadow: '0 2px 8px rgba(0, 201, 255, 0.5)',
-                          zIndex: 3,
-                        }} />
-                        
-                        {/* 数值标签 */}
-                        <div style={{
-                          position: 'absolute',
-                          bottom: `calc(${height}% + 25px)`,
-                          fontSize: '0.95rem',
-                          fontWeight: 600,
-                          color: 'var(--primary-500)',
-                          whiteSpace: 'nowrap',
-                          background: 'rgba(255, 255, 255, 0.9)',
-                          padding: '4px 8px',
-                          borderRadius: '6px',
-                          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                        }}>
-                          {point.return}%
-                        </div>
-                      </div>
-                    );
-                  })}
                 </div>
-
-                {/* X轴标签 */}
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  marginTop: '10px',
-                  paddingLeft: '60px',
+              )}
+              {homeContent.showcase.screenshots.note && (
+                <p style={{
+                  textAlign: 'center',
+                  color: 'var(--text-light)',
+                  fontSize: '0.9rem',
+                  marginTop: '20px',
+                  paddingTop: '20px',
+                  borderTop: '1px solid var(--border)',
                 }}>
-                  {homeContent.showcase.chart.data.map((point, index) => (
-                    <div key={index} style={{
-                      fontSize: '0.9rem',
-                      color: 'var(--text-light)',
-                      textAlign: 'center',
-                      flex: 1,
-                    }}>
-                      {point.month}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Card>
+                  {homeContent.showcase.screenshots.note}
+                </p>
+              )}
+            </Card>
+          )}
         </div>
       </section>
 
